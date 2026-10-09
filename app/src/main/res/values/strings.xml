@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">CrisisSim</string>
+    <string name="nav_home">Inicio</string>
+    <string name="nav_levels">Niveles</string>
+    <string name="nav_map">Plano</string>
+    <string name="nav_certificates">Certificados</string>
+
+    <string name="home_title_welcome">Bienvenido a CrisisSim</string>
+    <string name="home_title_greeting">Hola, %1$s</string>
+    <string name="home_subtitle">Practica qué hacer ante un sismo o un incendio. Funciona sin conexión.</string>
+    <string name="home_name_title">¿Cómo te llamas?</string>
+    <string name="home_name_hint">Tu nombre</string>
+    <string name="home_name_privacy">Solo guardamos tu nombre y tus resultados en este dispositivo.</string>
+    <string name="home_name_error">Escribe tu nombre para continuar</string>
+    <string name="home_start">Comenzar</string>
+    <string name="home_progress_title">Tu progreso</string>
+    <string name="home_scenarios_available">Escenarios disponibles: %1$d</string>
+
+    <string name="level_basic">Nivel Básico</string>
+    <string name="level_basic_desc">Evacuación escolar e incendios</string>
+    <string name="level_intermediate">Nivel Intermedio</string>
+    <string name="level_intermediate_desc">Sismos</string>
+    <string name="level_advanced">Nivel Avanzado</string>
+    <string name="level_advanced_desc">Primeros auxilios y liderazgo</string>
+    <string name="level_status_locked">Bloqueado · supera el nivel anterior</string>
+    <string name="level_status_available">Disponible</string>
+    <string name="level_status_in_progress">En curso · mejor puntaje %1$d de %2$d</string>
+    <string name="level_status_completed">Superado · %1$d de %2$d puntos</string>
+
+    <string name="levels_title">Niveles</string>
+    <string name="levels_subtitle">Supera cada nivel para desbloquear el siguiente.</string>
+    <string name="levels_no_user">Primero escribe tu nombre en Inicio para ver tus niveles.</string>
+    <string name="levels_go_home">Ir a Inicio</string>
+    <string name="levels_empty">Próximamente: aún no hay escenarios en este nivel.</string>
+    <string name="levels_section_completed">Nivel superado</string>
+    <string name="levels_locked_hint">Supera el nivel anterior para desbloquear este nivel.</string>
+
+    <string name="scenario_type_fire">Incendio</string>
+    <string name="scenario_type_earthquake">Sismo</string>
+    <string name="scenario_meta">Aprobar con %1$d %% · Puntaje máximo %2$d · Intentos permitidos %3$d</string>
+    <string name="scenario_result_none">Aún sin intentos</string>
+    <string name="scenario_result_progress">Mejor puntaje: %1$d de %2$d · Intentos usados: %3$d</string>
+    <string name="scenario_result_passed">Superado · mejor puntaje: %1$d de %2$d · Intentos usados: %3$d</string>
+
+    <string name="scenario_screen_label">Escenario</string>
+    <string name="scenario_exit">Salir</string>
+    <string name="scenario_exit_title">¿Salir del escenario?</string>
+    <string name="scenario_exit_message">Perderás el progreso de este intento.</string>
+    <string name="scenario_exit_confirm">Salir</string>
+    <string name="scenario_exit_cancel">Seguir</string>
+    <string name="scenario_error_no_user">Primero escribe tu nombre en Inicio.</string>
+    <string name="scenario_error_not_found">No se encontró este escenario.</string>
+    <string name="scenario_back_levels">Volver a Niveles</string>
+    <string name="scenario_step">Decisión %1$d</string>
+    <string name="scenario_timer">Tiempo restante: %1$d s</string>
+    <string name="scenario_verdict_correct">Decisión correcta</string>
+    <string name="scenario_verdict_incorrect">Decisión incorrecta</string>
+    <string name="scenario_verdict_neutral">Decisión registrada</string>
+    <string name="scenario_verdict_timeout">Se acabó el tiempo: se aplicó la opción por defecto</string>
+    <string name="scenario_source">Fuente: %1$s</string>
+    <string name="scenario_score_change">Puntaje de esta decisión: %1$s</string>
+    <string name="scenario_continue">Continuar</string>
+    <string name="scenario_see_result">Ver resultado</string>
+    <string name="scenario_result_title_passed">¡Escenario superado!</string>
+    <string name="scenario_result_title_failed">Aún no alcanzas el puntaje</string>
+    <string name="scenario_result_score">%1$d de %2$d puntos (%3$d %%)</string>
+    <string name="scenario_result_required">Para aprobar necesitas %1$d %%</string>
+    <string name="scenario_result_end">Final: %1$s</string>
+    <string name="scenario_end_success">evacuación exitosa</string>
+    <string name="scenario_end_partial">lograste salir, pero con errores</string>
+    <string name="scenario_end_failure">consecuencias graves</string>
+    <string name="scenario_result_stats">Decisiones: %1$d · Tiempos agotados: %2$d · Duración: %3$d s · Intentos usados: %4$d</string>
+    <string name="scenario_result_not_saved">No se pudo guardar este resultado en el dispositivo.</string>
+    <string name="scenario_retry">Intentar de nuevo</string>
+</resources>

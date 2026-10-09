@@ -1,0 +1,357 @@
+{
+  "id": "fire-basic-01",
+  "version": "1.0",
+  "type": "fire",
+  "level": "basic",
+  "title": {
+    "es": "[EJEMPLO] Incendio en el aula",
+    "en": "[EXAMPLE] Classroom Fire"
+  },
+  "description": {
+    "es": "Un incendio se declara en el aula durante una clase. Debes tomar decisiones rápidas para evacuar de forma segura.",
+    "en": "A fire breaks out in the classroom during a lesson. You must make quick decisions to evacuate safely."
+  },
+  "start_node": "node_01",
+  "passing_score": 100,
+  "max_attempts": 3,
+  "nodes": [
+    {
+      "id": "node_01",
+      "narrative": {
+        "es": "Estás en clase cuando suena la alarma contra incendios. Hueles humo y ves que otros estudiantes se levantan asustados. ¿Qué haces primero?",
+        "en": "You are in class when the fire alarm sounds. You smell smoke and see other students standing up in fear. What do you do first?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "opt_01a",
+          "text": {
+            "es": "Mantener la calma, indicar a todos que dejen sus pertenencias y se dirijan a la salida de emergencia",
+            "en": "Stay calm, tell everyone to leave their belongings and head to the emergency exit"
+          },
+          "next_node": "node_02",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "¡Correcto! Lo primero es mantener la calma y evacuar sin detenerse a recoger objetos.",
+              "en": "Correct! The first thing is to stay calm and evacuate without stopping to collect objects."
+            },
+            "is_correct": true,
+            "protocol_source": "Cruz Roja - Protocolo de evacuación escolar",
+            "protocol_ref": "[PENDIENTE: Citar protocolo oficial]"
+          }
+        },
+        {
+          "id": "opt_01b",
+          "text": {
+            "es": "Recoger tus pertenencias antes de salir",
+            "en": "Collect your belongings before leaving"
+          },
+          "next_node": "node_02b",
+          "score_change": -5,
+          "feedback": {
+            "text": {
+              "es": "Incorrecto. Recoger pertenencias retrasa la evacuación y pone en riesgo tu vida y la de otros.",
+              "en": "Incorrect. Collecting belongings delays evacuation and puts your life and others at risk."
+            },
+            "is_correct": false,
+            "protocol_source": "Cruz Roja - Protocolo de evacuación escolar",
+            "protocol_ref": "[PENDIENTE: Citar protocolo oficial]"
+          }
+        },
+        {
+          "id": "opt_01c",
+          "text": {
+            "es": "Intentar apagar el fuego tú mismo",
+            "en": "Try to put out the fire yourself"
+          },
+          "next_node": "node_fail_01",
+          "score_change": -10,
+          "feedback": {
+            "text": {
+              "es": "Peligroso. Solo personal capacitado debe intentar apagar un incendio. Tu prioridad es evacuar.",
+              "en": "Dangerous. Only trained personnel should attempt to put out a fire. Your priority is to evacuate."
+            },
+            "is_correct": false,
+            "protocol_source": "Protección Civil - Procedimiento ante incendios",
+            "protocol_ref": "[PENDIENTE: Citar protocolo oficial]"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_02",
+      "narrative": {
+        "es": "Llegas al pasillo y hay humo. Recuerdas que la ruta de evacuación más cercana es por la escalera del ala norte. ¿Cómo avanzas?",
+        "en": "You reach the hallway and there is smoke. You remember the nearest evacuation route is through the north wing staircase. How do you proceed?"
+      },
+      "time_limit_seconds": 20,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "opt_02a",
+          "text": {
+            "es": "Agacharte y avanzar por debajo del humo, cubriendo nariz y boca",
+            "en": "Crouch down and move below the smoke, covering your nose and mouth"
+          },
+          "next_node": "node_03",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "¡Bien! El humo y los gases tóxicos suben. Agacharse y cubrirse es lo correcto.",
+              "en": "Good! Smoke and toxic gases rise. Crouching down and covering up is the right move."
+            },
+            "is_correct": true,
+            "protocol_source": "Cruz Roja - Evacuación en presencia de humo",
+            "protocol_ref": "[PENDIENTE: Citar protocolo oficial]"
+          }
+        },
+        {
+          "id": "opt_02b",
+          "text": {
+            "es": "Correr rápidamente por el pasillo hacia la salida",
+            "en": "Run quickly through the hallway toward the exit"
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "Correr no es lo ideal: puedes inhalar humo tóxico y caer. Mejor agacharse y avanzar con calma.",
+              "en": "Running is not ideal: you can inhale toxic smoke and fall. Better to crouch and move calmly."
+            },
+            "is_correct": false,
+            "protocol_source": "Cruz Roja - Evacuación en presencia de humo",
+            "protocol_ref": "[PENDIENTE: Citar protocolo oficial]"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_02b",
+      "narrative": {
+        "es": "Perdiste tiempo valioso recogiendo tus cosas. El humo ahora es más denso en el pasillo. Necesitas salir YA. ¿Qué haces?",
+        "en": "You wasted valuable time collecting your things. The smoke is now thicker in the hallway. You need to get out NOW. What do you do?"
+      },
+      "time_limit_seconds": 15,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "opt_02b_a",
+          "text": {
+            "es": "Agacharte, cubrir nariz y boca, y seguir la señalización de evacuación",
+            "en": "Crouch down, cover your nose and mouth, and follow the evacuation signs"
+          },
+          "next_node": "node_03",
+          "score_change": 5,
+          "feedback": {
+            "text": {
+              "es": "Buena decisión ahora. Seguir la señalización te lleva a la salida más cercana.",
+              "en": "Good decision now. Following the signs leads you to the nearest exit."
+            },
+            "is_correct": true,
+            "protocol_source": "Protección Civil - Señalización de emergencia",
+            "protocol_ref": "[PENDIENTE: Citar protocolo oficial]"
+          }
+        },
+        {
+          "id": "opt_02b_b",
+          "text": {
+            "es": "Volver al aula porque el humo está muy denso",
+            "en": "Go back to the classroom because the smoke is too thick"
+          },
+          "next_node": "node_fail_02",
+          "score_change": -10,
+          "feedback": {
+            "text": {
+              "es": "Volver al aula puede atraparte. Si no puedes avanzar, busca un aula con ventana, cierra la puerta y pide ayuda.",
+              "en": "Going back to the classroom can trap you. If you can't proceed, find a room with a window, close the door and call for help."
+            },
+            "is_correct": false,
+            "protocol_source": "Cruz Roja - Qué hacer si quedas atrapado",
+            "protocol_ref": "[PENDIENTE: Citar protocolo oficial]"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_03",
+      "narrative": {
+        "es": "Llegas a la escalera. Hay estudiantes de otros salones bajando. El flujo es lento. ¿Qué haces?",
+        "en": "You reach the staircase. Students from other classrooms are going down. The flow is slow. What do you do?"
+      },
+      "time_limit_seconds": 25,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "opt_03a",
+          "text": {
+            "es": "Unirte al flujo ordenado, sin empujar, apoyando a quien lo necesite",
+            "en": "Join the orderly flow, without pushing, helping whoever needs it"
+          },
+          "next_node": "node_04",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "¡Excelente! La evacuación ordenada salva vidas. Empujar causa caídas y lesiones.",
+              "en": "Excellent! Orderly evacuation saves lives. Pushing causes falls and injuries."
+            },
+            "is_correct": true,
+            "protocol_source": "Protección Civil - Evacuación por escaleras",
+            "protocol_ref": "[PENDIENTE: Citar protocolo oficial]"
+          }
+        },
+        {
+          "id": "opt_03b",
+          "text": {
+            "es": "Tomar el ascensor para bajar más rápido",
+            "en": "Take the elevator to go down faster"
+          },
+          "next_node": "node_fail_03",
+          "score_change": -15,
+          "feedback": {
+            "text": {
+              "es": "¡NUNCA uses el ascensor en un incendio! Puede quedar atrapado entre pisos o abrirse en el piso del fuego.",
+              "en": "NEVER use the elevator during a fire! It can get stuck between floors or open on the fire floor."
+            },
+            "is_correct": false,
+            "protocol_source": "Cruz Roja - Prohibición de ascensores en emergencia",
+            "protocol_ref": "[PENDIENTE: Citar protocolo oficial]"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_04",
+      "narrative": {
+        "es": "Sales del edificio. Hay un punto de encuentro señalizado en el patio. ¿A dónde vas?",
+        "en": "You exit the building. There is a marked meeting point in the courtyard. Where do you go?"
+      },
+      "time_limit_seconds": 15,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "opt_04a",
+          "text": {
+            "es": "Ir directamente al punto de encuentro y reportarte con el docente o coordinador",
+            "en": "Go directly to the meeting point and report to the teacher or coordinator"
+          },
+          "next_node": "node_end_success",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "¡Perfecto! El punto de encuentro permite hacer el conteo y verificar que todos están a salvo.",
+              "en": "Perfect! The meeting point allows for headcount and verification that everyone is safe."
+            },
+            "is_correct": true,
+            "protocol_source": "Protección Civil - Puntos de encuentro",
+            "protocol_ref": "[PENDIENTE: Citar protocolo oficial]"
+          }
+        },
+        {
+          "id": "opt_04b",
+          "text": {
+            "es": "Quedarte cerca de la puerta para ver qué pasa",
+            "en": "Stay near the door to see what happens"
+          },
+          "next_node": "node_end_partial",
+          "score_change": -5,
+          "feedback": {
+            "text": {
+              "es": "No te quedes cerca del edificio. Puede haber explosiones o derrumbes. Ve al punto de encuentro.",
+              "en": "Don't stay near the building. There could be explosions or collapses. Go to the meeting point."
+            },
+            "is_correct": false,
+            "protocol_source": "Protección Civil - Distancia de seguridad",
+            "protocol_ref": "[PENDIENTE: Citar protocolo oficial]"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end_success",
+      "narrative": {
+        "es": "¡Evacuación exitosa! Llegaste al punto de encuentro, te reportaste y todos están a salvo. Has demostrado conocer el protocolo de evacuación contra incendios.",
+        "en": "Successful evacuation! You reached the meeting point, reported in, and everyone is safe. You have demonstrated knowledge of the fire evacuation protocol."
+      },
+      "is_end": true,
+      "end_type": "success",
+      "feedback": {
+        "text": {
+          "es": "Excelente desempeño. Recuerda: calma, evacuación ordenada, punto de encuentro.",
+          "en": "Excellent performance. Remember: stay calm, orderly evacuation, meeting point."
+        },
+        "is_correct": true,
+        "protocol_source": "Cruz Roja / Protección Civil"
+      }
+    },
+    {
+      "id": "node_end_partial",
+      "narrative": {
+        "es": "Saliste del edificio, pero al quedarte cerca de la puerta no te reportaste a tiempo y retrasaste el conteo. La evacuación fue parcialmente exitosa.",
+        "en": "You left the building, but by staying near the door you didn't report in time and delayed the headcount. The evacuation was partially successful."
+      },
+      "is_end": true,
+      "end_type": "partial_success",
+      "feedback": {
+        "text": {
+          "es": "Sobreviviste, pero no seguiste el protocolo completo. Siempre dirígete al punto de encuentro.",
+          "en": "You survived, but didn't follow the complete protocol. Always go to the meeting point."
+        },
+        "is_correct": false,
+        "protocol_source": "Protección Civil - Puntos de encuentro"
+      }
+    },
+    {
+      "id": "node_fail_01",
+      "narrative": {
+        "es": "Intentaste apagar el fuego sin capacitación ni equipo adecuado. El humo te afectó y tuviste que ser rescatado por los bomberos.",
+        "en": "You tried to put out the fire without training or proper equipment. The smoke affected you and you had to be rescued by firefighters."
+      },
+      "is_end": true,
+      "end_type": "failure",
+      "feedback": {
+        "text": {
+          "es": "Nunca intentes apagar un incendio sin capacitación. Tu vida es la prioridad.",
+          "en": "Never try to put out a fire without training. Your life is the priority."
+        },
+        "is_correct": false,
+        "protocol_source": "Protección Civil - Procedimiento ante incendios"
+      }
+    },
+    {
+      "id": "node_fail_02",
+      "narrative": {
+        "es": "Volviste al aula y el humo bloqueó tu salida. Quedaste atrapado hasta que llegaron los bomberos. Sufriste intoxicación por humo.",
+        "en": "You went back to the classroom and smoke blocked your exit. You were trapped until firefighters arrived. You suffered smoke inhalation."
+      },
+      "is_end": true,
+      "end_type": "failure",
+      "feedback": {
+        "text": {
+          "es": "Si no puedes avanzar, busca un aula segura, cierra la puerta, tapa las rendijas con tela mojada y pide ayuda desde la ventana.",
+          "en": "If you can't proceed, find a safe room, close the door, block gaps with wet cloth and call for help from the window."
+        },
+        "is_correct": false,
+        "protocol_source": "Cruz Roja - Qué hacer si quedas atrapado"
+      }
+    },
+    {
+      "id": "node_fail_03",
+      "narrative": {
+        "es": "Tomaste el ascensor y se detuvo entre pisos. Quedaste atrapado en un espacio que se llenó de humo. Los bomberos tuvieron que rescatarte.",
+        "en": "You took the elevator and it stopped between floors. You were trapped in a space that filled with smoke. Firefighters had to rescue you."
+      },
+      "is_end": true,
+      "end_type": "failure",
+      "feedback": {
+        "text": {
+          "es": "NUNCA uses el ascensor en un incendio o sismo. Siempre usa las escaleras.",
+          "en": "NEVER use the elevator during a fire or earthquake. Always use the stairs."
+        },
+        "is_correct": false,
+        "protocol_source": "Cruz Roja / Protección Civil"
+      }
+    }
+  ]
+}

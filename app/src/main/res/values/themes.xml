@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.CrisisSim" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/background_light</item>
+        <item name="colorSecondary">@color/accent</item>
+    </style>
+
+    <style name="Theme.CrisisSim" parent="Base.Theme.CrisisSim" />
+</resources>
