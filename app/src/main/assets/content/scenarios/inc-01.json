@@ -1,0 +1,64 @@
+{
+  "id": "inc-01",
+  "version": "1.0",
+  "type": "fire",
+  "level": "basic",
+  "title": {
+    "es": "Alerta de incendio",
+    "en": "Fire Alert"
+  },
+  "description": {
+    "es": "Reacción rápida ante el sonido de la alarma de incendios en el colegio.",
+    "en": "Quick reaction to the fire alarm sound at school."
+  },
+  "start_node": "node_01",
+  "passing_score": 70,
+  "max_attempts": 3,
+  "nodes": [
+    {
+      "id": "node_01",
+      "narrative": {
+        "es": "Suena la alarma continua de incendio. Hueles a humo ligero en el corredor. ¿Qué haces?",
+        "en": "The continuous fire alarm sounds. You smell light smoke in the hallway. What do you do?"
+      },
+      "time_limit_seconds": 15,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "opt_01a",
+          "text": {
+            "es": "Dejar tus pertenencias, guardar la calma y dirigirte de inmediato a la salida",
+            "en": "Leave your belongings, stay calm, and head immediately to the exit"
+          },
+          "next_node": "node_end_success",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "¡Correcto! La vida es la prioridad, los objetos personales se quedan.",
+              "en": "Correct! Life is the priority, personal belongings stay behind."
+            },
+            "is_correct": true,
+            "protocol_source": "Cruz Roja / Protección Civil"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end_success",
+      "narrative": {
+        "es": "Evacuación por alerta de incendio exitosa.",
+        "en": "Successful fire alert evacuation."
+      },
+      "is_end": true,
+      "end_type": "success",
+      "feedback": {
+        "text": {
+          "es": "¡Excelente reacción!",
+          "en": "Excellent reaction!"
+        },
+        "is_correct": true,
+        "protocol_source": "Cruz Roja"
+      }
+    }
+  ]
+}

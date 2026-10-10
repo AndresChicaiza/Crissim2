@@ -1,0 +1,126 @@
+{
+  "id": "sis-01",
+  "version": "1.0",
+  "type": "earthquake",
+  "level": "basic",
+  "title": {
+    "es": "Durante el sismo",
+    "en": "During the earthquake"
+  },
+  "description": {
+    "es": "Aprende las acciones inmediatas para protegerte cuando la tierra empieza a temblar.",
+    "en": "Learn immediate actions to protect yourself when the ground starts shaking."
+  },
+  "start_node": "node_01",
+  "passing_score": 70,
+  "max_attempts": 3,
+  "nodes": [
+    {
+      "id": "node_01",
+      "narrative": {
+        "es": "Estás en clase. Sientes un movimiento fuerte y escuchas vibrar las ventanas. Hay una mesa resistente cerca de ti.",
+        "en": "You are in class. You feel a strong shaking and hear windows vibrating. There is a sturdy table near you."
+      },
+      "time_limit_seconds": 15,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "opt_01a",
+          "text": {
+            "es": "Agacharte, cubrirte debajo de la mesa y sujetarte fuerte de una pata",
+            "en": "Drop, cover under the table and hold on tight"
+          },
+          "next_node": "node_02",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "¡Correcto! Agacharse, cubrirse y sujetarse es el protocolo oficial ante un sismo.",
+              "en": "Correct! Drop, cover, and hold on is the official earthquake protocol."
+            },
+            "is_correct": true,
+            "protocol_source": "Protección Civil / Cruz Roja"
+          }
+        },
+        {
+          "id": "opt_01b",
+          "text": {
+            "es": "Salir corriendo de inmediato hacia la puerta de salida",
+            "en": "Run out immediately towards the exit door"
+          },
+          "next_node": "node_fail_01",
+          "score_change": -10,
+          "feedback": {
+            "text": {
+              "es": "Peligroso. Correr durante el movimiento puede causar caídas u objetos que te golpeen.",
+              "en": "Dangerous. Running during shaking can cause falls or objects hitting you."
+            },
+            "is_correct": false,
+            "protocol_source": "Protección Civil"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_02",
+      "narrative": {
+        "es": "El temblor disminuye. El docente indica iniciar la evacuación de forma ordenada. ¿Qué haces?",
+        "en": "The shaking decreases. The teacher indicates to evacuate in an orderly manner. What do you do?"
+      },
+      "time_limit_seconds": 15,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "opt_02a",
+          "text": {
+            "es": "Salir en fila, sin empujar, cubriendo tu cabeza con las manos hacia la ruta de evacuación",
+            "en": "Exit in line, without pushing, covering your head with your hands towards the evacuation route"
+          },
+          "next_node": "node_end_success",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "¡Excelente! La evacuación ordenada evita estampidas y lesiones.",
+              "en": "Excellent! Orderly evacuation prevents stampedes and injuries."
+            },
+            "is_correct": true,
+            "protocol_source": "ILC Protocolo de Seguridad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end_success",
+      "narrative": {
+        "es": "¡Lograste protegerte y evacuar con éxito! Llegaste al punto de encuentro a salvo.",
+        "en": "You managed to protect yourself and evacuate successfully! You arrived safely at the meeting point."
+      },
+      "is_end": true,
+      "end_type": "success",
+      "feedback": {
+        "text": {
+          "es": "¡Felicitaciones! Has completado el módulo SIS-01.",
+          "en": "Congratulations! You completed module SIS-01."
+        },
+        "is_correct": true,
+        "protocol_source": "Cruz Roja"
+      }
+    },
+    {
+      "id": "node_fail_01",
+      "narrative": {
+        "es": "Tropezaste al correr durante el sismo y un objeto pesado cayó cerca. Recuerda: primero protegerse, luego evacuar.",
+        "en": "You tripped running during the shaking and a heavy object fell nearby. Remember: protect first, then evacuate."
+      },
+      "is_end": true,
+      "end_type": "failure",
+      "feedback": {
+        "text": {
+          "es": "Durante el temblor, mantén la calma y protégete.",
+          "en": "During shaking, stay calm and protect yourself."
+        },
+        "is_correct": false,
+        "protocol_source": "Protección Civil"
+      }
+    }
+  ]
+}

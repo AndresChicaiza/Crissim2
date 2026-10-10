@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#E53935</color>
-    <color name="primary_dark">#B71C1C</color>
-    <color name="accent">#FFB300</color>
+    <!-- Brand Primary Navy Blue -->
+    <color name="primary">#185293</color>
+    <color name="primary_dark">#0F3968</color>
+    <color name="primary_container">#EBF3FA</color>
+    <color name="on_primary_container">#185293</color>
+    <color name="primary_border">#C2D8ED</color>
 
-    <color name="background_light">#FFFFFF</color>
-    <color name="text_primary_light">#212121</color>
-    <color name="text_secondary_light">#757575</color>
+    <!-- Backgrounds -->
+    <color name="background_light">#F7F9FC</color>
+    <color name="surface_light">#FFFFFF</color>
+    <color name="text_primary">#0F1D2F</color>
+    <color name="text_secondary">#5A6B82</color>
 
-    <color name="background_dark">#121212</color>
-    <color name="text_primary_dark">#FFFFFF</color>
-    <color name="text_secondary_dark">#BDBDBD</color>
+    <!-- Meeting Point Green -->
+    <color name="meeting_point_bg">#E2F4EC</color>
+    <color name="meeting_point_border">#A2DEC3</color>
+    <color name="meeting_point_text">#176343</color>
+
+    <!-- Offline Pill / Badges -->
+    <color name="offline_pill_bg">#EBF3EA</color>
+    <color name="offline_pill_text">#22683E</color>
+    <color name="role_pill_bg">#E8EEF5</color>
+    <color name="role_pill_text">#185293</color>
+    <color name="sismos_badge_bg">#EBF3FA</color>
+    <color name="incendios_badge_bg">#FFF4E5</color>
+    <color name="incendios_badge_text">#9C5200</color>
 </resources>

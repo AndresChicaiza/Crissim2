@@ -1,0 +1,64 @@
+{
+  "id": "inc-03",
+  "version": "1.0",
+  "type": "fire",
+  "level": "intermediate",
+  "title": {
+    "es": "Salida bloqueada",
+    "en": "Blocked Exit"
+  },
+  "description": {
+    "es": "Decisiones de ruta alternativa cuando el camino principal está obstruido por fuego.",
+    "en": "Alternative route decisions when the main path is blocked by fire."
+  },
+  "start_node": "node_01",
+  "passing_score": 70,
+  "max_attempts": 3,
+  "nodes": [
+    {
+      "id": "node_01",
+      "narrative": {
+        "es": "La puerta principal de la escalera está caliente al tacto y sale humo por las rendijas. ¿Qué haces?",
+        "en": "The main staircase door is hot to the touch and smoke comes from the gaps. What do you do?"
+      },
+      "time_limit_seconds": 15,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "opt_01a",
+          "text": {
+            "es": "NO abrir la puerta y dirigirte a la salida alternativa señalizada en el plano",
+            "en": "Do NOT open the door and head to the alternative exit marked on the map"
+          },
+          "next_node": "node_end_success",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "¡Excelente! Una puerta caliente indica fuego directo al otro lado.",
+              "en": "Excellent! A hot door indicates direct fire on the other side."
+            },
+            "is_correct": true,
+            "protocol_source": "Protección Civil / Bomberos"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end_success",
+      "narrative": {
+        "es": "Usaste la ruta alternativa segura y saliste sin lesiones.",
+        "en": "You used the safe alternative route and exited without injury."
+      },
+      "is_end": true,
+      "end_type": "success",
+      "feedback": {
+        "text": {
+          "es": "¡Toma de decisión crítica perfecta!",
+          "en": "Perfect critical decision making!"
+        },
+        "is_correct": true,
+        "protocol_source": "Cruz Roja"
+      }
+    }
+  ]
+}

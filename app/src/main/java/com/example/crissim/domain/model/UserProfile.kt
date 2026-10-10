@@ -1,12 +1,21 @@
 package com.example.crissim.domain.model
 
+enum class UserRole(val labelEs: String) {
+    STUDENT("Estudiante"),
+    TEACHER("Docente"),
+    ADMINISTRATIVE("Administrativo"),
+    BRIGADIST("Brigadista")
+}
+
 /**
  * Perfil local del usuario (RF-08).
- * A7: Solo nombre y resultados. Sin cuenta, sin red.
+ * A7: Solo nombre, rol, idioma y resultados. Sin cuenta, sin red.
  */
 data class UserProfile(
     val id: Long = 0,
     val name: String,
+    val role: UserRole = UserRole.STUDENT,
+    val language: String = "ES",
     val createdAt: Long = System.currentTimeMillis()
 )
 

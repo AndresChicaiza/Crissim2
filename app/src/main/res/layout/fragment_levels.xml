@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_light"
     android:clipToPadding="false"
     android:fillViewport="true"
     tools:context=".presentation.ui.levels.LevelsFragment">
@@ -13,19 +15,55 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <TextView
+        <!-- Header Bar -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/levels_title"
-            android:textAppearance="?attr/textAppearanceHeadlineMedium" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp">
 
-        <TextView
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="@string/catalog_header_title"
+                android:src="@drawable/ic_shield" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/catalog_header_title"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_subtitle"
+                    android:textAppearance="?attr/textAppearanceBodySmall"
+                    android:textColor="@color/text_secondary" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@string/badge_offline"
+                android:src="@drawable/ic_offline" />
+        </LinearLayout>
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/levels_subtitle"
-            android:textAppearance="?attr/textAppearanceBodyLarge"
-            android:textColor="?android:attr/textColorSecondary" />
+            android:layout_height="1dp"
+            android:layout_marginBottom="16dp"
+            android:background="#E2E8F0" />
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:id="@+id/progress_loading"
@@ -35,34 +73,100 @@
             android:layout_marginTop="32dp"
             android:indeterminate="true" />
 
-        <LinearLayout
-            android:id="@+id/group_no_user"
+        <!-- Title -->
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:orientation="vertical"
-            android:visibility="gone">
+            android:text="@string/catalog_title"
+            android:textAppearance="?attr/textAppearanceHeadlineMedium"
+            android:textColor="@color/text_primary"
+            android:textSize="26sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/levels_no_user"
-                android:textAppearance="?attr/textAppearanceBodyLarge" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_go_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="@string/levels_go_home" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/sections_container"
+        <!-- Subtitle -->
+        <TextView
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/catalog_subtitle"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textColor="@color/text_secondary" />
+
+        <!-- Sismos Section -->
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            android:visibility="gone" />
+            android:background="@drawable/bg_pill_sismos"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:text="Sismos · 4 escenarios"
+            android:textAppearance="?attr/textAppearanceLabelMedium"
+            android:textColor="@color/primary"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/container_sismos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical" />
+
+        <!-- Incendios Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_pill_incendios"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:text="Incendios · 4 escenarios"
+            android:textAppearance="?attr/textAppearanceLabelMedium"
+            android:textColor="@color/incendios_badge_text"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/container_incendios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical" />
+
+        <!-- Meeting Point Banner -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_meeting_point"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/meeting_point_bg"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/meeting_point_border"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:contentDescription="@string/meeting_point_button"
+                    android:src="@drawable/ic_meeting_point" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/meeting_point_button"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    android:textColor="@color/meeting_point_text"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 </ScrollView>

@@ -1,0 +1,64 @@
+{
+  "id": "sis-03",
+  "version": "1.0",
+  "type": "earthquake",
+  "level": "intermediate",
+  "title": {
+    "es": "Persona con movilidad reducida",
+    "en": "Person with reduced mobility"
+  },
+  "description": {
+    "es": "Protocolo de asistencia a compañeros con requerimientos especiales durante la evacuación.",
+    "en": "Protocol to assist classmates with special needs during evacuation."
+  },
+  "start_node": "node_01",
+  "passing_score": 70,
+  "max_attempts": 3,
+  "nodes": [
+    {
+      "id": "node_01",
+      "narrative": {
+        "es": "En tu aula hay un compañero en silla de ruedas. Suena la alarma de evacuación. ¿Cómo le asistes?",
+        "en": "In your classroom a classmate is in a wheelchair. The evacuation alarm sounds. How do you assist?"
+      },
+      "time_limit_seconds": 15,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "opt_01a",
+          "text": {
+            "es": "Avisar al docente/brigadista asignado y acompañarle por la ruta accesible designada",
+            "en": "Notify the assigned teacher/brigadist and accompany along the designated accessible route"
+          },
+          "next_node": "node_end_success",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "¡Correcto! Seguir el protocolo inclusivo garantiza la seguridad de todos.",
+              "en": "Correct! Following the inclusive protocol guarantees safety for everyone."
+            },
+            "is_correct": true,
+            "protocol_source": "ILC Inclusión y Brigada"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end_success",
+      "narrative": {
+        "es": "Evacuación inclusiva y segura completada.",
+        "en": "Inclusive and safe evacuation completed."
+      },
+      "is_end": true,
+      "end_type": "success",
+      "feedback": {
+        "text": {
+          "es": "¡Excelente trabajo en equipo!",
+          "en": "Great teamwork!"
+        },
+        "is_correct": true,
+        "protocol_source": "Cruz Roja"
+      }
+    }
+  ]
+}

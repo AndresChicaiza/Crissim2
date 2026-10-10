@@ -3,7 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.crissim.presentation.ui.welcome.WelcomeFragment"
+        android:label="@string/welcome_title"
+        tools:layout="@layout/fragment_welcome" />
+
+    <fragment
+        android:id="@+id/profileSetupFragment"
+        android:name="com.example.crissim.presentation.ui.profile.ProfileSetupFragment"
+        android:label="@string/profile_title"
+        tools:layout="@layout/fragment_profile_setup" />
 
     <fragment
         android:id="@+id/homeFragment"
@@ -14,8 +26,24 @@
     <fragment
         android:id="@+id/levelsFragment"
         android:name="com.example.crissim.presentation.ui.levels.LevelsFragment"
-        android:label="@string/nav_levels"
+        android:label="@string/nav_scenarios"
         tools:layout="@layout/fragment_levels" />
+
+    <fragment
+        android:id="@+id/meetingPointFragment"
+        android:name="com.example.crissim.presentation.ui.map.MeetingPointFragment"
+        android:label="@string/meeting_point_title"
+        tools:layout="@layout/fragment_meeting_point" />
+
+    <fragment
+        android:id="@+id/scenarioContextFragment"
+        android:name="com.example.crissim.presentation.ui.scenario.ScenarioContextFragment"
+        android:label="@string/scenario_screen_label"
+        tools:layout="@layout/fragment_scenario_context">
+        <argument
+            android:name="scenarioId"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/scenarioFragment"
@@ -27,15 +55,45 @@
             app:argType="string" />
     </fragment>
 
-    <!-- Estas dos siguen siendo marcadores de posición hasta que se construyan -->
     <fragment
-        android:id="@+id/mapFragment"
-        android:name="androidx.fragment.app.Fragment"
-        android:label="@string/nav_map" />
+        android:id="@+id/scenarioRecoveryFragment"
+        android:name="com.example.crissim.presentation.ui.scenario.ScenarioRecoveryFragment"
+        android:label="@string/recovery_header_title"
+        tools:layout="@layout/fragment_scenario_recovery">
+        <argument
+            android:name="scenarioId"
+            app:argType="string" />
+    </fragment>
 
     <fragment
-        android:id="@+id/certificatesFragment"
-        android:name="androidx.fragment.app.Fragment"
-        android:label="@string/nav_certificates" />
+        android:id="@+id/scenarioResultFragment"
+        android:name="com.example.crissim.presentation.ui.scenario.ScenarioResultFragment"
+        android:label="@string/result_header_title"
+        tools:layout="@layout/fragment_scenario_result">
+        <argument
+            android:name="scenarioId"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/scenarioReflectionFragment"
+        android:name="com.example.crissim.presentation.ui.scenario.ScenarioReflectionFragment"
+        android:label="@string/reflection_header_title"
+        tools:layout="@layout/fragment_scenario_reflection">
+        <argument
+            android:name="scenarioId"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.crissim.presentation.ui.placeholder.PlaceholderFragment"
+        android:label="@string/nav_history" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.crissim.presentation.ui.settings.SettingsFragment"
+        android:label="@string/nav_settings"
+        tools:layout="@layout/fragment_settings" />
 
 </navigation>

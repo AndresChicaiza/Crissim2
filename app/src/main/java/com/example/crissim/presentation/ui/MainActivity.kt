@@ -64,8 +64,8 @@ class MainActivity : AppCompatActivity() {
         val showBottomNav = when (destinationId) {
             R.id.homeFragment,
             R.id.levelsFragment,
-            R.id.mapFragment,
-            R.id.certificatesFragment -> true
+            R.id.historyFragment,
+            R.id.settingsFragment -> true
             else -> false
         }
         binding.bottomNavigation.visibility = if (showBottomNav) {

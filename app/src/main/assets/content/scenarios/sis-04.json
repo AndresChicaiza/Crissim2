@@ -1,0 +1,64 @@
+{
+  "id": "sis-04",
+  "version": "1.0",
+  "type": "earthquake",
+  "level": "advanced",
+  "title": {
+    "es": "Punto de encuentro",
+    "en": "Meeting Point"
+  },
+  "description": {
+    "es": "Organización, conteo de personas y reporte final al líder de brigada.",
+    "en": "Organization, headcount, and final report to the brigade leader."
+  },
+  "start_node": "node_01",
+  "passing_score": 70,
+  "max_attempts": 3,
+  "nodes": [
+    {
+      "id": "node_01",
+      "narrative": {
+        "es": "Llegas al punto de encuentro en la cancha principal. ¿Cuál es tu primera acción?",
+        "en": "You arrive at the meeting point on the main court. What is your first action?"
+      },
+      "time_limit_seconds": 15,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "opt_01a",
+          "text": {
+            "es": "Ubicarte con tu grupo de clase y reportar tu presencia al docente responsable",
+            "en": "Locate your class group and report your presence to the responsible teacher"
+          },
+          "next_node": "node_end_success",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "¡Correcto! El reporte inmediato facilita la verificación de ausentes.",
+              "en": "Correct! Immediate reporting facilitates missing person verification."
+            },
+            "is_correct": true,
+            "protocol_source": "Protección Civil"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end_success",
+      "narrative": {
+        "es": "Proceso del punto de encuentro completado correctamente.",
+        "en": "Meeting point process completed successfully."
+      },
+      "is_end": true,
+      "end_type": "success",
+      "feedback": {
+        "text": {
+          "es": "¡Liderazgo y responsabilidad demostrados!",
+          "en": "Leadership and responsibility demonstrated!"
+        },
+        "is_correct": true,
+        "protocol_source": "ILC Brigada"
+      }
+    }
+  ]
+}

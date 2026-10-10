@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/homeFragment"
-        android:icon="@android:drawable/ic_menu_compass"
+        android:icon="@drawable/ic_home"
         android:title="@string/nav_home" />
     <item
         android:id="@+id/levelsFragment"
-        android:icon="@android:drawable/ic_menu_sort_by_size"
-        android:title="@string/nav_levels" />
+        android:icon="@drawable/ic_scenarios"
+        android:title="@string/nav_scenarios" />
     <item
-        android:id="@+id/mapFragment"
-        android:icon="@android:drawable/ic_menu_mapmode"
-        android:title="@string/nav_map" />
+        android:id="@+id/historyFragment"
+        android:icon="@drawable/ic_history"
+        android:title="@string/nav_history" />
     <item
-        android:id="@+id/certificatesFragment"
-        android:icon="@android:drawable/ic_menu_agenda"
-        android:title="@string/nav_certificates" />
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/nav_settings" />
 </menu>

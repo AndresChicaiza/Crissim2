@@ -1,47 +1,192 @@
 <resources>
     <string name="app_name">CrisisSim</string>
+    <string name="app_subtitle">International Language Center · Yumbo</string>
     <string name="nav_home">Inicio</string>
-    <string name="nav_levels">Niveles</string>
-    <string name="nav_map">Plano</string>
-    <string name="nav_certificates">Certificados</string>
+    <string name="nav_scenarios">Escenarios</string>
+    <string name="nav_history">Historial</string>
+    <string name="nav_settings">Ajustes</string>
 
-    <string name="home_title_welcome">Bienvenido a CrisisSim</string>
-    <string name="home_title_greeting">Hola, %1$s</string>
-    <string name="home_subtitle">Practica qué hacer ante un sismo o un incendio. Funciona sin conexión.</string>
-    <string name="home_name_title">¿Cómo te llamas?</string>
-    <string name="home_name_hint">Tu nombre</string>
-    <string name="home_name_privacy">Solo guardamos tu nombre y tus resultados en este dispositivo.</string>
+    <!-- Header -->
+    <string name="badge_offline">Entrenamiento sin internet</string>
+
+    <!-- Pantalla 01: Bienvenida e Idioma -->
+    <string name="welcome_title">La calma también se entrena.</string>
+    <string name="welcome_subtitle">Practica cómo protegerte ante sismos e incendios. Decide, aprende y vuelve a intentarlo.</string>
+    <string name="welcome_lang_label">Elige tu idioma / Choose language</string>
+    <string name="welcome_lang_es">ES · Español</string>
+    <string name="welcome_lang_en">EN · English</string>
+    <string name="welcome_lang_hint">Puedes cambiarlo en Ajustes. Contenido mostrado en español.</string>
+    <string name="welcome_start">Comenzar</string>
+    <string name="welcome_disclaimer">Simulación educativa. No sustituye las indicaciones de brigadistas ni los protocolos del ILC.</string>
+
+    <!-- Pantalla 02: Registro Local -->
+    <string name="profile_header_title">Tu perfil</string>
+    <string name="profile_title">Aprende desde tu rol.</string>
+    <string name="profile_subtitle">Sin correo, sin contraseña y sin conexión.</string>
+    <string name="profile_name_label">Nombre completo</string>
+    <string name="profile_name_hint">Valentina Rojas</string>
+    <string name="profile_name_caption">Así aparecerá en tu constancia de práctica.</string>
+    <string name="profile_role_label">Selecciona tu rol</string>
+    <string name="profile_role_student">Estudiante</string>
+    <string name="profile_role_teacher">Docente</string>
+    <string name="profile_role_administrative">Administrativo</string>
+    <string name="profile_role_brigadist">Brigadista</string>
+    <string name="profile_info_title">Tu información se queda aquí</string>
+    <string name="profile_info_desc">Datos e historial guardados en este dispositivo. Puedes borrarlos en Ajustes.</string>
+    <string name="profile_create_button">Crear perfil</string>
+
+    <!-- Pantalla 03: Dashboard -->
+    <string name="dashboard_greeting">Hola, %1$s.</string>
+    <string name="dashboard_subtitle">Una decisión segura a la vez. Tu progreso se guarda sin internet.</string>
+    <string name="meeting_point_button">Punto de encuentro</string>
+    <string name="meeting_point_caption">Orientación rápida · No es una llamada de emergencia.</string>
+    <string name="featured_badge">SIS-01 · Disponible</string>
+    <string name="featured_title">Durante el sismo</string>
+    <string name="featured_meta">Básico · 5 decisiones · 2 min</string>
+    <string name="featured_sub">Listo para iniciar o retomar.</string>
+    <string name="featured_button">Continuar SIS-01</string>
+    <string name="path_title">Tu ruta de aprendizaje</string>
+    <string name="level_basic">Básico</string>
+    <string name="level_basic_status">En curso · %1$d/%2$d logros</string>
+    <string name="level_intermediate">Intermedio</string>
+    <string name="level_intermediate_status">Por desbloquear · %1$d/%2$d</string>
+    <string name="level_advanced">Avanzado</string>
+    <string name="level_advanced_status">Por desbloquear · %1$d/%2$d</string>
+    <string name="action_view_scenarios">Ver 8 escenarios</string>
+    <string name="action_evacuation_map">Plano de evacuación</string>
+    <string name="dashboard_footer_note">Vista previa al intento SIS-01. Las prácticas previas aún no registran logros.</string>
+
+    <!-- Pantalla 04: Catálogo de Escenarios -->
+    <string name="catalog_header_title">Escenarios</string>
+    <string name="catalog_title">Entrena tus decisiones</string>
+    <string name="catalog_subtitle">8 simulaciones offline. Comienza por Básico; avanza por competencias.</string>
+    <string name="section_earthquake">Sismos · %1$d escenarios</string>
+    <string name="section_fire">Incendios · %1$d escenarios</string>
+    <string name="scenario_status_available">Disponible</string>
+    <string name="scenario_status_locked">Bloqueado</string>
+    <string name="scenario_estimated_time">%1$d min estimados</string>
+
+    <!-- Pantalla 05: Contexto de Escenario -->
+    <string name="context_educational_sim">Simulación educativa</string>
+    <string name="context_objective_title">Tu objetivo</string>
+    <string name="context_obj1_title">1. Protegerte durante el movimiento</string>
+    <string name="context_obj1_desc">Aléjate de las ventanas y protege cabeza y cuello.</string>
+    <string name="context_obj2_title">2. Evacuar cuando termine</string>
+    <string name="context_obj2_desc">Sigue las indicaciones, la señalización y la ruta segura hacia el punto de encuentro.</string>
+    <string name="context_config_title">5 decisiones - 10–15 s por decisión</string>
+    <string name="context_config_desc">Sonido y vibración te avisan del tiempo. Puedes configurarlos en Ajustes. Si te equivocas, aprenderás a corregir.</string>
+    <string name="context_start_button">Empezar</string>
+    <string name="context_disclaimer">Ejemplo educativo. Validar contenido y rutas con el protocolo del ILC.</string>
+
+    <!-- Pantalla 07/08: Consecuencias (Correcta / Incorrecta) -->
+    <string name="action_correct">Acción correcta</string>
+    <string name="action_incorrect">Acción incorrecta</string>
+    <string name="verdict_correct_title">Te proteges del impacto.</string>
+    <string name="verdict_correct_desc">La mesa resistente ofrece protección y alejarte de las ventanas reduce la exposición a vidrios.</string>
+    <string name="verdict_correct_next">Siguiente paso: mantén la protección hasta que termine el movimiento.</string>
+    <string name="verdict_timer_paused">Tiempo de decisión pausado durante la explicación.</string>
+    <string name="verdict_incorrect_title">Correr aumenta el riesgo.</string>
+    <string name="verdict_incorrect_choice">Elegiste B: correr hacia las escaleras.</string>
+    <string name="verdict_incorrect_desc">Durante el movimiento puedes perder el equilibrio, caer o exponerte a objetos que se desprenden.</string>
+    <string name="verdict_incorrect_learn">Aún puedes aprender a protegerte.</string>
+    <string name="verdict_correct_action">Corregir acción</string>
+    <string name="verdict_error_logged">1 error registrado. La recuperación no borra el intento.</string>
+
+    <!-- Pantalla 09: Recuperación del error -->
+    <string name="recovery_header_title">Corrige y aprende</string>
+    <string name="recovery_header_subtitle">SIS-01 · Después de elegir las escaleras</string>
+    <string name="recovery_badge">Recuperación guiada</string>
+    <string name="recovery_title">Detente. Primero, protégete.</string>
+    <string name="recovery_subtitle">No continúes hacia las escaleras mientras tiembla. Esta es la acción que puedes corregir.</string>
+    <string name="recovery_step1_title">1. Busca protección cercana</string>
+    <string name="recovery_step1_desc">Ubícate bajo o junto a una mesa resistente, lejos de ventanas y objetos que puedan caer.</string>
+    <string name="recovery_step2_title">2. Protege cabeza y cuello</string>
+    <string name="recovery_step2_desc">Agáchate, cúbrete y mantén la protección mientras continúa el movimiento.</string>
+    <string name="recovery_step3_title">3. Espera antes de evacuar</string>
+    <string name="recovery_step3_desc">Cuando termine, sigue las indicaciones y la señalización. No corras ni uses ascensores.</string>
+    <string name="recovery_info_title">Reintentar es parte del aprendizaje</string>
+    <string name="recovery_info_desc">Vuelve a la decisión. El error queda visible para reflexionar al final.</string>
+    <string name="recovery_retry_button">Reintentar</string>
+    <string name="recovery_footer">Guía educativa general · Validar con el protocolo del ILC.</string>
+
+    <!-- Pantalla 12: Punto de encuentro / Orientación -->
+    <string name="meeting_point_title">Punto de encuentro</string>
+    <string name="meeting_point_sub">Orientación · No es una llamada de emergencia</string>
+    <string name="meeting_point_badge">Orientación rápida · Fuera del entrenamiento</string>
+    <string name="meeting_point_main_instruction">Dirígete al punto marcado P.</string>
+    <string name="meeting_point_disclaimer_box_title">Ubicación por confirmar con ILC</string>
+    <string name="meeting_point_disclaimer_box_desc">P es una referencia educativa, no una ubicación real aprobada.</string>
+    <string name="meeting_point_instruction_1_title">1. Sigue la señalización y brigadistas</string>
+    <string name="meeting_point_instruction_1_desc">Usa la ruta indicada cuando sea seguro evacuar. Camina sin correr.</string>
+    <string name="meeting_point_instruction_2_title">2. Permanece en el punto de encuentro</string>
+    <string name="meeting_point_instruction_2_desc">No regreses al edificio hasta recibir autorización.</string>
+    <string name="meeting_point_return_button">Volver al inicio</string>
+    <string name="meeting_point_footer">Este acceso orienta. No realiza llamadas ni activa servicios de emergencia.</string>
+
+    <!-- Pantalla 13: Resultados -->
+    <string name="result_header_title">Tu resultado</string>
+    <string name="result_header_subtitle">SIS-01 · Durante el sismo</string>
+    <string name="result_badge">Básico · Simulación completada</string>
+    <string name="result_main_title">Aprendiste a protegerte.</string>
+    <string name="result_stat_time">Tiempo</string>
+    <string name="result_stat_error">Error</string>
+    <string name="result_stat_accuracy">Precisión</string>
+    <string name="result_correct_count">%1$d/%2$d decisiones correctas</string>
+    <string name="result_evidence_title">Evidencia de competencias</string>
+    <string name="result_evidence_1">Protección: identificaste una zona segura y protegiste cabeza y cuello.</string>
+    <string name="result_evidence_2">Evacuación: esperaste el fin del movimiento y elegiste la ruta A.</string>
+    <string name="result_improvement_title">Una oportunidad de mejora</string>
+    <string name="result_improvement_desc">Elegiste correr a escaleras durante el movimiento. Completaste la recuperación; el error permanece en el resultado.</string>
+    <string name="result_reflect_button">Reflexionar</string>
+    <string name="result_retry_button">Reintentar SIS-01</string>
+    <string name="result_footer">Resultado de este escenario, no de los ocho. No equivale a certificación profesional.</string>
+
+    <!-- Pantalla 14: Reflexión final -->
+    <string name="reflection_header_title">Lo que te llevas</string>
+    <string name="reflection_header_subtitle">SIS-01 · Reflexión guardada localmente</string>
+    <string name="reflection_badge">Pausa para aprender</string>
+    <string name="reflection_title">¿Qué harías diferente?</string>
+    <string name="reflection_subtitle">Piensa en el error y en cómo actuarías con más seguridad la próxima vez.</string>
+    <string name="reflection_input_label">Mi respuesta</string>
+    <string name="reflection_input_hint">Escribe aquí tu reflexión...</string>
+    <string name="reflection_default_text">No correría a las escaleras mientras tiembla. Primero me protegería bajo la mesa y esperaría las indicaciones para evacuar.</string>
+    <string name="reflection_saved_status">✓ Respuesta guardada en este dispositivo</string>
+    <string name="reflection_learnings_title">Mis aprendizajes</string>
+    <string name="reflection_learning_1">Proteger cabeza y cuello.</string>
+    <string name="reflection_learning_2">Alejarme de ventanas.</string>
+    <string name="reflection_learning_3">Esperar antes de evacuar.</string>
+    <string name="reflection_learning_4">Seguir la ruta y a brigadistas.</string>
+    <string name="reflection_continue_button">Continuar a la constancia</string>
+    <string name="reflection_footer">La constancia registra tu participación y logro en esta simulación educativa.</string>
+
+    <!-- Pantalla 17: Ajustes -->
+    <string name="settings_header_title">Ajustes</string>
+    <string name="settings_title">A tu ritmo, a tu alcance.</string>
+    <string name="settings_accessibility_title">Señales y accesibilidad</string>
+    <string name="settings_sound_title">Sonido</string>
+    <string name="settings_sound_desc">Avisos del temporizador</string>
+    <string name="settings_vibration_title">Vibración</string>
+    <string name="settings_vibration_desc">Avisos táctiles de decisión</string>
+    <string name="settings_contrast_title">Alto contraste</string>
+    <string name="settings_contrast_desc">Vista estándar activa</string>
+    <string name="settings_font_size_title">Tamaño de texto</string>
+    <string name="settings_font_normal">Normal</string>
+    <string name="settings_font_large">Grande</string>
+    <string name="settings_privacy_title">Privacidad y datos locales</string>
+    <string name="settings_privacy_desc">Perfil, reflexiones, intentos y constancias permanecen en el dispositivo. No se requiere correo ni sincronización. Borrar datos elimina el progreso local.</string>
+    <string name="settings_clear_data">Borrar datos del dispositivo</string>
+    <string name="settings_note">Estados visuales de ejemplo. Estos controles no cambian la configuración en esta maqueta.</string>
+
+    <!-- Antiguos / Compatibilidad -->
     <string name="home_name_error">Escribe tu nombre para continuar</string>
-    <string name="home_start">Comenzar</string>
-    <string name="home_progress_title">Tu progreso</string>
-    <string name="home_scenarios_available">Escenarios disponibles: %1$d</string>
-
-    <string name="level_basic">Nivel Básico</string>
-    <string name="level_basic_desc">Evacuación escolar e incendios</string>
-    <string name="level_intermediate">Nivel Intermedio</string>
-    <string name="level_intermediate_desc">Sismos</string>
-    <string name="level_advanced">Nivel Avanzado</string>
-    <string name="level_advanced_desc">Primeros auxilios y liderazgo</string>
-    <string name="level_status_locked">Bloqueado · supera el nivel anterior</string>
-    <string name="level_status_available">Disponible</string>
-    <string name="level_status_in_progress">En curso · mejor puntaje %1$d de %2$d</string>
-    <string name="level_status_completed">Superado · %1$d de %2$d puntos</string>
-
-    <string name="levels_title">Niveles</string>
-    <string name="levels_subtitle">Supera cada nivel para desbloquear el siguiente.</string>
-    <string name="levels_no_user">Primero escribe tu nombre en Inicio para ver tus niveles.</string>
-    <string name="levels_go_home">Ir a Inicio</string>
     <string name="levels_empty">Próximamente: aún no hay escenarios en este nivel.</string>
-    <string name="levels_section_completed">Nivel superado</string>
-    <string name="levels_locked_hint">Supera el nivel anterior para desbloquear este nivel.</string>
-
+    <string name="levels_locked_hint">Supera el nivel anterior para desbloquear este escenario.</string>
     <string name="scenario_type_fire">Incendio</string>
     <string name="scenario_type_earthquake">Sismo</string>
     <string name="scenario_meta">Aprobar con %1$d %% · Puntaje máximo %2$d · Intentos permitidos %3$d</string>
     <string name="scenario_result_none">Aún sin intentos</string>
     <string name="scenario_result_progress">Mejor puntaje: %1$d de %2$d · Intentos usados: %3$d</string>
     <string name="scenario_result_passed">Superado · mejor puntaje: %1$d de %2$d · Intentos usados: %3$d</string>
-
     <string name="scenario_screen_label">Escenario</string>
     <string name="scenario_exit">Salir</string>
     <string name="scenario_exit_title">¿Salir del escenario?</string>

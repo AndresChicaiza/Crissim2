@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.StringRes
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -18,22 +18,15 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.crissim.R
 import com.example.crissim.databinding.FragmentLevelsBinding
-import com.example.crissim.databinding.ItemLevelSectionBinding
-import com.example.crissim.databinding.ItemScenarioBinding
-import com.example.crissim.domain.model.Level
+import com.example.crissim.databinding.ItemScenarioCardBinding
 import com.example.crissim.domain.model.ScenarioType
 import com.example.crissim.presentation.ui.scenario.ScenarioFragment
-import com.example.crissim.presentation.viewmodel.LevelSectionUi
 import com.example.crissim.presentation.viewmodel.LevelsUiState
 import com.example.crissim.presentation.viewmodel.LevelsViewModel
 import com.example.crissim.presentation.viewmodel.ScenarioItemUi
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
-/**
- * Pantalla Niveles: escenarios agrupados por nivel, con desbloqueo progresivo.
- */
 class LevelsFragment : Fragment() {
 
     private var _binding: FragmentLevelsBinding? = null
@@ -53,13 +46,12 @@ class LevelsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         applyStatusBarInset()
-        binding.btnGoHome.setOnClickListener { goToHome() }
+        setupMeetingPoint()
         observeState()
     }
 
     override fun onStart() {
         super.onStart()
-        // El usuario o su progreso pueden haber cambiado desde otra pantalla.
         viewModel.refresh()
     }
 
@@ -68,14 +60,17 @@ class LevelsFragment : Fragment() {
         _binding = null
     }
 
-    // ─── Inicialización ───
-
-    /** La app dibuja bajo la barra de estado: se añade su alto como margen superior. */
     private fun applyStatusBarInset() {
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
             val top = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
             view.updatePadding(top = top)
             insets
+        }
+    }
+
+    private fun setupMeetingPoint() {
+        binding.cardMeetingPoint.setOnClickListener {
+            findNavController().navigate(R.id.meetingPointFragment)
         }
     }
 
@@ -87,121 +82,67 @@ class LevelsFragment : Fragment() {
         }
     }
 
-    // ─── Acciones ───
-
-    /** Equivale a tocar la pestaña Inicio de la barra inferior. */
-    private fun goToHome() {
-        requireActivity()
-            .findViewById<BottomNavigationView>(R.id.bottom_navigation)
-            .selectedItemId = R.id.homeFragment
-    }
-
-    private fun onScenarioClicked(item: ScenarioItemUi, unlocked: Boolean) {
-        if (!unlocked) {
-            showMessage(R.string.levels_locked_hint)
-            return
-        }
-        findNavController().navigate(
-            R.id.scenarioFragment,
-            bundleOf(ScenarioFragment.ARG_SCENARIO_ID to item.id)
-        )
-    }
-
-    private fun showMessage(@StringRes messageRes: Int) {
-        val bottomNav = requireActivity().findViewById<View>(R.id.bottom_navigation)
-        Snackbar.make(binding.root, messageRes, Snackbar.LENGTH_SHORT)
-            .setAnchorView(bottomNav)
-            .show()
-    }
-
-    // ─── Dibujo de la pantalla ───
-
     private fun render(state: LevelsUiState) {
         binding.progressLoading.isVisible = state is LevelsUiState.Loading
-        binding.groupNoUser.isVisible = state is LevelsUiState.NeedsUser
-        binding.sectionsContainer.isVisible = state is LevelsUiState.Ready
 
         if (state is LevelsUiState.Ready) {
-            renderSections(state.sections)
+            val allScenarios = state.sections.flatMap { it.scenarios }
+            val sismos = allScenarios.filter { it.type == ScenarioType.EARTHQUAKE }
+            val incendios = allScenarios.filter { it.type == ScenarioType.FIRE }
+
+            renderScenarios(binding.containerSismos, sismos)
+            renderScenarios(binding.containerIncendios, incendios)
         }
     }
 
-    private fun renderSections(sections: List<LevelSectionUi>) {
-        binding.sectionsContainer.removeAllViews()
-        sections.forEach { addSection(it) }
+    private fun renderScenarios(container: ViewGroup, items: List<ScenarioItemUi>) {
+        container.removeAllViews()
+        items.forEach { item ->
+            val cardBinding = ItemScenarioCardBinding.inflate(layoutInflater, container, false)
+
+            val code = item.id.uppercase()
+            val isUnlocked = !item.id.contains("03") && !item.id.contains("04") // Nivel 3 y 4 simulados como bloqueados
+            val statusText = if (isUnlocked) "Disponible" else "Bloqueado"
+
+            cardBinding.tvScenarioCodeStatus.text = "$code · $statusText"
+            cardBinding.tvScenarioTitle.text = item.title
+            cardBinding.tvScenarioMeta.text = "${levelLabel(item)} · ${estimatedTime(item)}"
+
+            if (isUnlocked) {
+                cardBinding.ivScenarioAction.setImageResource(R.drawable.ic_chevron_right)
+                cardBinding.ivScenarioAction.setColorFilter(ContextCompat.getColor(requireContext(), R.color.primary))
+                cardBinding.cardScenario.setOnClickListener {
+                    findNavController().navigate(
+                        R.id.scenarioContextFragment,
+                        bundleOf(ScenarioFragment.ARG_SCENARIO_ID to item.id)
+                    )
+                }
+            } else {
+                cardBinding.ivScenarioAction.setImageResource(R.drawable.ic_lock)
+                cardBinding.ivScenarioAction.setColorFilter(ContextCompat.getColor(requireContext(), R.color.text_secondary))
+                cardBinding.cardScenario.setOnClickListener {
+                    Snackbar.make(binding.root, R.string.levels_locked_hint, Snackbar.LENGTH_SHORT).show()
+                }
+            }
+
+            container.addView(cardBinding.root)
+        }
     }
 
-    private fun addSection(section: LevelSectionUi) {
-        val sectionRow =
-            ItemLevelSectionBinding.inflate(layoutInflater, binding.sectionsContainer, false)
-        sectionRow.tvSectionName.setText(levelNameRes(section.level))
-        sectionRow.tvSectionDesc.setText(levelDescRes(section.level))
-        sectionRow.tvSectionStatus.setText(sectionStatusRes(section))
-        sectionRow.tvEmpty.isVisible = section.scenarios.isEmpty()
-        sectionRow.root.alpha = if (section.isUnlocked) 1f else 0.5f
-
-        section.scenarios.forEach { addScenario(sectionRow, it, section.isUnlocked) }
-        binding.sectionsContainer.addView(sectionRow.root)
+    private fun levelLabel(item: ScenarioItemUi): String {
+        return when {
+            item.id.contains("01") || item.id.contains("02") -> "Básico"
+            item.id.contains("03") -> "Intermedio"
+            else -> "Avanzado"
+        }
     }
 
-    private fun addScenario(
-        sectionRow: ItemLevelSectionBinding,
-        item: ScenarioItemUi,
-        unlocked: Boolean
-    ) {
-        val card = ItemScenarioBinding.inflate(layoutInflater, sectionRow.scenariosContainer, false)
-        card.tvScenarioType.setText(typeLabelRes(item.type))
-        card.tvScenarioTitle.text = item.title
-        card.tvScenarioDesc.text = item.description
-        card.tvScenarioMeta.text = getString(
-            R.string.scenario_meta,
-            item.passingPercent,
-            item.maxScore,
-            item.maxAttempts
-        )
-        card.tvScenarioResult.text = resultText(item)
-        card.root.setOnClickListener { onScenarioClicked(item, unlocked) }
-        sectionRow.scenariosContainer.addView(card.root)
-    }
-
-    // ─── Textos ───
-
-    private fun resultText(item: ScenarioItemUi): String = when {
-        item.attemptsUsed == 0 -> getString(R.string.scenario_result_none)
-        item.isPassed -> getString(
-            R.string.scenario_result_passed,
-            item.bestScore ?: 0,
-            item.maxScore,
-            item.attemptsUsed
-        )
-        else -> getString(
-            R.string.scenario_result_progress,
-            item.bestScore ?: 0,
-            item.maxScore,
-            item.attemptsUsed
-        )
-    }
-
-    private fun sectionStatusRes(section: LevelSectionUi): Int = when {
-        !section.isUnlocked -> R.string.level_status_locked
-        section.isCompleted -> R.string.levels_section_completed
-        else -> R.string.level_status_available
-    }
-
-    private fun levelNameRes(level: Level): Int = when (level) {
-        Level.BASIC -> R.string.level_basic
-        Level.INTERMEDIATE -> R.string.level_intermediate
-        Level.ADVANCED -> R.string.level_advanced
-    }
-
-    private fun levelDescRes(level: Level): Int = when (level) {
-        Level.BASIC -> R.string.level_basic_desc
-        Level.INTERMEDIATE -> R.string.level_intermediate_desc
-        Level.ADVANCED -> R.string.level_advanced_desc
-    }
-
-    private fun typeLabelRes(type: ScenarioType): Int = when (type) {
-        ScenarioType.FIRE -> R.string.scenario_type_fire
-        ScenarioType.EARTHQUAKE -> R.string.scenario_type_earthquake
+    private fun estimatedTime(item: ScenarioItemUi): String {
+        return when {
+            item.id.contains("01") -> "2 min estimados"
+            item.id.contains("02") -> "3 min estimados"
+            item.id.contains("03") -> "4 min estimados"
+            else -> "3 min estimados"
+        }
     }
 }

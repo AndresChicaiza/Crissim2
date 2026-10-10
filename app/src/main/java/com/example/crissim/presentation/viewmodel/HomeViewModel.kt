@@ -10,6 +10,7 @@ import com.example.crissim.data.repository.ProgressRepository
 import com.example.crissim.data.repository.ScenarioRepository
 import com.example.crissim.data.repository.UserRepository
 import com.example.crissim.domain.model.Level
+import com.example.crissim.domain.model.UserRole
 import com.example.crissim.domain.usecase.CheckLevelUnlockedUseCase
 import com.example.crissim.domain.usecase.GetAllProgressUseCase
 import com.example.crissim.domain.usecase.GetScenariosUseCase
@@ -39,6 +40,7 @@ sealed interface HomeUiState {
     data object NeedsName : HomeUiState
     data class Ready(
         val userName: String,
+        val userRole: UserRole,
         val levels: List<LevelUi>,
         val scenarioCount: Int
     ) : HomeUiState
@@ -97,7 +99,7 @@ class HomeViewModel(
         }
         val scenarioCount = withContext(Dispatchers.IO) { getScenarios.execute().size }
 
-        return HomeUiState.Ready(user.name, levels, scenarioCount)
+        return HomeUiState.Ready(user.name, user.role, levels, scenarioCount)
     }
 
     companion object {

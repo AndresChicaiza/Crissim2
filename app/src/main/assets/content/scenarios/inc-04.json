@@ -1,0 +1,64 @@
+{
+  "id": "inc-04",
+  "version": "1.0",
+  "type": "fire",
+  "level": "advanced",
+  "title": {
+    "es": "Reporte a la brigada",
+    "en": "Report to the Brigade"
+  },
+  "description": {
+    "es": "Comunicación clara de datos clave (ubicación, heridos, extensión) al llegar a zona segura.",
+    "en": "Clear communication of key data (location, injured, extent) upon reaching safe zone."
+  },
+  "start_node": "node_01",
+  "passing_score": 70,
+  "max_attempts": 3,
+  "nodes": [
+    {
+      "id": "node_01",
+      "narrative": {
+        "es": "Llegas a salvo afuera y ves al brigadista líder. ¿Qué información le brindas?",
+        "en": "You arrive safely outside and see the brigade leader. What information do you provide?"
+      },
+      "time_limit_seconds": 15,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "opt_01a",
+          "text": {
+            "es": "Informar el piso exacto, origen observado del fuego y si queda alguien adentro",
+            "en": "Report exact floor, observed fire origin and if anyone remains inside"
+          },
+          "next_node": "node_end_success",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "¡Correcto! Los datos precisos salvan tiempo valioso a los cuerpos de socorro.",
+              "en": "Correct! Precise data saves valuable time for response teams."
+            },
+            "is_correct": true,
+            "protocol_source": "ILC Brigada de Emergencia"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end_success",
+      "narrative": {
+        "es": "Reporte efectivo entregado a la brigada.",
+        "en": "Effective report delivered to brigade."
+      },
+      "is_end": true,
+      "end_type": "success",
+      "feedback": {
+        "text": {
+          "es": "¡Capacidad de respuesta avanzada demostrada!",
+          "en": "Advanced response capability demonstrated!"
+        },
+        "is_correct": true,
+        "protocol_source": "Cruz Roja"
+      }
+    }
+  ]
+}

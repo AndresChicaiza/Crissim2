@@ -1,0 +1,64 @@
+{
+  "id": "inc-02",
+  "version": "1.0",
+  "type": "fire",
+  "level": "basic",
+  "title": {
+    "es": "Humo en el pasillo",
+    "en": "Smoke in the Hallway"
+  },
+  "description": {
+    "es": "Técnicas de desplazamiento seguro en ambientes con baja visibilidad y humo.",
+    "en": "Safe movement techniques in low visibility and smoke environment."
+  },
+  "start_node": "node_01",
+  "passing_score": 70,
+  "max_attempts": 3,
+  "nodes": [
+    {
+      "id": "node_01",
+      "narrative": {
+        "es": "El pasillo de salida tiene humo denso acumulándose en el techo. ¿Cómo avanzas?",
+        "en": "The exit hallway has dense smoke accumulating on the ceiling. How do you move forward?"
+      },
+      "time_limit_seconds": 15,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "opt_01a",
+          "text": {
+            "es": "Agacharte o gatear bajo el humo cubriendo boca y nariz con un paño",
+            "en": "Crouch or crawl under the smoke covering mouth and nose with a cloth"
+          },
+          "next_node": "node_end_success",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "¡Correcto! El aire limpio permanece más cerca del suelo.",
+              "en": "Correct! Clean air remains closer to the floor."
+            },
+            "is_correct": true,
+            "protocol_source": "Protección Civil"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end_success",
+      "narrative": {
+        "es": "Cruzaste la zona de humo de forma segura y llegaste al exterior.",
+        "en": "You safely crossed the smoke area and reached the outside."
+      },
+      "is_end": true,
+      "end_type": "success",
+      "feedback": {
+        "text": {
+          "es": "¡Técnica de evasión de humo aplicada correctamente!",
+          "en": "Smoke evasion technique applied correctly!"
+        },
+        "is_correct": true,
+        "protocol_source": "Cruz Roja"
+      }
+    }
+  ]
+}

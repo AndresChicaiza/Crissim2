@@ -1,0 +1,64 @@
+{
+  "id": "sis-02",
+  "version": "1.0",
+  "type": "earthquake",
+  "level": "basic",
+  "title": {
+    "es": "Evacuación segura",
+    "en": "Safe Evacuation"
+  },
+  "description": {
+    "es": "Aprende a desplazarte por escaleras y zonas comunes tras un sismo.",
+    "en": "Learn to navigate stairs and common areas after an earthquake."
+  },
+  "start_node": "node_01",
+  "passing_score": 70,
+  "max_attempts": 3,
+  "nodes": [
+    {
+      "id": "node_01",
+      "narrative": {
+        "es": "Terminó el sismo y estás en un segundo piso. La alarma suena. ¿Por dónde evacuas?",
+        "en": "The earthquake ended and you are on the second floor. The alarm sounds. Where do you evacuate?"
+      },
+      "time_limit_seconds": 15,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "opt_01a",
+          "text": {
+            "es": "Bajar usando la escalera de emergencia por la derecha, tomándote del pasamanos",
+            "en": "Go down the emergency stairs on the right, holding the handrail"
+          },
+          "next_node": "node_end_success",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "¡Bien! Usar pasamanos evita caídas graves en las escaleras.",
+              "en": "Good! Using handrails prevents serious falls on stairs."
+            },
+            "is_correct": true,
+            "protocol_source": "Protección Civil"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end_success",
+      "narrative": {
+        "es": "Evacuación completada con éxito. Llegaste a la zona segura exterior.",
+        "en": "Evacuation successfully completed. You reached the safe outdoor zone."
+      },
+      "is_end": true,
+      "end_type": "success",
+      "feedback": {
+        "text": {
+          "es": "¡Excelente desempeño!",
+          "en": "Excellent performance!"
+        },
+        "is_correct": true,
+        "protocol_source": "Cruz Roja"
+      }
+    }
+  ]
+}

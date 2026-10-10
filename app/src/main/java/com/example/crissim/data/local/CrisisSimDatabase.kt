@@ -19,7 +19,7 @@ import com.example.crissim.data.local.entity.*
         CertificateEntity::class,
         SavedStateEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = true
 )
 abstract class CrisisSimDatabase : RoomDatabase() {

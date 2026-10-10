@@ -1,10 +1,12 @@
 package com.example.crissim.presentation.ui.scenario
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
@@ -18,32 +20,29 @@ import androidx.navigation.fragment.findNavController
 import com.example.crissim.R
 import com.example.crissim.databinding.FragmentScenarioBinding
 import com.example.crissim.databinding.ItemOptionBinding
-import com.example.crissim.domain.model.EndType
 import com.example.crissim.presentation.viewmodel.AnswerUi
-import com.example.crissim.presentation.viewmodel.FeedbackUi
 import com.example.crissim.presentation.viewmodel.NodeUi
-import com.example.crissim.presentation.viewmodel.ResultUi
-import com.example.crissim.presentation.viewmodel.ScenarioError
 import com.example.crissim.presentation.viewmodel.ScenarioUiState
 import com.example.crissim.presentation.viewmodel.ScenarioViewModel
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
 
-/**
- * Pantalla donde se juega un escenario: decisión con tiempo límite,
- * retroalimentación inmediata con su fuente y resultado final.
- */
 class ScenarioFragment : Fragment() {
 
     private var _binding: FragmentScenarioBinding? = null
     private val binding get() = _binding!!
 
+    private var scenarioId: String = "sis-01"
+
     private val viewModel: ScenarioViewModel by viewModels {
-        ScenarioViewModel.factory(requireArguments().getString(ARG_SCENARIO_ID).orEmpty())
+        ScenarioViewModel.factory(scenarioId)
     }
 
     private lateinit var backCallback: OnBackPressedCallback
-    private var exitDialogShowing = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        scenarioId = arguments?.getString(ARG_SCENARIO_ID) ?: "sis-01"
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -58,18 +57,17 @@ class ScenarioFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         applySystemBarsInset()
         setupBackHandling()
-        setupButtons()
         observeViewModel()
     }
 
     override fun onStart() {
         super.onStart()
-        if (!exitDialogShowing) viewModel.resumeTimer()
+        viewModel.resumeTimer()
     }
 
     override fun onStop() {
         super.onStop()
-        viewModel.pauseTimer() // el tiempo no corre si la app pasa a segundo plano
+        viewModel.pauseTimer()
     }
 
     override fun onDestroyView() {
@@ -77,9 +75,6 @@ class ScenarioFragment : Fragment() {
         _binding = null
     }
 
-    // ─── Inicialización ───
-
-    /** Esta pantalla no tiene barra inferior: se respetan ambas barras del sistema. */
     private fun applySystemBarsInset() {
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
             val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -91,18 +86,10 @@ class ScenarioFragment : Fragment() {
     private fun setupBackHandling() {
         backCallback = object : OnBackPressedCallback(false) {
             override fun handleOnBackPressed() {
-                onExitRequested()
+                findNavController().popBackStack()
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backCallback)
-    }
-
-    private fun setupButtons() {
-        binding.btnExit.setOnClickListener { onExitRequested() }
-        binding.btnErrorBack.setOnClickListener { leaveScenario() }
-        binding.btnBackLevels.setOnClickListener { leaveScenario() }
-        binding.btnContinue.setOnClickListener { viewModel.continueAfterAnswer() }
-        binding.btnRetry.setOnClickListener { viewModel.retry() }
     }
 
     private fun observeViewModel() {
@@ -115,77 +102,33 @@ class ScenarioFragment : Fragment() {
         }
     }
 
-    // ─── Salir ───
-
-    private fun onExitRequested() {
-        val state = viewModel.state.value
-        val playing = state is ScenarioUiState.Question || state is ScenarioUiState.Answered
-        if (!playing) {
-            leaveScenario()
-            return
-        }
-        viewModel.pauseTimer()
-        exitDialogShowing = true
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.scenario_exit_title)
-            .setMessage(R.string.scenario_exit_message)
-            .setPositiveButton(R.string.scenario_exit_confirm) { _, _ -> leaveScenario() }
-            .setNegativeButton(R.string.scenario_exit_cancel, null)
-            .setOnDismissListener {
-                exitDialogShowing = false
-                viewModel.resumeTimer()
-            }
-            .show()
-    }
-
-    private fun leaveScenario() {
-        findNavController().popBackStack()
-    }
-
-    // ─── Dibujo de la pantalla ───
-
     private fun render(state: ScenarioUiState) {
         binding.groupLoading.isVisible = state is ScenarioUiState.Loading
-        binding.groupError.isVisible = state is ScenarioUiState.Failed
-        binding.groupQuestion.isVisible = state is ScenarioUiState.Question
         binding.groupAnswered.isVisible = state is ScenarioUiState.Answered
-        binding.groupResult.isVisible = state is ScenarioUiState.Finished
-        backCallback.isEnabled =
-            state is ScenarioUiState.Question || state is ScenarioUiState.Answered
-
-        val timeLimit = (state as? ScenarioUiState.Question)?.node?.timeLimitSeconds
-        binding.groupTimer.isVisible = timeLimit != null
-        if (timeLimit != null) {
-            binding.progressTimer.max = timeLimit
-            updateTimer(viewModel.secondsLeft.value)
-        }
+        binding.overlayDim.isVisible = state is ScenarioUiState.Answered
+        backCallback.isEnabled = state is ScenarioUiState.Question || state is ScenarioUiState.Answered
 
         when (state) {
             ScenarioUiState.Loading -> Unit
-            is ScenarioUiState.Failed -> renderFailed(state.kind)
+            is ScenarioUiState.Failed -> Unit
             is ScenarioUiState.Question -> renderQuestion(state.node)
             is ScenarioUiState.Answered -> renderAnswer(state.answer)
-            is ScenarioUiState.Finished -> renderResult(state.result)
+            is ScenarioUiState.Finished -> {
+                findNavController().navigate(
+                    R.id.scenarioResultFragment,
+                    bundleOf(ARG_SCENARIO_ID to scenarioId)
+                )
+            }
         }
-        binding.scroll.scrollTo(0, 0)
     }
 
     private fun updateTimer(seconds: Int) {
-        binding.tvTimer.text = getString(R.string.scenario_timer, seconds)
+        binding.tvTimerSeconds.text = seconds.toString()
         binding.progressTimer.setProgressCompat(seconds, true)
     }
 
-    private fun renderFailed(kind: ScenarioError) {
-        binding.tvError.setText(
-            when (kind) {
-                ScenarioError.NO_USER -> R.string.scenario_error_no_user
-                ScenarioError.NOT_FOUND -> R.string.scenario_error_not_found
-            }
-        )
-    }
-
     private fun renderQuestion(node: NodeUi) {
-        binding.tvStep.text = getString(R.string.scenario_step, node.step)
+        binding.tvStep.text = "${scenarioId.uppercase()} · Decisión ${node.step} de 5"
         binding.tvNarrative.text = node.narrative
         binding.optionsContainer.removeAllViews()
         node.options.forEach { option ->
@@ -198,65 +141,59 @@ class ScenarioFragment : Fragment() {
 
     private fun renderAnswer(answer: AnswerUi) {
         val feedback = answer.feedback
-        binding.tvVerdict.setText(
-            when {
-                answer.wasTimeout -> R.string.scenario_verdict_timeout
-                feedback?.isCorrect == true -> R.string.scenario_verdict_correct
-                feedback?.isCorrect == false -> R.string.scenario_verdict_incorrect
-                else -> R.string.scenario_verdict_neutral
+        val isCorrect = feedback?.isCorrect == true
+
+        if (isCorrect) {
+            binding.groupAnswered.strokeColor = Color.parseColor("#176343")
+            binding.layoutBadge.setBackgroundResource(R.drawable.bg_pill_correct)
+            binding.ivVerdictIcon.setImageResource(R.drawable.ic_check)
+            binding.tvBadgeText.text = getString(R.string.action_correct)
+            binding.tvBadgeText.setTextColor(Color.parseColor("#176343"))
+
+            binding.tvVerdict.text = getString(R.string.verdict_correct_title)
+            binding.tvVerdict.setTextColor(Color.parseColor("#176343"))
+
+            binding.tvChoiceMade.isVisible = false
+            binding.tvFeedbackText.text = feedback?.text.orEmpty().ifBlank { getString(R.string.verdict_correct_desc) }
+            binding.tvFeedbackNext.text = getString(R.string.verdict_correct_next)
+            binding.tvFeedbackCaption.text = getString(R.string.verdict_timer_paused)
+
+            binding.btnContinue.text = getString(if (answer.isLast) R.string.scenario_see_result else R.string.scenario_continue)
+            binding.btnContinue.setOnClickListener {
+                if (answer.isLast) {
+                    findNavController().navigate(
+                        R.id.scenarioResultFragment,
+                        bundleOf(ARG_SCENARIO_ID to scenarioId)
+                    )
+                } else {
+                    viewModel.continueAfterAnswer()
+                }
             }
-        )
-        showFeedback(feedback, binding.tvFeedbackText, binding.tvFeedbackSource)
-        binding.tvFeedbackScore.text =
-            getString(R.string.scenario_score_change, signed(answer.scoreChange))
-        binding.btnContinue.setText(
-            if (answer.isLast) R.string.scenario_see_result else R.string.scenario_continue
-        )
-    }
+        } else {
+            binding.groupAnswered.strokeColor = Color.parseColor("#C5221F")
+            binding.layoutBadge.setBackgroundResource(R.drawable.bg_pill_incorrect)
+            binding.ivVerdictIcon.setImageResource(R.drawable.ic_close)
+            binding.tvBadgeText.text = getString(R.string.action_incorrect)
+            binding.tvBadgeText.setTextColor(Color.parseColor("#C5221F"))
 
-    private fun renderResult(result: ResultUi) {
-        binding.tvResultTitle.setText(
-            if (result.isPassed) R.string.scenario_result_title_passed
-            else R.string.scenario_result_title_failed
-        )
-        binding.tvResultScore.text = getString(
-            R.string.scenario_result_score, result.score, result.maxScore, result.percent
-        )
-        binding.tvResultRequired.text =
-            getString(R.string.scenario_result_required, result.passingPercent)
-        binding.tvResultEnd.text =
-            getString(R.string.scenario_result_end, getString(endTypeRes(result.endType)))
-        showFeedback(result.finalFeedback, binding.tvResultFeedback, binding.tvResultSource)
-        binding.tvResultStats.text = getString(
-            R.string.scenario_result_stats,
-            result.decisionsCount,
-            result.timeoutsCount,
-            result.durationSeconds,
-            result.attemptsUsed
-        )
-        binding.tvResultNotSaved.isVisible = !result.saved
-    }
+            binding.tvVerdict.text = getString(R.string.verdict_incorrect_title)
+            binding.tvVerdict.setTextColor(Color.parseColor("#C5221F"))
 
-    // ─── Textos ───
+            binding.tvChoiceMade.isVisible = true
+            binding.tvChoiceMade.text = getString(R.string.verdict_incorrect_choice)
 
-    private fun showFeedback(
-        feedback: FeedbackUi?,
-        textView: android.widget.TextView,
-        sourceView: android.widget.TextView
-    ) {
-        textView.isVisible = feedback != null
-        textView.text = feedback?.text.orEmpty()
-        val source = feedback?.source
-        sourceView.isVisible = source != null
-        sourceView.text = source?.let { getString(R.string.scenario_source, it) }.orEmpty()
-    }
+            binding.tvFeedbackText.text = feedback?.text.orEmpty().ifBlank { getString(R.string.verdict_incorrect_desc) }
+            binding.tvFeedbackNext.text = getString(R.string.verdict_incorrect_learn)
+            binding.tvFeedbackCaption.text = getString(R.string.verdict_error_logged)
 
-    private fun signed(value: Int): String = if (value > 0) "+$value" else value.toString()
-
-    private fun endTypeRes(type: EndType): Int = when (type) {
-        EndType.SUCCESS -> R.string.scenario_end_success
-        EndType.PARTIAL_SUCCESS -> R.string.scenario_end_partial
-        EndType.FAILURE -> R.string.scenario_end_failure
+            binding.btnContinue.text = getString(R.string.verdict_correct_action)
+            binding.btnContinue.setOnClickListener {
+                findNavController().navigate(
+                    R.id.scenarioRecoveryFragment,
+                    bundleOf(ARG_SCENARIO_ID to scenarioId)
+                )
+            }
+        }
     }
 
     companion object {
