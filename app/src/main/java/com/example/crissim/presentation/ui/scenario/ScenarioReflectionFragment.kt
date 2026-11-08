@@ -49,7 +49,17 @@ class ScenarioReflectionFragment : Fragment() {
     private fun setupButtons() {
         binding.btnContinueCertificate.setOnClickListener {
             Snackbar.make(binding.root, "Reflexión guardada localmente", Snackbar.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.homeFragment)
+            val navController = findNavController()
+            if (!navController.popBackStack(R.id.homeFragment, false)) {
+                navController.navigate(
+                    R.id.homeFragment,
+                    null,
+                    androidx.navigation.navOptions {
+                        popUpTo(navController.graph.id) { inclusive = true }
+                        launchSingleTop = true
+                    }
+                )
+            }
         }
     }
 }

@@ -147,7 +147,8 @@ class ScenarioEngine {
             optionId = option.id,
             timeToDecideMs = timeToDecide,
             wasTimeout = wasTimeout,
-            scoreChange = option.scoreChange
+            scoreChange = option.scoreChange,
+            isCorrect = option.feedback?.isCorrect == true
         )
         decisions.add(record)
 
@@ -159,6 +160,7 @@ class ScenarioEngine {
 
         return OptionResult(
             feedback = option.feedback,
+            selectedOptionText = option.text.get(),
             scoreChange = option.scoreChange,
             wasTimeout = wasTimeout,
             isScenarioEnd = isFinished,

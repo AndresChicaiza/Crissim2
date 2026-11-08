@@ -8,9 +8,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import com.example.crissim.R
 import com.example.crissim.databinding.FragmentMeetingPointBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MeetingPointFragment : Fragment() {
 
@@ -47,9 +48,17 @@ class MeetingPointFragment : Fragment() {
 
     private fun setupButtons() {
         binding.btnReturnHome.setOnClickListener {
-            requireActivity()
-                .findViewById<BottomNavigationView>(R.id.bottom_navigation)
-                .selectedItemId = R.id.homeFragment
+            val navController = findNavController()
+            if (!navController.popBackStack(R.id.homeFragment, false)) {
+                navController.navigate(
+                    R.id.homeFragment,
+                    null,
+                    navOptions {
+                        popUpTo(navController.graph.id) { inclusive = true }
+                        launchSingleTop = true
+                    }
+                )
+            }
         }
     }
 }

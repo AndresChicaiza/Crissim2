@@ -11,4 +11,5 @@ interface ProgressRepository {
     suspend fun saveAttemptResult(result: AttemptResult)
     suspend fun updateLevelProgress(result: AttemptResult)
     suspend fun getAttemptHistory(userId: Long, scenarioId: String): List<AttemptResult>
+    suspend fun getAllAttemptHistory(userId: Long): List<AttemptResult>
 }

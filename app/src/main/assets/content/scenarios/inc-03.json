@@ -1,63 +1,430 @@
 {
   "id": "inc-03",
-  "version": "1.0",
+  "version": "2.0",
   "type": "fire",
   "level": "intermediate",
   "title": {
-    "es": "Salida bloqueada",
-    "en": "Blocked Exit"
+    "es": "Nivel 4: Control y prevención de la propagación",
+    "en": "Level 4: Fire safety"
   },
   "description": {
-    "es": "Decisiones de ruta alternativa cuando el camino principal está obstruido por fuego.",
-    "en": "Alternative route decisions when the main path is blocked by fire."
+    "es": "Cinco preguntas; se aprueba con al menos cuatro respuestas correctas.",
+    "en": "Five questions; pass with at least four correct answers."
   },
   "start_node": "node_01",
-  "passing_score": 70,
-  "max_attempts": 3,
+  "passing_score": 80,
+  "max_attempts": 0,
   "nodes": [
     {
       "id": "node_01",
       "narrative": {
-        "es": "La puerta principal de la escalera está caliente al tacto y sale humo por las rendijas. ¿Qué haces?",
-        "en": "The main staircase door is hot to the touch and smoke comes from the gaps. What do you do?"
+        "es": "Un incendio se desarrolla en el aula y comienza a propagarse hacia el pasillo. ¿Qué medida puede ayudar a retrasar su expansión si se puede realizar sin exponerse al peligro?",
+        "en": "Un incendio se desarrolla en el aula y comienza a propagarse hacia el pasillo. ¿Qué medida puede ayudar a retrasar su expansión si se puede realizar sin exponerse al peligro?"
       },
-      "time_limit_seconds": 15,
+      "time_limit_seconds": 30,
       "default_option_index": 0,
       "options": [
         {
-          "id": "opt_01a",
+          "id": "fue_16_a",
           "text": {
-            "es": "NO abrir la puerta y dirigirte a la salida alternativa señalizada en el plano",
-            "en": "Do NOT open the door and head to the alternative exit marked on the map"
+            "es": "Abrir las ventanas para liberar el calor acumulado.",
+            "en": "Abrir las ventanas para liberar el calor acumulado."
           },
-          "next_node": "node_end_success",
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Cerrar las puertas al evacuar, sin bloquearlas con llave.",
+              "en": "La respuesta más segura es: Cerrar las puertas al evacuar, sin bloquearlas con llave."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_16_b",
+          "text": {
+            "es": "Dejar abiertas las puertas para facilitar la circulación del aire.",
+            "en": "Dejar abiertas las puertas para facilitar la circulación del aire."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Cerrar las puertas al evacuar, sin bloquearlas con llave.",
+              "en": "La respuesta más segura es: Cerrar las puertas al evacuar, sin bloquearlas con llave."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_16_c",
+          "text": {
+            "es": "Cerrar las puertas al evacuar, sin bloquearlas con llave.",
+            "en": "Cerrar las puertas al evacuar, sin bloquearlas con llave."
+          },
+          "next_node": "node_02",
           "score_change": 10,
           "feedback": {
             "text": {
-              "es": "¡Excelente! Una puerta caliente indica fuego directo al otro lado.",
-              "en": "Excellent! A hot door indicates direct fire on the other side."
+              "es": "Correcto. Cerrar las puertas al evacuar, sin bloquearlas con llave.",
+              "en": "Correcto. Cerrar las puertas al evacuar, sin bloquearlas con llave."
             },
             "is_correct": true,
-            "protocol_source": "Protección Civil / Bomberos"
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_16_d",
+          "text": {
+            "es": "Retirar las señales de emergencia para evitar confusiones.",
+            "en": "Retirar las señales de emergencia para evitar confusiones."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Cerrar las puertas al evacuar, sin bloquearlas con llave.",
+              "en": "La respuesta más segura es: Cerrar las puertas al evacuar, sin bloquearlas con llave."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
           }
         }
       ]
     },
     {
-      "id": "node_end_success",
+      "id": "node_02",
       "narrative": {
-        "es": "Usaste la ruta alternativa segura y saliste sin lesiones.",
-        "en": "You used the safe alternative route and exited without injury."
+        "es": "Un estudiante se da cuenta de que su ropa comienza a incendiarse. ¿Qué procedimiento debe aplicar?",
+        "en": "Un estudiante se da cuenta de que su ropa comienza a incendiarse. ¿Qué procedimiento debe aplicar?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "fue_17_a",
+          "text": {
+            "es": "Correr hacia la salida para encontrar agua.",
+            "en": "Correr hacia la salida para encontrar agua."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Detenerse, tirarse al suelo, cubrirse el rostro y rodar hasta apagar las llamas.",
+              "en": "La respuesta más segura es: Detenerse, tirarse al suelo, cubrirse el rostro y rodar hasta apagar las llamas."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_17_b",
+          "text": {
+            "es": "Detenerse, tirarse al suelo, cubrirse el rostro y rodar hasta apagar las llamas.",
+            "en": "Detenerse, tirarse al suelo, cubrirse el rostro y rodar hasta apagar las llamas."
+          },
+          "next_node": "node_03",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Detenerse, tirarse al suelo, cubrirse el rostro y rodar hasta apagar las llamas.",
+              "en": "Correcto. Detenerse, tirarse al suelo, cubrirse el rostro y rodar hasta apagar las llamas."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_17_c",
+          "text": {
+            "es": "Quitarse la ropa mientras permanece de pie.",
+            "en": "Quitarse la ropa mientras permanece de pie."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Detenerse, tirarse al suelo, cubrirse el rostro y rodar hasta apagar las llamas.",
+              "en": "La respuesta más segura es: Detenerse, tirarse al suelo, cubrirse el rostro y rodar hasta apagar las llamas."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_17_d",
+          "text": {
+            "es": "Cubrirse con una chaqueta y continuar caminando.",
+            "en": "Cubrirse con una chaqueta y continuar caminando."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Detenerse, tirarse al suelo, cubrirse el rostro y rodar hasta apagar las llamas.",
+              "en": "La respuesta más segura es: Detenerse, tirarse al suelo, cubrirse el rostro y rodar hasta apagar las llamas."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_03",
+      "narrative": {
+        "es": "Durante un incendio, una puerta de salida está rodeada de llamas. ¿Qué debería hacer el grupo?",
+        "en": "Durante un incendio, una puerta de salida está rodeada de llamas. ¿Qué debería hacer el grupo?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "fue_18_a",
+          "text": {
+            "es": "Atravesar rápidamente la zona para evitar quedar atrapado.",
+            "en": "Atravesar rápidamente la zona para evitar quedar atrapado."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Evitar esa salida y buscar otra ruta segura o un espacio protegido mientras se solicita ayuda.",
+              "en": "La respuesta más segura es: Evitar esa salida y buscar otra ruta segura o un espacio protegido mientras se solicita ayuda."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_18_b",
+          "text": {
+            "es": "Esperar a que las llamas disminuyan antes de continuar.",
+            "en": "Esperar a que las llamas disminuyan antes de continuar."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Evitar esa salida y buscar otra ruta segura o un espacio protegido mientras se solicita ayuda.",
+              "en": "La respuesta más segura es: Evitar esa salida y buscar otra ruta segura o un espacio protegido mientras se solicita ayuda."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_18_c",
+          "text": {
+            "es": "Abrir la puerta para comprobar si el fuego está concentrado en el pasillo.",
+            "en": "Abrir la puerta para comprobar si el fuego está concentrado en el pasillo."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Evitar esa salida y buscar otra ruta segura o un espacio protegido mientras se solicita ayuda.",
+              "en": "La respuesta más segura es: Evitar esa salida y buscar otra ruta segura o un espacio protegido mientras se solicita ayuda."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_18_d",
+          "text": {
+            "es": "Evitar esa salida y buscar otra ruta segura o un espacio protegido mientras se solicita ayuda.",
+            "en": "Evitar esa salida y buscar otra ruta segura o un espacio protegido mientras se solicita ayuda."
+          },
+          "next_node": "node_04",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Evitar esa salida y buscar otra ruta segura o un espacio protegido mientras se solicita ayuda.",
+              "en": "Correcto. Evitar esa salida y buscar otra ruta segura o un espacio protegido mientras se solicita ayuda."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_04",
+      "narrative": {
+        "es": "¿Por qué es importante mantener cerradas las puertas de las aulas al evacuar, cuando sea seguro hacerlo?",
+        "en": "¿Por qué es importante mantener cerradas las puertas de las aulas al evacuar, cuando sea seguro hacerlo?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "fue_19_a",
+          "text": {
+            "es": "Porque pueden ayudar a retrasar la propagación del fuego y del humo.",
+            "en": "Porque pueden ayudar a retrasar la propagación del fuego y del humo."
+          },
+          "next_node": "node_05",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Porque pueden ayudar a retrasar la propagación del fuego y del humo.",
+              "en": "Correcto. Porque pueden ayudar a retrasar la propagación del fuego y del humo."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_19_b",
+          "text": {
+            "es": "Porque impiden que los estudiantes regresen a buscar sus pertenencias.",
+            "en": "Porque impiden que los estudiantes regresen a buscar sus pertenencias."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque pueden ayudar a retrasar la propagación del fuego y del humo.",
+              "en": "La respuesta más segura es: Porque pueden ayudar a retrasar la propagación del fuego y del humo."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_19_c",
+          "text": {
+            "es": "Porque evitan que se active el sistema de ventilación.",
+            "en": "Porque evitan que se active el sistema de ventilación."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque pueden ayudar a retrasar la propagación del fuego y del humo.",
+              "en": "La respuesta más segura es: Porque pueden ayudar a retrasar la propagación del fuego y del humo."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_19_d",
+          "text": {
+            "es": "Porque garantizan que el fuego no pueda ingresar a otros espacios.",
+            "en": "Porque garantizan que el fuego no pueda ingresar a otros espacios."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque pueden ayudar a retrasar la propagación del fuego y del humo.",
+              "en": "La respuesta más segura es: Porque pueden ayudar a retrasar la propagación del fuego y del humo."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_05",
+      "narrative": {
+        "es": "Un brigadista intenta controlar un incendio pequeño, pero las llamas aumentan y el humo se vuelve más denso. ¿Qué debería hacer?",
+        "en": "Un brigadista intenta controlar un incendio pequeño, pero las llamas aumentan y el humo se vuelve más denso. ¿Qué debería hacer?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "fue_20_a",
+          "text": {
+            "es": "Cambiar de posición y continuar descargando el extintor.",
+            "en": "Cambiar de posición y continuar descargando el extintor."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Suspender el intento, evacuar y solicitar intervención de los bomberos.",
+              "en": "La respuesta más segura es: Suspender el intento, evacuar y solicitar intervención de los bomberos."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_20_b",
+          "text": {
+            "es": "Solicitar otro extintor y permanecer en el área.",
+            "en": "Solicitar otro extintor y permanecer en el área."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Suspender el intento, evacuar y solicitar intervención de los bomberos.",
+              "en": "La respuesta más segura es: Suspender el intento, evacuar y solicitar intervención de los bomberos."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_20_c",
+          "text": {
+            "es": "Suspender el intento, evacuar y solicitar intervención de los bomberos.",
+            "en": "Suspender el intento, evacuar y solicitar intervención de los bomberos."
+          },
+          "next_node": "node_end",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Suspender el intento, evacuar y solicitar intervención de los bomberos.",
+              "en": "Correcto. Suspender el intento, evacuar y solicitar intervención de los bomberos."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_20_d",
+          "text": {
+            "es": "Cerrar todas las ventanas y esperar a que el oxígeno disminuya.",
+            "en": "Cerrar todas las ventanas y esperar a que el oxígeno disminuya."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Suspender el intento, evacuar y solicitar intervención de los bomberos.",
+              "en": "La respuesta más segura es: Suspender el intento, evacuar y solicitar intervención de los bomberos."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end",
+      "narrative": {
+        "es": "Terminaste las cinco preguntas. Revisa el resultado y los comentarios de cada decisión.",
+        "en": "You completed all five questions. Review the score and feedback for each decision."
       },
       "is_end": true,
       "end_type": "success",
       "feedback": {
         "text": {
-          "es": "¡Toma de decisión crítica perfecta!",
-          "en": "Perfect critical decision making!"
+          "es": "Para aprobar este nivel necesitas al menos cuatro respuestas correctas de cinco.",
+          "en": "You need at least four correct answers out of five to pass this level."
         },
         "is_correct": true,
-        "protocol_source": "Cruz Roja"
+        "protocol_source": "Progresión educativa"
       }
     }
   ]

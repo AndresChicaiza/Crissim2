@@ -65,8 +65,10 @@ class ScenarioContextFragment : Fragment() {
             val scenarioRepo = CrisisSimApp.instance.container.scenarioRepository
             val scenario = withContext(Dispatchers.IO) { scenarioRepo.getScenarioById(scenarioId) }
             if (scenario != null) {
-                binding.tvHeaderTitle.text = scenario.title.get()
-                binding.tvHeaderSubtitle.text = "${scenario.id.uppercase()} · ${levelName(scenario.level)} · 2 min estimados"
+                binding.tvHeaderTitle.text = getString(R.string.app_name)
+                val questionCount = scenario.nodes.count { !it.isEnd }
+                val estimatedMinutes = (questionCount * 30 + 59) / 60
+                binding.tvHeaderSubtitle.text = "${scenario.id.uppercase()} · ${levelName(scenario.level)} · $estimatedMinutes min estimados"
                 binding.tvTitle.text = scenario.title.get()
                 val firstNode = scenario.nodes.firstOrNull()
                 if (firstNode != null) {

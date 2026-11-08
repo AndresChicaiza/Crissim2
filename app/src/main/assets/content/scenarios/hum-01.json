@@ -1,0 +1,386 @@
+{
+  "id": "hum-01",
+  "version": "2.0",
+  "type": "smoke",
+  "level": "basic",
+  "title": {
+    "es": "Nivel 1: Reconocimiento del humo",
+    "en": "Level 1: Smoke safety"
+  },
+  "description": {
+    "es": "Cinco preguntas; se aprueba con al menos cuatro respuestas correctas.",
+    "en": "Five questions; pass with at least four correct answers."
+  },
+  "start_node": "node_01",
+  "passing_score": 80,
+  "max_attempts": 0,
+  "nodes": [
+    {
+      "id": "node_01",
+      "narrative": {
+        "es": "Durante una clase, un estudiante observa que comienza a salir humo por debajo de la puerta del aula. ¿Cuál debería ser su primera reacción?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "hum_01_a",
+          "text": {
+            "es": "Abrir la puerta lentamente para identificar de dónde viene el humo."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Avisar inmediatamente al docente y activar el protocolo de emergencia."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_01_b",
+          "text": {
+            "es": "Avisar inmediatamente al docente y activar el protocolo de emergencia."
+          },
+          "next_node": "node_02",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Avisar inmediatamente al docente y activar el protocolo de emergencia."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_01_c",
+          "text": {
+            "es": "Esperar unos minutos para comprobar si el humo desaparece."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Avisar inmediatamente al docente y activar el protocolo de emergencia."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_01_d",
+          "text": {
+            "es": "Abrir las ventanas para que el humo salga del salón."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Avisar inmediatamente al docente y activar el protocolo de emergencia."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_02",
+      "narrative": {
+        "es": "¿Por qué representa un peligro respirar el humo producido por un incendio?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "hum_02_a",
+          "text": {
+            "es": "Porque reduce temporalmente la capacidad de escuchar las alarmas."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque contiene gases y partículas que pueden intoxicar y dificultar la respiración."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_02_b",
+          "text": {
+            "es": "Porque puede aumentar la temperatura corporal sin producir otros efectos."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque contiene gases y partículas que pueden intoxicar y dificultar la respiración."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_02_c",
+          "text": {
+            "es": "Porque contiene gases y partículas que pueden intoxicar y dificultar la respiración."
+          },
+          "next_node": "node_03",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Porque contiene gases y partículas que pueden intoxicar y dificultar la respiración."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_02_d",
+          "text": {
+            "es": "Porque únicamente afecta a las personas que tienen problemas respiratorios previos."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque contiene gases y partículas que pueden intoxicar y dificultar la respiración."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_03",
+      "narrative": {
+        "es": "Si el humo comienza a acumularse en la parte superior del aula, ¿qué posición resulta más segura para desplazarse?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "hum_03_a",
+          "text": {
+            "es": "Caminar inclinado manteniendo la cabeza a la altura del pecho."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Desplazarse agachado o gateando, manteniéndose por debajo del humo."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_03_b",
+          "text": {
+            "es": "Permanecer de pie y cubrirse los ojos."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Desplazarse agachado o gateando, manteniéndose por debajo del humo."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_03_c",
+          "text": {
+            "es": "Correr agachado para reducir el tiempo de exposición."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Desplazarse agachado o gateando, manteniéndose por debajo del humo."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_03_d",
+          "text": {
+            "es": "Desplazarse agachado o gateando, manteniéndose por debajo del humo."
+          },
+          "next_node": "node_04",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Desplazarse agachado o gateando, manteniéndose por debajo del humo."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_04",
+      "narrative": {
+        "es": "¿Qué debería hacer un estudiante cuando escucha la alarma de evacuación por presencia de humo?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "hum_04_a",
+          "text": {
+            "es": "Seguir la ruta de evacuación establecida y atender las indicaciones del personal responsable."
+          },
+          "next_node": "node_05",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Seguir la ruta de evacuación establecida y atender las indicaciones del personal responsable."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_04_b",
+          "text": {
+            "es": "Esperar a que todos sus compañeros salgan antes de abandonar el aula."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Seguir la ruta de evacuación establecida y atender las indicaciones del personal responsable."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_04_c",
+          "text": {
+            "es": "Buscar primero sus pertenencias para evitar perderlas."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Seguir la ruta de evacuación establecida y atender las indicaciones del personal responsable."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_04_d",
+          "text": {
+            "es": "Dirigirse hacia la puerta más cercana, aunque no sea una salida autorizada."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Seguir la ruta de evacuación establecida y atender las indicaciones del personal responsable."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_05",
+      "narrative": {
+        "es": "Si un compañero comienza a toser constantemente debido al humo, ¿qué acción es la más adecuada?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "hum_05_a",
+          "text": {
+            "es": "Darle agua y permitir que permanezca sentado hasta recuperarse."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Llevarlo a una zona segura con aire limpio y solicitar atención de emergencia."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_05_b",
+          "text": {
+            "es": "Llevarlo a una zona segura con aire limpio y solicitar atención de emergencia."
+          },
+          "next_node": "node_end",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Llevarlo a una zona segura con aire limpio y solicitar atención de emergencia."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_05_c",
+          "text": {
+            "es": "Pedirle que respire profundamente para recuperar el oxígeno."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Llevarlo a una zona segura con aire limpio y solicitar atención de emergencia."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_05_d",
+          "text": {
+            "es": "Cubrirlo completamente con una chaqueta para evitar que inhale más humo."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Llevarlo a una zona segura con aire limpio y solicitar atención de emergencia."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end",
+      "narrative": {
+        "es": "Terminaste las cinco preguntas. Permanece en un lugar seguro y sigue las instrucciones del personal.",
+        "en": "You completed all five questions. Stay in a safe place and follow staff instructions."
+      },
+      "is_end": true,
+      "end_type": "success",
+      "feedback": {
+        "text": {
+          "es": "Se requieren al menos cuatro respuestas correctas para aprobar este nivel.",
+          "en": "At least four correct answers are required to pass this level."
+        },
+        "is_correct": true,
+        "protocol_source": "Progresión educativa"
+      }
+    }
+  ]
+}

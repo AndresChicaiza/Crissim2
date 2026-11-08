@@ -1,0 +1,386 @@
+{
+  "id": "hum-02",
+  "version": "2.0",
+  "type": "smoke",
+  "level": "basic",
+  "title": {
+    "es": "Nivel 2: Primeras acciones ante el humo",
+    "en": "Level 2: Smoke safety"
+  },
+  "description": {
+    "es": "Cinco preguntas; se aprueba con al menos cuatro respuestas correctas.",
+    "en": "Five questions; pass with at least four correct answers."
+  },
+  "start_node": "node_01",
+  "passing_score": 80,
+  "max_attempts": 0,
+  "nodes": [
+    {
+      "id": "node_01",
+      "narrative": {
+        "es": "Durante una evacuación, el pasillo principal comienza a llenarse de humo. ¿Qué debería hacer el grupo?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "hum_06_a",
+          "text": {
+            "es": "Avanzar rápidamente por el pasillo antes de que se acumule más humo."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Buscar una ruta alternativa de evacuación que esté libre de humo y fuego."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_06_b",
+          "text": {
+            "es": "Esperar en el aula hasta que el humo desaparezca completamente."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Buscar una ruta alternativa de evacuación que esté libre de humo y fuego."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_06_c",
+          "text": {
+            "es": "Buscar una ruta alternativa de evacuación que esté libre de humo y fuego."
+          },
+          "next_node": "node_02",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Buscar una ruta alternativa de evacuación que esté libre de humo y fuego."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_06_d",
+          "text": {
+            "es": "Abrir las puertas de las demás aulas para encontrar una salida."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Buscar una ruta alternativa de evacuación que esté libre de humo y fuego."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_02",
+      "narrative": {
+        "es": "Antes de abrir una puerta durante una emergencia con humo, ¿qué procedimiento ayuda a identificar si existe fuego al otro lado?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "hum_07_a",
+          "text": {
+            "es": "Acercar la cara a la cerradura para comprobar si sale aire caliente."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Comprobar cuidadosamente si la puerta o su manija están calientes, sin abrirla si presentan calor."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_07_b",
+          "text": {
+            "es": "Golpear varias veces la puerta y escuchar si alguien responde."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Comprobar cuidadosamente si la puerta o su manija están calientes, sin abrirla si presentan calor."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_07_c",
+          "text": {
+            "es": "Abrirla unos centímetros para observar el pasillo."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Comprobar cuidadosamente si la puerta o su manija están calientes, sin abrirla si presentan calor."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_07_d",
+          "text": {
+            "es": "Comprobar cuidadosamente si la puerta o su manija están calientes, sin abrirla si presentan calor."
+          },
+          "next_node": "node_03",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Comprobar cuidadosamente si la puerta o su manija están calientes, sin abrirla si presentan calor."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_03",
+      "narrative": {
+        "es": "Si un estudiante dispone de un pañuelo o tela para cubrirse la nariz y la boca mientras evacúa, ¿cómo debería utilizarlo?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "hum_08_a",
+          "text": {
+            "es": "Como medida complementaria, sin retrasar la evacuación ni confiar en que filtre los gases tóxicos."
+          },
+          "next_node": "node_04",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Como medida complementaria, sin retrasar la evacuación ni confiar en que filtre los gases tóxicos."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_08_b",
+          "text": {
+            "es": "Como protección suficiente para poder atravesar cualquier zona llena de humo."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Como medida complementaria, sin retrasar la evacuación ni confiar en que filtre los gases tóxicos."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_08_c",
+          "text": {
+            "es": "Mojándolo y permaneciendo en el aula hasta que el humo disminuya."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Como medida complementaria, sin retrasar la evacuación ni confiar en que filtre los gases tóxicos."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_08_d",
+          "text": {
+            "es": "Colocándolo únicamente sobre la boca para conservar una respiración normal."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Como medida complementaria, sin retrasar la evacuación ni confiar en que filtre los gases tóxicos."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_04",
+      "narrative": {
+        "es": "¿Cuál es la principal razón para evitar utilizar ascensores durante una evacuación por incendio o humo?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "hum_09_a",
+          "text": {
+            "es": "Porque normalmente están reservados para el personal administrativo."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque pueden quedar fuera de servicio, detenerse o convertirse en espacios peligrosos."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_09_b",
+          "text": {
+            "es": "Porque pueden quedar fuera de servicio, detenerse o convertirse en espacios peligrosos."
+          },
+          "next_node": "node_05",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Porque pueden quedar fuera de servicio, detenerse o convertirse en espacios peligrosos."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_09_c",
+          "text": {
+            "es": "Porque consumen demasiada energía durante una emergencia."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque pueden quedar fuera de servicio, detenerse o convertirse en espacios peligrosos."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_09_d",
+          "text": {
+            "es": "Porque dificultan que los estudiantes mantengan el orden de salida."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque pueden quedar fuera de servicio, detenerse o convertirse en espacios peligrosos."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_05",
+      "narrative": {
+        "es": "Un estudiante logra salir del aula, pero observa que algunos compañeros siguen dentro. ¿Qué debería hacer?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "hum_10_a",
+          "text": {
+            "es": "Regresar inmediatamente para ayudarles a salir."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Informar a los docentes, brigadistas o bomberos sobre las personas que podrían seguir dentro."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_10_b",
+          "text": {
+            "es": "Entrar nuevamente acompañado de otro estudiante."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Informar a los docentes, brigadistas o bomberos sobre las personas que podrían seguir dentro."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_10_c",
+          "text": {
+            "es": "Informar a los docentes, brigadistas o bomberos sobre las personas que podrían seguir dentro."
+          },
+          "next_node": "node_end",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Informar a los docentes, brigadistas o bomberos sobre las personas que podrían seguir dentro."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_10_d",
+          "text": {
+            "es": "Esperar en la puerta hasta que todos puedan salir por sus propios medios."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Informar a los docentes, brigadistas o bomberos sobre las personas que podrían seguir dentro."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end",
+      "narrative": {
+        "es": "Terminaste las cinco preguntas. Permanece en un lugar seguro y sigue las instrucciones del personal.",
+        "en": "You completed all five questions. Stay in a safe place and follow staff instructions."
+      },
+      "is_end": true,
+      "end_type": "success",
+      "feedback": {
+        "text": {
+          "es": "Se requieren al menos cuatro respuestas correctas para aprobar este nivel.",
+          "en": "At least four correct answers are required to pass this level."
+        },
+        "is_correct": true,
+        "protocol_source": "Progresión educativa"
+      }
+    }
+  ]
+}

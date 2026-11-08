@@ -34,7 +34,8 @@ data class ScenarioItemUi(
     val maxAttempts: Int,
     val attemptsUsed: Int,
     val bestScore: Int?,
-    val isPassed: Boolean
+    val isPassed: Boolean,
+    val questionCount: Int
 )
 
 /** Un nivel con sus escenarios. */
@@ -102,6 +103,7 @@ class LevelsViewModel(
 
     private suspend fun toItem(userId: Long, scenario: Scenario): ScenarioItemUi {
         val history = getAttemptHistory.execute(userId, scenario.id)
+        val questionCount = scenario.nodes.count { it.options.isNotEmpty() }
         return ScenarioItemUi(
             id = scenario.id,
             title = scenario.title.get(),
@@ -112,7 +114,9 @@ class LevelsViewModel(
             maxAttempts = scenario.maxAttempts,
             attemptsUsed = history.size,
             bestScore = history.maxOfOrNull { it.score },
-            isPassed = history.any { it.isPassed }
+            // Attempts from the old one- or two-question content must not unlock the new five-question levels.
+            isPassed = history.any { it.isPassed && it.decisions.size == questionCount },
+            questionCount = questionCount
         )
     }
 

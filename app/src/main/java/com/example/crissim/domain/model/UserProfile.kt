@@ -67,5 +67,6 @@ data class DecisionRecord(
     val optionId: String,
     val timeToDecideMs: Long,
     val wasTimeout: Boolean,
-    val scoreChange: Int
+    val scoreChange: Int,
+    val isCorrect: Boolean = false
 )

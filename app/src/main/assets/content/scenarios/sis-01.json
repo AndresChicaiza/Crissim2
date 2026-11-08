@@ -1,61 +1,95 @@
 {
   "id": "sis-01",
-  "version": "1.0",
+  "version": "2.0",
   "type": "earthquake",
   "level": "basic",
   "title": {
-    "es": "Durante el sismo",
-    "en": "During the earthquake"
+    "es": "Nivel 1: Protección durante el sismo",
+    "en": "Level 1: Protecting yourself during an earthquake"
   },
   "description": {
-    "es": "Aprende las acciones inmediatas para protegerte cuando la tierra empieza a temblar.",
-    "en": "Learn immediate actions to protect yourself when the ground starts shaking."
+    "es": "Cinco decisiones para protegerte durante y después de un sismo.",
+    "en": "Five decisions to stay safe during and after an earthquake."
   },
   "start_node": "node_01",
-  "passing_score": 70,
+  "passing_score": 80,
   "max_attempts": 3,
   "nodes": [
     {
       "id": "node_01",
       "narrative": {
-        "es": "Estás en clase. Sientes un movimiento fuerte y escuchas vibrar las ventanas. Hay una mesa resistente cerca de ti.",
-        "en": "You are in class. You feel a strong shaking and hear windows vibrating. There is a sturdy table near you."
+        "es": "Estás en clase. El suelo comienza a temblar y hay una mesa resistente a pocos pasos. ¿Qué haces primero?",
+        "en": "You are in class. The ground starts shaking and a sturdy table is a few steps away. What do you do first?"
       },
-      "time_limit_seconds": 15,
+      "time_limit_seconds": 30,
       "default_option_index": 0,
       "options": [
         {
-          "id": "opt_01a",
+          "id": "q1_a",
           "text": {
-            "es": "Agacharte, cubrirte debajo de la mesa y sujetarte fuerte de una pata",
-            "en": "Drop, cover under the table and hold on tight"
+            "es": "Salir rápidamente al pasillo antes de que se mueva más el edificio",
+            "en": "Quickly leave for the hallway before the building shakes more"
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "Durante el movimiento, cruzar el aula te expone a caídas y objetos. Protégete primero en el lugar seguro más cercano.",
+              "en": "Moving across the classroom during shaking exposes you to falls and objects. First take cover in the nearest safe place."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "q1_b",
+          "text": {
+            "es": "Agacharte, cubrirte bajo la mesa y sujetarte hasta que pare el movimiento",
+            "en": "Drop, cover under the table, and hold on until the shaking stops"
           },
           "next_node": "node_02",
           "score_change": 10,
           "feedback": {
             "text": {
-              "es": "¡Correcto! Agacharse, cubrirse y sujetarse es el protocolo oficial ante un sismo.",
-              "en": "Correct! Drop, cover, and hold on is the official earthquake protocol."
+              "es": "Correcto. Agáchate, cúbrete y sujétate; protege cabeza y cuello mientras dure el movimiento.",
+              "en": "Correct. Drop, cover, and hold on; protect your head and neck while the shaking lasts."
             },
             "is_correct": true,
-            "protocol_source": "Protección Civil / Cruz Roja"
+            "protocol_source": "Ready.gov / FEMA"
           }
         },
         {
-          "id": "opt_01b",
+          "id": "q1_c",
           "text": {
-            "es": "Salir corriendo de inmediato hacia la puerta de salida",
-            "en": "Run out immediately towards the exit door"
+            "es": "Ubicarte en el marco de la puerta porque siempre es el sitio más resistente",
+            "en": "Move to the doorway because it is always the strongest place"
           },
-          "next_node": "node_fail_01",
-          "score_change": -10,
+          "next_node": "node_02",
+          "score_change": 0,
           "feedback": {
             "text": {
-              "es": "Peligroso. Correr durante el movimiento puede causar caídas u objetos que te golpeen.",
-              "en": "Dangerous. Running during shaking can cause falls or objects hitting you."
+              "es": "Los marcos no ofrecen protección especial en la mayoría de edificios. Usa la mesa resistente cercana.",
+              "en": "Doorways do not provide special protection in most buildings. Use the nearby sturdy table."
             },
             "is_correct": false,
-            "protocol_source": "Protección Civil"
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "q1_d",
+          "text": {
+            "es": "Alejarte de la mesa para colocarte junto a las ventanas y observar el exterior",
+            "en": "Move away from the table toward the windows to watch outside"
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "Aléjate de ventanas y objetos que puedan caer; evita desplazarte más de lo necesario y cúbrete.",
+              "en": "Stay away from windows and objects that could fall; avoid unnecessary movement and take cover."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
           }
         }
       ]
@@ -63,27 +97,315 @@
     {
       "id": "node_02",
       "narrative": {
-        "es": "El temblor disminuye. El docente indica iniciar la evacuación de forma ordenada. ¿Qué haces?",
-        "en": "The shaking decreases. The teacher indicates to evacuate in an orderly manner. What do you do?"
+        "es": "El temblor continúa y escuchas que caen objetos de los estantes. ¿Cómo te proteges mientras estás bajo la mesa?",
+        "en": "The shaking continues and objects fall from shelves. How do you protect yourself under the table?"
       },
-      "time_limit_seconds": 15,
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "q2_a",
+          "text": {
+            "es": "Sujetar la mesa y cubrir cabeza y cuello con los brazos",
+            "en": "Hold onto the table and cover your head and neck with your arms"
+          },
+          "next_node": "node_03",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Bien. Sujétate a la protección y mantén cubiertas la cabeza y el cuello.",
+              "en": "Good. Hold onto your cover and keep your head and neck protected."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "q2_b",
+          "text": {
+            "es": "Asomarte para ver qué objetos están cayendo y decidir luego",
+            "en": "Look out to see what is falling and decide afterward"
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "Asomarte te expone a golpes. Permanece bajo la protección y cubre cabeza y cuello.",
+              "en": "Looking out exposes you to impact. Stay under cover and protect your head and neck."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "q2_c",
+          "text": {
+            "es": "Correr hacia una pared interior cuando el movimiento se intensifica",
+            "en": "Run toward an interior wall as the shaking intensifies"
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "Moverte durante el sismo puede hacerte caer. Quédate protegido hasta que pare el movimiento.",
+              "en": "Moving during the earthquake can make you fall. Stay protected until the shaking stops."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "q2_d",
+          "text": {
+            "es": "Ponerte de pie bajo la mesa para tener más espacio y equilibrio",
+            "en": "Stand under the table to have more space and balance"
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "Mantente agachado y protegido; estar de pie aumenta la exposición a objetos que caen.",
+              "en": "Stay low and covered; standing increases exposure to falling objects."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_03",
+      "narrative": {
+        "es": "El movimiento se detuvo. Suena la alarma y el docente indica evacuar. ¿Cuál es la mejor acción?",
+        "en": "The shaking stopped. The alarm sounds and the teacher says to evacuate. What is the best action?"
+      },
+      "time_limit_seconds": 30,
       "default_option_index": 0,
       "options": [
         {
-          "id": "opt_02a",
+          "id": "q3_a",
           "text": {
-            "es": "Salir en fila, sin empujar, cubriendo tu cabeza con las manos hacia la ruta de evacuación",
-            "en": "Exit in line, without pushing, covering your head with your hands towards the evacuation route"
+            "es": "Regresar por la mochila y luego incorporarte a la fila",
+            "en": "Go back for your backpack and then join the line"
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No regreses por pertenencias. Sigue las instrucciones y evacúa por la ruta indicada.",
+              "en": "Do not return for belongings. Follow instructions and evacuate along the designated route."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "q3_b",
+          "text": {
+            "es": "Esperar dentro hasta confirmar por mensajes que el edificio está estable",
+            "en": "Wait inside until messages confirm the building is stable"
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No retrases la evacuación indicada para consultar mensajes; atiende al personal responsable.",
+              "en": "Do not delay an instructed evacuation to check messages; follow responsible staff."
+            },
+            "is_correct": false,
+            "protocol_source": "Protocolo escolar de emergencias"
+          }
+        },
+        {
+          "id": "q3_c",
+          "text": {
+            "es": "Salir en fila, sin empujar, siguiendo la ruta y las indicaciones del docente",
+            "en": "Leave in line without pushing, following the route and teacher's instructions"
+          },
+          "next_node": "node_04",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Evacúa con calma por la ruta establecida y sigue al responsable.",
+              "en": "Correct. Evacuate calmly along the designated route and follow the person in charge."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "q3_d",
+          "text": {
+            "es": "Usar el ascensor para evitar la congestión de las escaleras",
+            "en": "Use the elevator to avoid crowded stairs"
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No uses ascensores durante una evacuación tras un sismo. Usa la ruta señalizada indicada por el personal.",
+              "en": "Do not use elevators during evacuation after an earthquake. Use the marked route indicated by staff."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_04",
+      "narrative": {
+        "es": "En el pasillo ves una grieta nueva y algunos fragmentos en el suelo. ¿Cómo continúas?",
+        "en": "In the hallway you see a new crack and some debris on the floor. How do you proceed?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "q4_a",
+          "text": {
+            "es": "Cruzar deprisa junto a la pared para no retrasar al grupo",
+            "en": "Hurry past close to the wall so you do not delay the group"
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No atravieses una zona con daño visible sin indicación. Avisa al docente y sigue una ruta segura alternativa.",
+              "en": "Do not cross visibly damaged areas without guidance. Alert the teacher and follow a safe alternate route."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "q4_b",
+          "text": {
+            "es": "Avisar al docente, evitar la zona dañada y seguir la ruta segura que indique",
+            "en": "Alert the teacher, avoid the damaged area, and follow the safe route they indicate"
+          },
+          "next_node": "node_05",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Reporta el peligro, mantente alejado y utiliza una ruta segura autorizada.",
+              "en": "Correct. Report the hazard, keep clear, and use an authorized safe route."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "q4_c",
+          "text": {
+            "es": "Mover los fragmentos para despejar el paso antes de continuar",
+            "en": "Move the debris to clear the way before continuing"
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No manipules daños ni escombros. Informa al responsable y espera que indique el paso seguro.",
+              "en": "Do not handle damage or debris. Tell the person in charge and wait for safe passage instructions."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "q4_d",
+          "text": {
+            "es": "Separarte del grupo y buscar una salida por otra aula",
+            "en": "Separate from the group and look for an exit through another classroom"
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No te separes ni improvises una salida. Mantente con el grupo y comunica el obstáculo.",
+              "en": "Do not separate or improvise an exit. Stay with the group and report the obstacle."
+            },
+            "is_correct": false,
+            "protocol_source": "Protocolo escolar de emergencias"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_05",
+      "narrative": {
+        "es": "Llegas al punto de encuentro. El docente inicia el conteo y falta un compañero. ¿Qué haces?",
+        "en": "You reach the meeting point. The teacher starts the headcount and one classmate is missing. What do you do?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "q5_a",
+          "text": {
+            "es": "Informar al docente dónde fue visto por última vez y no regresar al edificio",
+            "en": "Tell the teacher where they were last seen and do not re-enter the building"
           },
           "next_node": "node_end_success",
           "score_change": 10,
           "feedback": {
             "text": {
-              "es": "¡Excelente! La evacuación ordenada evita estampidas y lesiones.",
-              "en": "Excellent! Orderly evacuation prevents stampedes and injuries."
+              "es": "Correcto. Reporta la última ubicación conocida; solo los equipos de emergencia deben buscar dentro.",
+              "en": "Correct. Report the last known location; only emergency responders should search inside."
             },
             "is_correct": true,
-            "protocol_source": "ILC Protocolo de Seguridad"
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "q5_b",
+          "text": {
+            "es": "Regresar con un compañero a revisar el aula y los pasillos",
+            "en": "Go back with a classmate to check the classroom and hallways"
+          },
+          "next_node": "node_end_success",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No vuelvas a entrar. Informa al docente y a emergencias para que los equipos capacitados actúen.",
+              "en": "Do not re-enter. Alert the teacher and responders so trained teams can act."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "q5_c",
+          "text": {
+            "es": "Esperar al siguiente conteo para ver si alguien más nota la ausencia",
+            "en": "Wait for the next headcount to see if someone else notices"
+          },
+          "next_node": "node_end_success",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "Comunica la ausencia de inmediato y aporta la información que conozcas.",
+              "en": "Report the missing person immediately and share what you know."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "q5_d",
+          "text": {
+            "es": "Llamarlo y pedirle que salga por la ruta que parece más despejada",
+            "en": "Call them and ask them to leave by the route that looks clearest"
+          },
+          "next_node": "node_end_success",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No indiques rutas que no puedes verificar. Reporta su ubicación a los responsables de la emergencia.",
+              "en": "Do not direct them along a route you cannot verify. Report their location to emergency staff."
+            },
+            "is_correct": false,
+            "protocol_source": "Protocolo escolar de emergencias"
           }
         }
       ]
@@ -91,35 +413,18 @@
     {
       "id": "node_end_success",
       "narrative": {
-        "es": "¡Lograste protegerte y evacuar con éxito! Llegaste al punto de encuentro a salvo.",
-        "en": "You managed to protect yourself and evacuate successfully! You arrived safely at the meeting point."
+        "es": "Terminaste las cinco decisiones. Permanece en el punto de encuentro y sigue las instrucciones del personal.",
+        "en": "You completed all five decisions. Stay at the meeting point and follow staff instructions."
       },
       "is_end": true,
       "end_type": "success",
       "feedback": {
         "text": {
-          "es": "¡Felicitaciones! Has completado el módulo SIS-01.",
-          "en": "Congratulations! You completed module SIS-01."
+          "es": "La evaluación considera las cinco respuestas. Para aprobar necesitas al menos cuatro correctas.",
+          "en": "The assessment counts all five answers. You need at least four correct to pass."
         },
         "is_correct": true,
-        "protocol_source": "Cruz Roja"
-      }
-    },
-    {
-      "id": "node_fail_01",
-      "narrative": {
-        "es": "Tropezaste al correr durante el sismo y un objeto pesado cayó cerca. Recuerda: primero protegerse, luego evacuar.",
-        "en": "You tripped running during the shaking and a heavy object fell nearby. Remember: protect first, then evacuate."
-      },
-      "is_end": true,
-      "end_type": "failure",
-      "feedback": {
-        "text": {
-          "es": "Durante el temblor, mantén la calma y protégete.",
-          "en": "During shaking, stay calm and protect yourself."
-        },
-        "is_correct": false,
-        "protocol_source": "Protección Civil"
+        "protocol_source": "Ready.gov / FEMA"
       }
     }
   ]

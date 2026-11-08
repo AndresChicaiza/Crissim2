@@ -82,6 +82,10 @@ class ProgressRepositoryImpl(
         }
     }
 
+    override suspend fun getAllAttemptHistory(userId: Long): List<AttemptResult> {
+        return attemptDao.getAllAttempts(userId).map { entity -> entity.toDomain() }
+    }
+
     // ─── Mappers ───
 
     private fun LevelProgressEntity.toDomain(level: Level): LevelProgress {

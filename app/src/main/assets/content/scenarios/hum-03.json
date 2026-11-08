@@ -1,0 +1,386 @@
+{
+  "id": "hum-03",
+  "version": "2.0",
+  "type": "smoke",
+  "level": "intermediate",
+  "title": {
+    "es": "Nivel 3: Toma de decisiones",
+    "en": "Level 3: Smoke safety"
+  },
+  "description": {
+    "es": "Cinco preguntas; se aprueba con al menos cuatro respuestas correctas.",
+    "en": "Five questions; pass with at least four correct answers."
+  },
+  "start_node": "node_01",
+  "passing_score": 80,
+  "max_attempts": 0,
+  "nodes": [
+    {
+      "id": "node_01",
+      "narrative": {
+        "es": "Un aula comienza a llenarse de humo y la puerta principal está caliente. ¿Cuál es la decisión más segura?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "hum_11_a",
+          "text": {
+            "es": "Abrir la puerta lentamente para comprobar si el fuego está cerca."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: No abrirla y buscar una salida alternativa segura o un lugar protegido mientras se solicita ayuda."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_11_b",
+          "text": {
+            "es": "Esperar a que la puerta se enfríe para continuar la evacuación."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: No abrirla y buscar una salida alternativa segura o un lugar protegido mientras se solicita ayuda."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_11_c",
+          "text": {
+            "es": "Golpear la puerta para alertar a las personas del otro lado."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: No abrirla y buscar una salida alternativa segura o un lugar protegido mientras se solicita ayuda."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_11_d",
+          "text": {
+            "es": "No abrirla y buscar una salida alternativa segura o un lugar protegido mientras se solicita ayuda."
+          },
+          "next_node": "node_02",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. No abrirla y buscar una salida alternativa segura o un lugar protegido mientras se solicita ayuda."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_02",
+      "narrative": {
+        "es": "Si un grupo de estudiantes se encuentra evacuando y uno de ellos entra en pánico, ¿qué debería hacer el docente?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "hum_12_a",
+          "text": {
+            "es": "Dar instrucciones claras y tranquilas, mantener al grupo unido y continuar la evacuación."
+          },
+          "next_node": "node_03",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Dar instrucciones claras y tranquilas, mantener al grupo unido y continuar la evacuación."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_12_b",
+          "text": {
+            "es": "Permitir que el estudiante salga corriendo para evitar retrasar al resto."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Dar instrucciones claras y tranquilas, mantener al grupo unido y continuar la evacuación."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_12_c",
+          "text": {
+            "es": "Detener toda la evacuación hasta que el estudiante se tranquilice."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Dar instrucciones claras y tranquilas, mantener al grupo unido y continuar la evacuación."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_12_d",
+          "text": {
+            "es": "Pedir a los demás estudiantes que lo sujeten mientras el docente busca ayuda."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Dar instrucciones claras y tranquilas, mantener al grupo unido y continuar la evacuación."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_03",
+      "narrative": {
+        "es": "Durante la evacuación, un estudiante se da cuenta de que la ruta señalizada está parcialmente cubierta por humo. ¿Qué debe priorizar?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "hum_13_a",
+          "text": {
+            "es": "Seguir las señales aunque la ruta esté comprometida."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Identificar una ruta alternativa segura siguiendo el plan de emergencia."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_13_b",
+          "text": {
+            "es": "Identificar una ruta alternativa segura siguiendo el plan de emergencia."
+          },
+          "next_node": "node_04",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Identificar una ruta alternativa segura siguiendo el plan de emergencia."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_13_c",
+          "text": {
+            "es": "Regresar al aula y esperar a que llegue el personal de seguridad."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Identificar una ruta alternativa segura siguiendo el plan de emergencia."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_13_d",
+          "text": {
+            "es": "Separarse del grupo para buscar una salida por su cuenta."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Identificar una ruta alternativa segura siguiendo el plan de emergencia."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_04",
+      "narrative": {
+        "es": "Un estudiante queda atrapado en un aula y no puede evacuar porque el pasillo está lleno de humo. ¿Qué debería hacer?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "hum_14_a",
+          "text": {
+            "es": "Romper una ventana y saltar inmediatamente."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Cerrar la puerta, sellar las rendijas si es posible, llamar a emergencias e indicar su ubicación."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_14_b",
+          "text": {
+            "es": "Abrir todas las ventanas para generar corrientes de aire."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Cerrar la puerta, sellar las rendijas si es posible, llamar a emergencias e indicar su ubicación."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_14_c",
+          "text": {
+            "es": "Cerrar la puerta, sellar las rendijas si es posible, llamar a emergencias e indicar su ubicación."
+          },
+          "next_node": "node_05",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Cerrar la puerta, sellar las rendijas si es posible, llamar a emergencias e indicar su ubicación."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_14_d",
+          "text": {
+            "es": "Esconderse debajo de los pupitres hasta que termine la emergencia."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Cerrar la puerta, sellar las rendijas si es posible, llamar a emergencias e indicar su ubicación."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_05",
+      "narrative": {
+        "es": "Después de evacuar, el docente nota que falta un estudiante en el punto de encuentro. ¿Cuál es la actuación correcta?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "hum_15_a",
+          "text": {
+            "es": "Organizar un grupo de estudiantes para regresar a buscarlo."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Informar inmediatamente a los responsables de la emergencia y proporcionar la última ubicación conocida del estudiante."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_15_b",
+          "text": {
+            "es": "Esperar unos minutos antes de informar para evitar falsas alarmas."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Informar inmediatamente a los responsables de la emergencia y proporcionar la última ubicación conocida del estudiante."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_15_c",
+          "text": {
+            "es": "Enviar al representante del curso a revisar el aula."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Informar inmediatamente a los responsables de la emergencia y proporcionar la última ubicación conocida del estudiante."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_15_d",
+          "text": {
+            "es": "Informar inmediatamente a los responsables de la emergencia y proporcionar la última ubicación conocida del estudiante."
+          },
+          "next_node": "node_end",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Informar inmediatamente a los responsables de la emergencia y proporcionar la última ubicación conocida del estudiante."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end",
+      "narrative": {
+        "es": "Terminaste las cinco preguntas. Permanece en un lugar seguro y sigue las instrucciones del personal.",
+        "en": "You completed all five questions. Stay in a safe place and follow staff instructions."
+      },
+      "is_end": true,
+      "end_type": "success",
+      "feedback": {
+        "text": {
+          "es": "Se requieren al menos cuatro respuestas correctas para aprobar este nivel.",
+          "en": "At least four correct answers are required to pass this level."
+        },
+        "is_correct": true,
+        "protocol_source": "Progresión educativa"
+      }
+    }
+  ]
+}

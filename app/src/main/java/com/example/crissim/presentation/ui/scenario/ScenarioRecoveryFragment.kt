@@ -56,7 +56,14 @@ class ScenarioRecoveryFragment : Fragment() {
 
     private fun setupButtons() {
         binding.btnRetry.setOnClickListener {
-            findNavController().popBackStack()
+            // Replace the completed fragment so its ViewModel starts a fresh engine attempt.
+            findNavController().navigate(
+                R.id.scenarioFragment,
+                bundleOf(ScenarioFragment.ARG_SCENARIO_ID to scenarioId),
+                androidx.navigation.navOptions {
+                    popUpTo(R.id.scenarioFragment) { inclusive = true }
+                }
+            )
         }
 
         binding.cardMeetingPoint.setOnClickListener {

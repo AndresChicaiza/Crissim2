@@ -1,18 +1,18 @@
 {
   "id": "sis-04",
-  "version": "1.0",
+  "version": "2.0",
   "type": "earthquake",
   "level": "advanced",
   "title": {
-    "es": "Punto de encuentro",
+    "es": "Nivel 4: Punto de encuentro",
     "en": "Meeting Point"
   },
   "description": {
-    "es": "Organización, conteo de personas y reporte final al líder de brigada.",
-    "en": "Organization, headcount, and final report to the brigade leader."
+    "es": "Cinco preguntas; se aprueba con al menos cuatro respuestas correctas.",
+    "en": "Five questions; pass with at least four correct answers."
   },
   "start_node": "node_01",
-  "passing_score": 70,
+  "passing_score": 80,
   "max_attempts": 3,
   "nodes": [
     {
@@ -21,43 +21,370 @@
         "es": "Llegas al punto de encuentro en la cancha principal. ¿Cuál es tu primera acción?",
         "en": "You arrive at the meeting point on the main court. What is your first action?"
       },
-      "time_limit_seconds": 15,
-      "default_option_index": 0,
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
       "options": [
         {
-          "id": "opt_01a",
+          "id": "sis04_q1_1",
           "text": {
-            "es": "Ubicarte con tu grupo de clase y reportar tu presencia al docente responsable",
-            "en": "Locate your class group and report your presence to the responsible teacher"
+            "es": "Ubicarte con tu grupo de clase y reportar tu presencia al docente responsable"
           },
-          "next_node": "node_end_success",
+          "next_node": "node_02",
           "score_change": 10,
           "feedback": {
             "text": {
-              "es": "¡Correcto! El reporte inmediato facilita la verificación de ausentes.",
-              "en": "Correct! Immediate reporting facilitates missing person verification."
+              "es": "¡Correcto! El reporte inmediato facilita la verificación de ausentes."
             },
             "is_correct": true,
             "protocol_source": "Protección Civil"
+          }
+        },
+        {
+          "id": "sis04_q1_2",
+          "text": {
+            "es": "Irte a casa cuando llegas al punto de encuentro sin reportarte"
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "Permanece en el punto indicado y repórtate con el docente para que se pueda verificar a todas las personas."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis04_q1_3",
+          "text": {
+            "es": "Llamar a familiares y alejarte del grupo para buscar mejor señal"
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No te alejes del punto de encuentro antes del conteo. Sigue el protocolo local de comunicación y espera autorización para retirarte."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis04_q1_4",
+          "text": {
+            "es": "Compartir una estimación sin verificar nombres"
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No improvises ni reportes información sin confirmar. Sigue el plan de emergencia y comunica los datos observados."
+            },
+            "is_correct": false,
+            "protocol_source": "Protocolo escolar de emergencias"
           }
         }
       ]
     },
     {
-      "id": "node_end_success",
+      "id": "node_02",
       "narrative": {
-        "es": "Proceso del punto de encuentro completado correctamente.",
-        "en": "Meeting point process completed successfully."
+        "es": "El conteo no coincide con la lista. ¿Cuál es el siguiente paso?",
+        "en": "El conteo no coincide con la lista. ¿Cuál es el siguiente paso?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "sis04_q2_1",
+          "text": {
+            "es": "Reportar de inmediato nombres y última ubicación conocida al responsable"
+          },
+          "next_node": "node_03",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Reportar de inmediato nombres y última ubicación conocida al responsable"
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis04_q2_2",
+          "text": {
+            "es": "Enviar estudiantes de vuelta al edificio para verificar"
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Reportar de inmediato nombres y última ubicación conocida al responsable"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis04_q2_3",
+          "text": {
+            "es": "Esperar a que termine la emergencia para volver a contar"
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Reportar de inmediato nombres y última ubicación conocida al responsable"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis04_q2_4",
+          "text": {
+            "es": "Anotar la diferencia sin avisar para no interrumpir"
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Reportar de inmediato nombres y última ubicación conocida al responsable"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_03",
+      "narrative": {
+        "es": "Un visitante quiere retirarse antes de terminar el conteo. Si estás a cargo del grupo, ¿qué haces?",
+        "en": "Una persona externa pregunta si puede salir del punto de encuentro. ¿Qué haces?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "sis04_q3_1",
+          "text": {
+            "es": "Autorizarla si dice que ya avis? a su familia"
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No pierdas el registro de las personas: informa al responsable y anota la salida según el protocolo, sin bloquear físicamente a nadie."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis04_q3_2",
+          "text": {
+            "es": "Pedirle que avise al responsable para registrar su salida según el protocolo, sin impedirle retirarse físicamente."
+          },
+          "next_node": "node_04",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. El responsable debe saber quién se retira y actualizar el registro; no intentes retener físicamente a la persona."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis04_q3_3",
+          "text": {
+            "es": "Dejar que se vaya y corregir la lista después"
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No pierdas el registro de las personas: informa al responsable y anota la salida según el protocolo, sin bloquear físicamente a nadie."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis04_q3_4",
+          "text": {
+            "es": "Indicarle una ruta de regreso al edificio"
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No pierdas el registro de las personas: informa al responsable y anota la salida según el protocolo, sin bloquear físicamente a nadie."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_04",
+      "narrative": {
+        "es": "Un estudiante dice que olvidó un objeto dentro. ¿Qué instrucción es segura?",
+        "en": "Un estudiante dice que olvidó un objeto dentro. ¿Qué instrucción es segura?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "sis04_q4_1",
+          "text": {
+            "es": "Esperar a que el pasillo parezca despejado y entrar juntos"
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: No reingresar; esperar autorización expresa de las autoridades"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis04_q4_2",
+          "text": {
+            "es": "Pedir al estudiante que describa una ruta corta para recuperarlo"
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: No reingresar; esperar autorización expresa de las autoridades"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis04_q4_3",
+          "text": {
+            "es": "No reingresar; esperar autorización expresa de las autoridades"
+          },
+          "next_node": "node_05",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. No reingresar; esperar autorización expresa de las autoridades"
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis04_q4_4",
+          "text": {
+            "es": "Enviar a un adulto del grupo a buscarlo"
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: No reingresar; esperar autorización expresa de las autoridades"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_05",
+      "narrative": {
+        "es": "El grupo ya fue contado, pero aún no hay autorización de retorno. ¿Qué debe hacer?",
+        "en": "El grupo ya fue contado, pero aún no hay autorización de retorno. ¿Qué debe hacer?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "sis04_q5_1",
+          "text": {
+            "es": "Mantenerse en el punto y atender nuevas instrucciones oficiales"
+          },
+          "next_node": "node_end",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Mantenerse en el punto y atender nuevas instrucciones oficiales"
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis04_q5_2",
+          "text": {
+            "es": "Regresar si no se ve humo desde el exterior"
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Mantenerse en el punto y atender nuevas instrucciones oficiales"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis04_q5_3",
+          "text": {
+            "es": "Dispersarse para evitar congestión"
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Mantenerse en el punto y atender nuevas instrucciones oficiales"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis04_q5_4",
+          "text": {
+            "es": "Entrar por una puerta diferente a la de evacuación"
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Mantenerse en el punto y atender nuevas instrucciones oficiales"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end",
+      "narrative": {
+        "es": "Terminaste las cinco preguntas. Permanece con tu grupo y sigue las indicaciones del personal.",
+        "en": "You completed all five questions. Stay with your group and follow staff instructions."
       },
       "is_end": true,
       "end_type": "success",
       "feedback": {
         "text": {
-          "es": "¡Liderazgo y responsabilidad demostrados!",
-          "en": "Leadership and responsibility demonstrated!"
+          "es": "Se requieren al menos cuatro respuestas correctas para aprobar este nivel.",
+          "en": "At least four correct answers are required to pass this level."
         },
         "is_correct": true,
-        "protocol_source": "ILC Brigada"
+        "protocol_source": "Progresión educativa"
       }
     }
   ]

@@ -1,63 +1,388 @@
 {
   "id": "sis-02",
-  "version": "1.0",
+  "version": "2.0",
   "type": "earthquake",
   "level": "basic",
   "title": {
-    "es": "Evacuación segura",
+    "es": "Nivel 2: Evacuación segura",
     "en": "Safe Evacuation"
   },
   "description": {
-    "es": "Aprende a desplazarte por escaleras y zonas comunes tras un sismo.",
-    "en": "Learn to navigate stairs and common areas after an earthquake."
+    "es": "Cinco preguntas; se aprueba con al menos cuatro respuestas correctas.",
+    "en": "Five questions; pass with at least four correct answers."
   },
   "start_node": "node_01",
-  "passing_score": 70,
+  "passing_score": 80,
   "max_attempts": 3,
   "nodes": [
     {
       "id": "node_01",
       "narrative": {
-        "es": "Terminó el sismo y estás en un segundo piso. La alarma suena. ¿Por dónde evacuas?",
-        "en": "The earthquake ended and you are on the second floor. The alarm sounds. Where do you evacuate?"
+        "es": "Terminó el sismo y estás en un segundo piso. Suena la alarma. ¿Cómo evacuas?",
+        "en": "The earthquake stopped and you are on the second floor. The alarm sounds. How do you evacuate?"
       },
-      "time_limit_seconds": 15,
+      "time_limit_seconds": 30,
       "default_option_index": 0,
       "options": [
         {
-          "id": "opt_01a",
+          "id": "sis02_q1_1",
           "text": {
-            "es": "Bajar usando la escalera de emergencia por la derecha, tomándote del pasamanos",
-            "en": "Go down the emergency stairs on the right, holding the handrail"
+            "es": "Usar el ascensor para evitar las escaleras llenas de estudiantes"
           },
-          "next_node": "node_end_success",
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No uses el ascensor; sigue la ruta de evacuación indicada por el personal."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis02_q1_2",
+          "text": {
+            "es": "Bajar corriendo por la escalera para salir antes que los demás"
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "Correr por las escaleras eleva el riesgo de caídas; baja con calma y sin empujar."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis02_q1_3",
+          "text": {
+            "es": "Seguir la ruta señalizada y bajar con calma por la escalera indicada, sujetándote del pasamanos.",
+            "en": "Follow the marked route and calmly take the designated stairs, holding the handrail."
+          },
+          "next_node": "node_02",
           "score_change": 10,
           "feedback": {
             "text": {
-              "es": "¡Bien! Usar pasamanos evita caídas graves en las escaleras.",
-              "en": "Good! Using handrails prevents serious falls on stairs."
+              "es": "Correcto. Sigue la ruta del plan local, baja sin correr y utiliza el pasamanos.",
+              "en": "Correct. Follow the local plan route, do not run, and use the handrail."
             },
             "is_correct": true,
             "protocol_source": "Protección Civil"
+          }
+        },
+        {
+          "id": "sis02_q1_4",
+          "text": {
+            "es": "Pedir que un compañero revise el pasillo y confirme si se puede cruzar"
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No delegues la revisión de la ruta a otro estudiante; sigue la ruta indicada por el personal."
+            },
+            "is_correct": false,
+            "protocol_source": "Protocolo escolar de emergencias"
           }
         }
       ]
     },
     {
-      "id": "node_end_success",
+      "id": "node_02",
       "narrative": {
-        "es": "Evacuación completada con éxito. Llegaste a la zona segura exterior.",
-        "en": "Evacuation successfully completed. You reached the safe outdoor zone."
+        "es": "Después de bajar por las escaleras, notas que vuelve a temblar. ¿Qué haces?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "sis02_q2_1",
+          "text": {
+            "es": "Alejarte de fachadas y cables, protegerte y seguir las indicaciones del personal"
+          },
+          "next_node": "node_03",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Alejarte de fachadas y cables, protegerte y seguir las indicaciones del personal"
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis02_q2_2",
+          "text": {
+            "es": "Correr hacia la entrada para comprobar si el edificio se da??"
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Alejarte de fachadas y cables, protegerte y seguir las indicaciones del personal"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis02_q2_3",
+          "text": {
+            "es": "Quedarte bajo un elemento exterior que pueda desprenderse"
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Alejarte de fachadas y cables, protegerte y seguir las indicaciones del personal"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis02_q2_4",
+          "text": {
+            "es": "Volver al interior para buscar un sitio conocido"
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Alejarte de fachadas y cables, protegerte y seguir las indicaciones del personal"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_03",
+      "narrative": {
+        "es": "Una parte de la ruta tiene vidrios en el suelo. ¿Cómo continúa el grupo?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "sis02_q3_1",
+          "text": {
+            "es": "Cruzar rápido para despejar pronto el pasillo"
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Avisar al responsable y seguir una ruta segura alternativa"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis02_q3_2",
+          "text": {
+            "es": "Avisar al responsable y seguir una ruta segura alternativa"
+          },
+          "next_node": "node_04",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Avisar al responsable y seguir una ruta segura alternativa"
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis02_q3_3",
+          "text": {
+            "es": "Pedir a un estudiante que retire los vidrios con las manos"
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Avisar al responsable y seguir una ruta segura alternativa"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis02_q3_4",
+          "text": {
+            "es": "Separarse para buscar salidas por aulas distintas"
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Avisar al responsable y seguir una ruta segura alternativa"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_04",
+      "narrative": {
+        "es": "En las escaleras varias personas intentan adelantar. ¿Qué ayuda a evitar lesiones?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "sis02_q4_1",
+          "text": {
+            "es": "Mantener la fila, no empujar y sujetarse del pasamanos"
+          },
+          "next_node": "node_05",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Mantener la fila, no empujar y sujetarse del pasamanos"
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis02_q4_2",
+          "text": {
+            "es": "Dejar pasar a los más rápidos para despejar la escalera"
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Mantener la fila, no empujar y sujetarse del pasamanos"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis02_q4_3",
+          "text": {
+            "es": "Bajar por el centro de los escalones sin sujetarse"
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Mantener la fila, no empujar y sujetarse del pasamanos"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis02_q4_4",
+          "text": {
+            "es": "Detenerse en el descanso bloqueando el paso"
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Mantener la fila, no empujar y sujetarse del pasamanos"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_05",
+      "narrative": {
+        "es": "Al llegar afuera, un compañero propone regresar por su teléfono. ¿Qué respondes?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "sis02_q5_1",
+          "text": {
+            "es": "Acompañarlo si la entrada parece despejada"
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: No regresar y comunicar la situación al responsable"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis02_q5_2",
+          "text": {
+            "es": "Pedir al docente que te deje entrar solo un momento"
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: No regresar y comunicar la situación al responsable"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis02_q5_3",
+          "text": {
+            "es": "No regresar y comunicar la situación al responsable"
+          },
+          "next_node": "node_end",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. No regresar y comunicar la situación al responsable"
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis02_q5_4",
+          "text": {
+            "es": "Esperar afuera mientras alguien más va por el teléfono"
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: No regresar y comunicar la situación al responsable"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end",
+      "narrative": {
+        "es": "Terminaste las cinco preguntas. Permanece con tu grupo y sigue las indicaciones del personal.",
+        "en": "You completed all five questions. Stay with your group and follow staff instructions."
       },
       "is_end": true,
       "end_type": "success",
       "feedback": {
         "text": {
-          "es": "¡Excelente desempeño!",
-          "en": "Excellent performance!"
+          "es": "Se requieren al menos cuatro respuestas correctas para aprobar este nivel.",
+          "en": "At least four correct answers are required to pass this level."
         },
         "is_correct": true,
-        "protocol_source": "Cruz Roja"
+        "protocol_source": "Progresión educativa"
       }
     }
   ]

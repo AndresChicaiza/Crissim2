@@ -2,6 +2,8 @@
     <string name="app_name">CrisisSim</string>
     <string name="app_subtitle">International Language Center · Yumbo</string>
     <string name="nav_home">Inicio</string>
+    <string name="welcome_header_title">Bienvenida</string>
+    <string name="history_coming_soon">Tu historial de escenarios aparecerá aquí.</string>
     <string name="nav_scenarios">Escenarios</string>
     <string name="nav_history">Historial</string>
     <string name="nav_settings">Ajustes</string>
@@ -90,7 +92,7 @@
     <string name="verdict_incorrect_desc">Durante el movimiento puedes perder el equilibrio, caer o exponerte a objetos que se desprenden.</string>
     <string name="verdict_incorrect_learn">Aún puedes aprender a protegerte.</string>
     <string name="verdict_correct_action">Corregir acción</string>
-    <string name="verdict_error_logged">1 error registrado. La recuperación no borra el intento.</string>
+    <string name="verdict_error_logged">La decisión queda registrada en el intento, incluso sin conexión.</string>
 
     <!-- Pantalla 09: Recuperación del error -->
     <string name="recovery_header_title">Corrige y aprende</string>
@@ -126,8 +128,22 @@
     <!-- Pantalla 13: Resultados -->
     <string name="result_header_title">Tu resultado</string>
     <string name="result_header_subtitle">SIS-01 · Durante el sismo</string>
+    <string name="result_header_subtitle_format">%1$s · %2$s</string>
     <string name="result_badge">Básico · Simulación completada</string>
     <string name="result_main_title">Aprendiste a protegerte.</string>
+    <string name="result_pass_badge">Nivel aprobado</string>
+    <string name="result_fail_badge">Prueba no superada</string>
+    <string name="result_pass_title">¡Nivel superado!</string>
+    <string name="result_fail_title">No superaste este nivel</string>
+    <string name="result_score_meta">Puntaje: %1$d/%2$d · %3$d%%</string>
+    <string name="result_score_meta_not_saved">Puntaje: %1$d/%2$d · %3$d%% · No se guardó</string>
+    <string name="result_time_format">%1$02d:%2$02d</string>
+    <string name="result_attempt_summary">Resumen del intento</string>
+    <string name="result_correct_answers">Correctas: %1$d</string>
+    <string name="result_incorrect_answers">Incorrectas: %1$d</string>
+    <string name="result_failed_card_title">Puedes volver a intentarlo</string>
+    <string name="result_failed_card_desc">Necesitabas al menos 4 respuestas correctas de %1$d; obtuviste %2$d.</string>
+    <string name="result_retry_button_format">Reintentar %1$s</string>
     <string name="result_stat_time">Tiempo</string>
     <string name="result_stat_error">Error</string>
     <string name="result_stat_accuracy">Precisión</string>
@@ -139,6 +155,23 @@
     <string name="result_improvement_desc">Elegiste correr a escaleras durante el movimiento. Completaste la recuperación; el error permanece en el resultado.</string>
     <string name="result_reflect_button">Reflexionar</string>
     <string name="result_retry_button">Reintentar SIS-01</string>
+    <string name="result_dashboard_button">Volver al menú principal</string>
+    <string name="scenario_timeout_choice">Se agotó el tiempo; se registró: %1$s</string>
+    <string name="history_title">Historial de intentos</string>
+    <string name="history_subtitle">Tus pruebas aprobadas y no superadas, guardadas en este dispositivo.</string>
+    <string name="history_loading">Cargando intentos…</string>
+    <string name="history_no_user">Crea o selecciona un perfil para consultar el historial.</string>
+    <string name="history_empty">Todavía no hay pruebas registradas. Al terminar un escenario, aparecerá aquí.</string>
+    <string name="history_attempt_count">%1$d intentos guardados</string>
+    <string name="history_passed">%1$s · Superado</string>
+    <string name="history_failed">%1$s · No superado</string>
+    <string name="history_attempt_summary">%1$s · Correctas %2$d/%3$d · Incorrectas %4$d · Puntaje %5$d%%</string>
+    <string name="history_decision_number">Pregunta %1$d</string>
+    <string name="history_your_answer">Tu respuesta: %1$s</string>
+    <string name="history_answer_correct">Respuesta correcta</string>
+    <string name="history_answer_incorrect">Respuesta incorrecta</string>
+    <string name="history_recommended_answer">Respuesta esperada: %1$s</string>
+    <string name="history_timeout">Se agotó el tiempo; se registró la opción automática.</string>
     <string name="result_footer">Resultado de este escenario, no de los ocho. No equivale a certificación profesional.</string>
 
     <!-- Pantalla 14: Reflexión final -->
@@ -181,6 +214,10 @@
     <string name="home_name_error">Escribe tu nombre para continuar</string>
     <string name="levels_empty">Próximamente: aún no hay escenarios en este nivel.</string>
     <string name="levels_locked_hint">Supera el nivel anterior para desbloquear este escenario.</string>
+    <string name="level_status_available">Disponible</string>
+    <string name="level_status_locked">Bloqueado</string>
+    <string name="level_status_passed">Superado</string>
+    <string name="level_status_failed">No superado</string>
     <string name="scenario_type_fire">Incendio</string>
     <string name="scenario_type_earthquake">Sismo</string>
     <string name="scenario_meta">Aprobar con %1$d %% · Puntaje máximo %2$d · Intentos permitidos %3$d</string>

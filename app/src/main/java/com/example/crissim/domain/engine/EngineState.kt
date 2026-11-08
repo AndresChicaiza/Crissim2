@@ -33,6 +33,7 @@ data class SavedEngineState(
  */
 data class OptionResult(
     val feedback: Feedback?,
+    val selectedOptionText: String,
     val scoreChange: Int,
     val wasTimeout: Boolean,
     val isScenarioEnd: Boolean,

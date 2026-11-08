@@ -1,63 +1,430 @@
 {
   "id": "inc-02",
-  "version": "1.0",
+  "version": "2.0",
   "type": "fire",
-  "level": "basic",
+  "level": "intermediate",
   "title": {
-    "es": "Humo en el pasillo",
-    "en": "Smoke in the Hallway"
+    "es": "Nivel 3: Decisiones ante diferentes tipos de fuego",
+    "en": "Level 3: Fire safety"
   },
   "description": {
-    "es": "Técnicas de desplazamiento seguro en ambientes con baja visibilidad y humo.",
-    "en": "Safe movement techniques in low visibility and smoke environment."
+    "es": "Cinco preguntas; se aprueba con al menos cuatro respuestas correctas.",
+    "en": "Five questions; pass with at least four correct answers."
   },
   "start_node": "node_01",
-  "passing_score": 70,
-  "max_attempts": 3,
+  "passing_score": 80,
+  "max_attempts": 0,
   "nodes": [
     {
       "id": "node_01",
       "narrative": {
-        "es": "El pasillo de salida tiene humo denso acumulándose en el techo. ¿Cómo avanzas?",
-        "en": "The exit hallway has dense smoke accumulating on the ceiling. How do you move forward?"
+        "es": "En el laboratorio del colegio se produce un incendio en un recipiente que contiene aceite. ¿Cuál de las siguientes acciones sería peligrosa?",
+        "en": "En el laboratorio del colegio se produce un incendio en un recipiente que contiene aceite. ¿Cuál de las siguientes acciones sería peligrosa?"
       },
-      "time_limit_seconds": 15,
-      "default_option_index": 0,
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
       "options": [
         {
-          "id": "opt_01a",
+          "id": "fue_11_a",
           "text": {
-            "es": "Agacharte o gatear bajo el humo cubriendo boca y nariz con un paño",
-            "en": "Crouch or crawl under the smoke covering mouth and nose with a cloth"
+            "es": "Utilizar agua directamente sobre el aceite en llamas.",
+            "en": "Utilizar agua directamente sobre el aceite en llamas."
           },
-          "next_node": "node_end_success",
+          "next_node": "node_02",
           "score_change": 10,
           "feedback": {
             "text": {
-              "es": "¡Correcto! El aire limpio permanece más cerca del suelo.",
-              "en": "Correct! Clean air remains closer to the floor."
+              "es": "Correcto. Utilizar agua directamente sobre el aceite en llamas.",
+              "en": "Correcto. Utilizar agua directamente sobre el aceite en llamas."
             },
             "is_correct": true,
-            "protocol_source": "Protección Civil"
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_11_b",
+          "text": {
+            "es": "Alertar al docente y activar el protocolo de emergencia.",
+            "en": "Alertar al docente y activar el protocolo de emergencia."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Utilizar agua directamente sobre el aceite en llamas.",
+              "en": "La respuesta más segura es: Utilizar agua directamente sobre el aceite en llamas."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_11_c",
+          "text": {
+            "es": "Evacuar el área afectada.",
+            "en": "Evacuar el área afectada."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Utilizar agua directamente sobre el aceite en llamas.",
+              "en": "La respuesta más segura es: Utilizar agua directamente sobre el aceite en llamas."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_11_d",
+          "text": {
+            "es": "Solicitar un extintor apropiado a personal capacitado.",
+            "en": "Solicitar un extintor apropiado a personal capacitado."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Utilizar agua directamente sobre el aceite en llamas.",
+              "en": "La respuesta más segura es: Utilizar agua directamente sobre el aceite en llamas."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
           }
         }
       ]
     },
     {
-      "id": "node_end_success",
+      "id": "node_02",
       "narrative": {
-        "es": "Cruzaste la zona de humo de forma segura y llegaste al exterior.",
-        "en": "You safely crossed the smoke area and reached the outside."
+        "es": "¿Cuál es la función principal de un extintor durante un incendio?",
+        "en": "¿Cuál es la función principal de un extintor durante un incendio?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "fue_12_a",
+          "text": {
+            "es": "Reducir la temperatura de toda la habitación.",
+            "en": "Reducir la temperatura de toda la habitación."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Interrumpir el proceso de combustión mediante un agente adecuado al tipo de fuego.",
+              "en": "La respuesta más segura es: Interrumpir el proceso de combustión mediante un agente adecuado al tipo de fuego."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_12_b",
+          "text": {
+            "es": "Eliminar completamente los gases producidos por la combustión.",
+            "en": "Eliminar completamente los gases producidos por la combustión."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Interrumpir el proceso de combustión mediante un agente adecuado al tipo de fuego.",
+              "en": "La respuesta más segura es: Interrumpir el proceso de combustión mediante un agente adecuado al tipo de fuego."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_12_c",
+          "text": {
+            "es": "Interrumpir el proceso de combustión mediante un agente adecuado al tipo de fuego.",
+            "en": "Interrumpir el proceso de combustión mediante un agente adecuado al tipo de fuego."
+          },
+          "next_node": "node_03",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Interrumpir el proceso de combustión mediante un agente adecuado al tipo de fuego.",
+              "en": "Correcto. Interrumpir el proceso de combustión mediante un agente adecuado al tipo de fuego."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_12_d",
+          "text": {
+            "es": "Evitar que se active el sistema de alarma del edificio.",
+            "en": "Evitar que se active el sistema de alarma del edificio."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Interrumpir el proceso de combustión mediante un agente adecuado al tipo de fuego.",
+              "en": "La respuesta más segura es: Interrumpir el proceso de combustión mediante un agente adecuado al tipo de fuego."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_03",
+      "narrative": {
+        "es": "Un incendio pequeño y contenido comienza en una papelera. La alarma está activada, se avisó a emergencias, y un brigadista capacitado tiene el extintor apropiado y una salida libre. ¿Qué debería hacer?",
+        "en": "A small, contained fire starts in a wastebasket. The alarm is active, responders have been notified, and a trained brigade member has the appropriate extinguisher and a clear exit. What should they do?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "fue_13_a",
+          "text": {
+            "es": "Acercarse lo máximo posible y descargar todo el extintor de inmediato.",
+            "en": "Acercarse lo máximo posible y descargar todo el extintor de inmediato."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Utilizar el extintor siguiendo su procedimiento de operación, manteniendo una vía de escape y suspendiendo el intento si no se controla.",
+              "en": "La respuesta más segura es: Utilizar el extintor siguiendo su procedimiento de operación, manteniendo una vía de escape y suspendiendo el intento si no se controla."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / FEMA"
+          }
+        },
+        {
+          "id": "fue_13_b",
+          "text": {
+            "es": "Utilizar el extintor siguiendo su procedimiento de operación, manteniendo una vía de escape y suspendiendo el intento si no se controla.",
+            "en": "Utilizar el extintor siguiendo su procedimiento de operación, manteniendo una vía de escape y suspendiendo el intento si no se controla."
+          },
+          "next_node": "node_04",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Solo si el fuego sigue pequeño, el agente es adecuado y la salida permanece libre, debe usarse siguiendo el procedimiento; si no se controla, hay que retirarse y evacuar.",
+              "en": "Correcto. Utilizar el extintor siguiendo su procedimiento de operación, manteniendo una vía de escape y suspendiendo el intento si no se controla."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / FEMA"
+          }
+        },
+        {
+          "id": "fue_13_c",
+          "text": {
+            "es": "Pedir a los estudiantes que retiren los materiales combustibles mientras él combate el fuego.",
+            "en": "Pedir a los estudiantes que retiren los materiales combustibles mientras él combate el fuego."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Utilizar el extintor siguiendo su procedimiento de operación, manteniendo una vía de escape y suspendiendo el intento si no se controla.",
+              "en": "La respuesta más segura es: Utilizar el extintor siguiendo su procedimiento de operación, manteniendo una vía de escape y suspendiendo el intento si no se controla."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / FEMA"
+          }
+        },
+        {
+          "id": "fue_13_d",
+          "text": {
+            "es": "Cerrar la puerta del aula y utilizar el extintor desde cualquier posición.",
+            "en": "Cerrar la puerta del aula y utilizar el extintor desde cualquier posición."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Utilizar el extintor siguiendo su procedimiento de operación, manteniendo una vía de escape y suspendiendo el intento si no se controla.",
+              "en": "La respuesta más segura es: Utilizar el extintor siguiendo su procedimiento de operación, manteniendo una vía de escape y suspendiendo el intento si no se controla."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_04",
+      "narrative": {
+        "es": "¿Por qué es importante identificar el tipo de fuego antes de seleccionar un extintor?",
+        "en": "¿Por qué es importante identificar el tipo de fuego antes de seleccionar un extintor?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "fue_14_a",
+          "text": {
+            "es": "Porque cada tipo de incendio necesita una cantidad diferente de agua.",
+            "en": "Porque cada tipo de incendio necesita una cantidad diferente de agua."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque utilizar un agente inadecuado puede empeorar el incendio o generar riesgos adicionales.",
+              "en": "La respuesta más segura es: Porque utilizar un agente inadecuado puede empeorar el incendio o generar riesgos adicionales."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_14_b",
+          "text": {
+            "es": "Porque todos los extintores tienen la misma capacidad, pero diferente presentación.",
+            "en": "Porque todos los extintores tienen la misma capacidad, pero diferente presentación."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque utilizar un agente inadecuado puede empeorar el incendio o generar riesgos adicionales.",
+              "en": "La respuesta más segura es: Porque utilizar un agente inadecuado puede empeorar el incendio o generar riesgos adicionales."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_14_c",
+          "text": {
+            "es": "Porque algunos extintores solo funcionan en espacios abiertos.",
+            "en": "Porque algunos extintores solo funcionan en espacios abiertos."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque utilizar un agente inadecuado puede empeorar el incendio o generar riesgos adicionales.",
+              "en": "La respuesta más segura es: Porque utilizar un agente inadecuado puede empeorar el incendio o generar riesgos adicionales."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_14_d",
+          "text": {
+            "es": "Porque utilizar un agente inadecuado puede empeorar el incendio o generar riesgos adicionales.",
+            "en": "Porque utilizar un agente inadecuado puede empeorar el incendio o generar riesgos adicionales."
+          },
+          "next_node": "node_05",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Porque utilizar un agente inadecuado puede empeorar el incendio o generar riesgos adicionales.",
+              "en": "Correcto. Porque utilizar un agente inadecuado puede empeorar el incendio o generar riesgos adicionales."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_05",
+      "narrative": {
+        "es": "Un estudiante observa llamas cerca de un tomacorriente y varios cables conectados. ¿Cuál es la mejor decisión?",
+        "en": "Un estudiante observa llamas cerca de un tomacorriente y varios cables conectados. ¿Cuál es la mejor decisión?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "fue_15_a",
+          "text": {
+            "es": "Evacuar y evitar manipular los componentes eléctricos; informar para que personal autorizado gestione la desconexión si es seguro.",
+            "en": "Evacuar y evitar manipular los componentes eléctricos; informar para que personal autorizado gestione la desconexión si es seguro."
+          },
+          "next_node": "node_end",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Evacuar y evitar manipular los componentes eléctricos; informar para que personal autorizado gestione la desconexión si es seguro.",
+              "en": "Correcto. Evacuar y evitar manipular los componentes eléctricos; informar para que personal autorizado gestione la desconexión si es seguro."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_15_b",
+          "text": {
+            "es": "Desconectar todos los cables rápidamente para eliminar el origen del fuego.",
+            "en": "Desconectar todos los cables rápidamente para eliminar el origen del fuego."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Evacuar y evitar manipular los componentes eléctricos; informar para que personal autorizado gestione la desconexión si es seguro.",
+              "en": "La respuesta más segura es: Evacuar y evitar manipular los componentes eléctricos; informar para que personal autorizado gestione la desconexión si es seguro."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_15_c",
+          "text": {
+            "es": "Aplicar agua en pequeñas cantidades para controlar las llamas.",
+            "en": "Aplicar agua en pequeñas cantidades para controlar las llamas."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Evacuar y evitar manipular los componentes eléctricos; informar para que personal autorizado gestione la desconexión si es seguro.",
+              "en": "La respuesta más segura es: Evacuar y evitar manipular los componentes eléctricos; informar para que personal autorizado gestione la desconexión si es seguro."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_15_d",
+          "text": {
+            "es": "Cubrir el tomacorriente con una tela húmeda para impedir el contacto con el oxígeno.",
+            "en": "Cubrir el tomacorriente con una tela húmeda para impedir el contacto con el oxígeno."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Evacuar y evitar manipular los componentes eléctricos; informar para que personal autorizado gestione la desconexión si es seguro.",
+              "en": "La respuesta más segura es: Evacuar y evitar manipular los componentes eléctricos; informar para que personal autorizado gestione la desconexión si es seguro."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end",
+      "narrative": {
+        "es": "Terminaste las cinco preguntas. Revisa el resultado y los comentarios de cada decisión.",
+        "en": "You completed all five questions. Review the score and feedback for each decision."
       },
       "is_end": true,
       "end_type": "success",
       "feedback": {
         "text": {
-          "es": "¡Técnica de evasión de humo aplicada correctamente!",
-          "en": "Smoke evasion technique applied correctly!"
+          "es": "Para aprobar este nivel necesitas al menos cuatro respuestas correctas de cinco.",
+          "en": "You need at least four correct answers out of five to pass this level."
         },
         "is_correct": true,
-        "protocol_source": "Cruz Roja"
+        "protocol_source": "Progresión educativa"
       }
     }
   ]

@@ -1,18 +1,18 @@
 {
   "id": "sis-03",
-  "version": "1.0",
+  "version": "2.0",
   "type": "earthquake",
   "level": "intermediate",
   "title": {
-    "es": "Persona con movilidad reducida",
+    "es": "Nivel 3: Persona con movilidad reducida",
     "en": "Person with reduced mobility"
   },
   "description": {
-    "es": "Protocolo de asistencia a compañeros con requerimientos especiales durante la evacuación.",
-    "en": "Protocol to assist classmates with special needs during evacuation."
+    "es": "Cinco preguntas; se aprueba con al menos cuatro respuestas correctas.",
+    "en": "Five questions; pass with at least four correct answers."
   },
   "start_node": "node_01",
-  "passing_score": 70,
+  "passing_score": 80,
   "max_attempts": 3,
   "nodes": [
     {
@@ -21,43 +21,370 @@
         "es": "En tu aula hay un compañero en silla de ruedas. Suena la alarma de evacuación. ¿Cómo le asistes?",
         "en": "In your classroom a classmate is in a wheelchair. The evacuation alarm sounds. How do you assist?"
       },
-      "time_limit_seconds": 15,
+      "time_limit_seconds": 30,
       "default_option_index": 0,
       "options": [
         {
-          "id": "opt_01a",
+          "id": "sis03_q1_1",
           "text": {
-            "es": "Avisar al docente/brigadista asignado y acompañarle por la ruta accesible designada",
-            "en": "Notify the assigned teacher/brigadist and accompany along the designated accessible route"
+            "es": "Dejarle en el aula y asumir que el equipo de rescate le encontrar?"
           },
-          "next_node": "node_end_success",
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No dejes a la persona sin comunicar su ubicación. Avisa al responsable, sigue el plan inclusivo del centro y confirma que el equipo recibió el reporte."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis03_q1_2",
+          "text": {
+            "es": "Avisar al docente/brigadista asignado y acompañarle por la ruta accesible designada"
+          },
+          "next_node": "node_02",
           "score_change": 10,
           "feedback": {
             "text": {
-              "es": "¡Correcto! Seguir el protocolo inclusivo garantiza la seguridad de todos.",
-              "en": "Correct! Following the inclusive protocol guarantees safety for everyone."
+              "es": "¡Correcto! Seguir el protocolo inclusivo garantiza la seguridad de todos."
             },
             "is_correct": true,
             "protocol_source": "ILC Inclusión y Brigada"
+          }
+        },
+        {
+          "id": "sis03_q1_3",
+          "text": {
+            "es": "Levantar la silla entre varios sin consultar el plan ni a la persona"
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No improvises maniobras: pueden lesionar a la persona o al equipo. Consulta el plan de asistencia y coordina con personal capacitado y la persona afectada."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis03_q1_4",
+          "text": {
+            "es": "Elegir por la persona para acelerar la evacuación"
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No improvises ni reportes información sin confirmar. Sigue el plan de emergencia y comunica los datos observados."
+            },
+            "is_correct": false,
+            "protocol_source": "Protocolo escolar de emergencias"
           }
         }
       ]
     },
     {
-      "id": "node_end_success",
+      "id": "node_02",
       "narrative": {
-        "es": "Evacuación inclusiva y segura completada.",
-        "en": "Inclusive and safe evacuation completed."
+        "es": "La ruta accesible está bloqueada por objetos. ¿Qué haces?",
+        "en": "La ruta accesible está bloqueada por objetos. ¿Qué haces?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "sis03_q2_1",
+          "text": {
+            "es": "Mover la silla por encima de los objetos sin consultar"
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Acordar con la persona y el responsable una ruta accesible alternativa"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis03_q2_2",
+          "text": {
+            "es": "Acordar con la persona y el responsable una ruta accesible alternativa"
+          },
+          "next_node": "node_03",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Acordar con la persona y el responsable una ruta accesible alternativa"
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis03_q2_3",
+          "text": {
+            "es": "Separar al compañero del grupo y dejarlo esperando"
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Acordar con la persona y el responsable una ruta accesible alternativa"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis03_q2_4",
+          "text": {
+            "es": "Cargar a la persona por las escaleras entre estudiantes"
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Acordar con la persona y el responsable una ruta accesible alternativa"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_03",
+      "narrative": {
+        "es": "La persona indica que necesita su equipo de movilidad. ¿Cómo respondes?",
+        "en": "La persona indica que necesita su equipo de movilidad. ¿Cómo respondes?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "sis03_q3_1",
+          "text": {
+            "es": "Seguir el plan de asistencia y preguntarle cómo apoyar sin retrasar la salida segura"
+          },
+          "next_node": "node_04",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Seguir el plan de asistencia y preguntarle cómo apoyar sin retrasar la salida segura"
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis03_q3_2",
+          "text": {
+            "es": "Tomar el equipo y manipularlo sin preguntar"
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Seguir el plan de asistencia y preguntarle cómo apoyar sin retrasar la salida segura"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis03_q3_3",
+          "text": {
+            "es": "Dejar el equipo porque el conteo es más importante"
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Seguir el plan de asistencia y preguntarle cómo apoyar sin retrasar la salida segura"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis03_q3_4",
+          "text": {
+            "es": "Pedirle que avance sin él para mantener el ritmo"
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Seguir el plan de asistencia y preguntarle cómo apoyar sin retrasar la salida segura"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_04",
+      "narrative": {
+        "es": "Una escalera es la única ruta visible y no sabes si es adecuada para asistirle. ¿Qué haces?",
+        "en": "Una escalera es la única ruta visible y no sabes si es adecuada para asistirle. ¿Qué haces?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "sis03_q4_1",
+          "text": {
+            "es": "Intentar bajarle entre varias personas cuanto antes"
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Detenerse en un lugar protegido, avisar al equipo entrenado y seguir el plan del centro"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis03_q4_2",
+          "text": {
+            "es": "Pedirle que se transfiera a una silla cualquiera"
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Detenerse en un lugar protegido, avisar al equipo entrenado y seguir el plan del centro"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis03_q4_3",
+          "text": {
+            "es": "Detenerse en un lugar protegido, avisar al equipo entrenado y seguir el plan del centro"
+          },
+          "next_node": "node_05",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Detenerse en un lugar protegido, avisar al equipo entrenado y seguir el plan del centro"
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis03_q4_4",
+          "text": {
+            "es": "Separarte para buscar una ruta por tu cuenta"
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La opción más segura es: Detenerse en un lugar protegido, avisar al equipo entrenado y seguir el plan del centro"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_05",
+      "narrative": {
+        "es": "La persona que acompañaste llega al punto de encuentro. ¿Qué información comunicas al responsable?",
+        "en": "En el punto de encuentro, ¿qué dato ayuda al equipo a confirmar la asistencia?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "sis03_q5_1",
+          "text": {
+            "es": "Solo el nombre del curso"
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "Comunica al responsable la situación de la persona y las necesidades de asistencia pertinentes; no basta con reportar el curso."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis03_q5_2",
+          "text": {
+            "es": "Que el grupo está completo aunque no se haya contado"
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "Comunica al responsable la situación de la persona y las necesidades de asistencia pertinentes; no basta con reportar el curso."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis03_q5_3",
+          "text": {
+            "es": "Confirmar que llegó y comunicar si necesita apoyo o atención adicional, siguiendo el plan de asistencia."
+          },
+          "next_node": "node_end",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Confirma que la persona está a salvo y comunica las necesidades de asistencia pertinentes."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis03_q5_4",
+          "text": {
+            "es": "Una foto del grupo enviada a familiares"
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "Comunica al responsable la situación de la persona y las necesidades de asistencia pertinentes; no basta con reportar el curso."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end",
+      "narrative": {
+        "es": "Terminaste las cinco preguntas. Permanece con tu grupo y sigue las indicaciones del personal.",
+        "en": "You completed all five questions. Stay with your group and follow staff instructions."
       },
       "is_end": true,
       "end_type": "success",
       "feedback": {
         "text": {
-          "es": "¡Excelente trabajo en equipo!",
-          "en": "Great teamwork!"
+          "es": "Se requieren al menos cuatro respuestas correctas para aprobar este nivel.",
+          "en": "At least four correct answers are required to pass this level."
         },
         "is_correct": true,
-        "protocol_source": "Cruz Roja"
+        "protocol_source": "Progresión educativa"
       }
     }
   ]

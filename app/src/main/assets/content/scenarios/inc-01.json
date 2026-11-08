@@ -1,63 +1,430 @@
 {
   "id": "inc-01",
-  "version": "1.0",
+  "version": "2.0",
   "type": "fire",
   "level": "basic",
   "title": {
-    "es": "Alerta de incendio",
-    "en": "Fire Alert"
+    "es": "Nivel 2: Actuación inicial ante el fuego",
+    "en": "Level 2: Fire safety"
   },
   "description": {
-    "es": "Reacción rápida ante el sonido de la alarma de incendios en el colegio.",
-    "en": "Quick reaction to the fire alarm sound at school."
+    "es": "Cinco preguntas; se aprueba con al menos cuatro respuestas correctas.",
+    "en": "Five questions; pass with at least four correct answers."
   },
   "start_node": "node_01",
-  "passing_score": 70,
-  "max_attempts": 3,
+  "passing_score": 80,
+  "max_attempts": 0,
   "nodes": [
     {
       "id": "node_01",
       "narrative": {
-        "es": "Suena la alarma continua de incendio. Hueles a humo ligero en el corredor. ¿Qué haces?",
-        "en": "The continuous fire alarm sounds. You smell light smoke in the hallway. What do you do?"
+        "es": "Un estudiante observa que un equipo eléctrico comienza a producir llamas. ¿Qué debe hacer?",
+        "en": "Un estudiante observa que un equipo eléctrico comienza a producir llamas. ¿Qué debe hacer?"
       },
-      "time_limit_seconds": 15,
+      "time_limit_seconds": 30,
       "default_option_index": 0,
       "options": [
         {
-          "id": "opt_01a",
+          "id": "fue_06_a",
           "text": {
-            "es": "Dejar tus pertenencias, guardar la calma y dirigirte de inmediato a la salida",
-            "en": "Leave your belongings, stay calm, and head immediately to the exit"
+            "es": "Arrojarle agua para reducir rápidamente la temperatura.",
+            "en": "Arrojarle agua para reducir rápidamente la temperatura."
           },
-          "next_node": "node_end_success",
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Alertar, mantenerse alejado y solicitar la intervención de personal capacitado.",
+              "en": "La respuesta más segura es: Alertar, mantenerse alejado y solicitar la intervención de personal capacitado."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_06_b",
+          "text": {
+            "es": "Desconectar el equipo sujetando directamente el cable afectado.",
+            "en": "Desconectar el equipo sujetando directamente el cable afectado."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Alertar, mantenerse alejado y solicitar la intervención de personal capacitado.",
+              "en": "La respuesta más segura es: Alertar, mantenerse alejado y solicitar la intervención de personal capacitado."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_06_c",
+          "text": {
+            "es": "Cubrirlo con papel para evitar que las llamas se propaguen.",
+            "en": "Cubrirlo con papel para evitar que las llamas se propaguen."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Alertar, mantenerse alejado y solicitar la intervención de personal capacitado.",
+              "en": "La respuesta más segura es: Alertar, mantenerse alejado y solicitar la intervención de personal capacitado."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_06_d",
+          "text": {
+            "es": "Alertar, mantenerse alejado y solicitar la intervención de personal capacitado.",
+            "en": "Alertar, mantenerse alejado y solicitar la intervención de personal capacitado."
+          },
+          "next_node": "node_02",
           "score_change": 10,
           "feedback": {
             "text": {
-              "es": "¡Correcto! La vida es la prioridad, los objetos personales se quedan.",
-              "en": "Correct! Life is the priority, personal belongings stay behind."
+              "es": "Correcto. Alertar, mantenerse alejado y solicitar la intervención de personal capacitado.",
+              "en": "Correcto. Alertar, mantenerse alejado y solicitar la intervención de personal capacitado."
             },
             "is_correct": true,
-            "protocol_source": "Cruz Roja / Protección Civil"
+            "protocol_source": "USFA / Ready.gov / FEMA"
           }
         }
       ]
     },
     {
-      "id": "node_end_success",
+      "id": "node_02",
       "narrative": {
-        "es": "Evacuación por alerta de incendio exitosa.",
-        "en": "Successful fire alert evacuation."
+        "es": "¿Por qué no se debe utilizar agua directamente sobre un incendio de origen eléctrico mientras el equipo esté energizado?",
+        "en": "¿Por qué no se debe utilizar agua directamente sobre un incendio de origen eléctrico mientras el equipo esté energizado?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "fue_07_a",
+          "text": {
+            "es": "Porque el agua puede conducir electricidad y provocar una descarga.",
+            "en": "Porque el agua puede conducir electricidad y provocar una descarga."
+          },
+          "next_node": "node_03",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Porque el agua puede conducir electricidad y provocar una descarga.",
+              "en": "Correcto. Porque el agua puede conducir electricidad y provocar una descarga."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_07_b",
+          "text": {
+            "es": "Porque el agua aumenta la cantidad de oxígeno disponible.",
+            "en": "Porque el agua aumenta la cantidad de oxígeno disponible."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque el agua puede conducir electricidad y provocar una descarga.",
+              "en": "La respuesta más segura es: Porque el agua puede conducir electricidad y provocar una descarga."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_07_c",
+          "text": {
+            "es": "Porque el agua transforma automáticamente el fuego eléctrico en fuego químico.",
+            "en": "Porque el agua transforma automáticamente el fuego eléctrico en fuego químico."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque el agua puede conducir electricidad y provocar una descarga.",
+              "en": "La respuesta más segura es: Porque el agua puede conducir electricidad y provocar una descarga."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_07_d",
+          "text": {
+            "es": "Porque el agua únicamente funciona cuando el incendio está completamente desarrollado.",
+            "en": "Porque el agua únicamente funciona cuando el incendio está completamente desarrollado."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque el agua puede conducir electricidad y provocar una descarga.",
+              "en": "La respuesta más segura es: Porque el agua puede conducir electricidad y provocar una descarga."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_03",
+      "narrative": {
+        "es": "Si un incendio comienza a extenderse por el aula y las llamas aumentan rápidamente, ¿qué debería hacer el estudiante?",
+        "en": "Si un incendio comienza a extenderse por el aula y las llamas aumentan rápidamente, ¿qué debería hacer el estudiante?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "fue_08_a",
+          "text": {
+            "es": "Buscar un extintor y probar diferentes formas de utilizarlo.",
+            "en": "Buscar un extintor y probar diferentes formas de utilizarlo."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Evacuar inmediatamente y dejar el control del incendio a los equipos capacitados.",
+              "en": "La respuesta más segura es: Evacuar inmediatamente y dejar el control del incendio a los equipos capacitados."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_08_b",
+          "text": {
+            "es": "Intentar retirar los objetos cercanos para reducir el combustible.",
+            "en": "Intentar retirar los objetos cercanos para reducir el combustible."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Evacuar inmediatamente y dejar el control del incendio a los equipos capacitados.",
+              "en": "La respuesta más segura es: Evacuar inmediatamente y dejar el control del incendio a los equipos capacitados."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_08_c",
+          "text": {
+            "es": "Evacuar inmediatamente y dejar el control del incendio a los equipos capacitados.",
+            "en": "Evacuar inmediatamente y dejar el control del incendio a los equipos capacitados."
+          },
+          "next_node": "node_04",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Evacuar inmediatamente y dejar el control del incendio a los equipos capacitados.",
+              "en": "Correcto. Evacuar inmediatamente y dejar el control del incendio a los equipos capacitados."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_08_d",
+          "text": {
+            "es": "Cerrar las ventanas y permanecer en el aula para evitar corrientes de aire.",
+            "en": "Cerrar las ventanas y permanecer en el aula para evitar corrientes de aire."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Evacuar inmediatamente y dejar el control del incendio a los equipos capacitados.",
+              "en": "La respuesta más segura es: Evacuar inmediatamente y dejar el control del incendio a los equipos capacitados."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_04",
+      "narrative": {
+        "es": "Durante una evacuación por incendio, ¿cómo debería comportarse un grupo de estudiantes?",
+        "en": "Durante una evacuación por incendio, ¿cómo debería comportarse un grupo de estudiantes?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "fue_09_a",
+          "text": {
+            "es": "Correr individualmente para llegar primero al punto de encuentro.",
+            "en": "Correr individualmente para llegar primero al punto de encuentro."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Mantener la calma, caminar sin empujar y seguir las indicaciones del responsable.",
+              "en": "La respuesta más segura es: Mantener la calma, caminar sin empujar y seguir las indicaciones del responsable."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_09_b",
+          "text": {
+            "es": "Mantener la calma, caminar sin empujar y seguir las indicaciones del responsable.",
+            "en": "Mantener la calma, caminar sin empujar y seguir las indicaciones del responsable."
+          },
+          "next_node": "node_05",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Mantener la calma, caminar sin empujar y seguir las indicaciones del responsable.",
+              "en": "Correcto. Mantener la calma, caminar sin empujar y seguir las indicaciones del responsable."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_09_c",
+          "text": {
+            "es": "Esperar a que todos los estudiantes estén preparados antes de salir.",
+            "en": "Esperar a que todos los estudiantes estén preparados antes de salir."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Mantener la calma, caminar sin empujar y seguir las indicaciones del responsable.",
+              "en": "La respuesta más segura es: Mantener la calma, caminar sin empujar y seguir las indicaciones del responsable."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_09_d",
+          "text": {
+            "es": "Avanzar en silencio sin informar si alguien necesita ayuda.",
+            "en": "Avanzar en silencio sin informar si alguien necesita ayuda."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Mantener la calma, caminar sin empujar y seguir las indicaciones del responsable.",
+              "en": "La respuesta más segura es: Mantener la calma, caminar sin empujar y seguir las indicaciones del responsable."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_05",
+      "narrative": {
+        "es": "¿Qué número puede utilizarse en Colombia para reportar una emergencia por incendio?",
+        "en": "¿Qué número puede utilizarse en Colombia para reportar una emergencia por incendio?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "fue_10_a",
+          "text": {
+            "es": "112.",
+            "en": "112."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: 123.",
+              "en": "La respuesta más segura es: 123."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_10_b",
+          "text": {
+            "es": "911.",
+            "en": "911."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: 123.",
+              "en": "La respuesta más segura es: 123."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_10_c",
+          "text": {
+            "es": "118.",
+            "en": "118."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: 123.",
+              "en": "La respuesta más segura es: 123."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_10_d",
+          "text": {
+            "es": "123.",
+            "en": "123."
+          },
+          "next_node": "node_end",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. 123.",
+              "en": "Correcto. 123."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end",
+      "narrative": {
+        "es": "Terminaste las cinco preguntas. Revisa el resultado y los comentarios de cada decisión.",
+        "en": "You completed all five questions. Review the score and feedback for each decision."
       },
       "is_end": true,
       "end_type": "success",
       "feedback": {
         "text": {
-          "es": "¡Excelente reacción!",
-          "en": "Excellent reaction!"
+          "es": "Para aprobar este nivel necesitas al menos cuatro respuestas correctas de cinco.",
+          "en": "You need at least four correct answers out of five to pass this level."
         },
         "is_correct": true,
-        "protocol_source": "Cruz Roja"
+        "protocol_source": "Progresión educativa"
       }
     }
   ]

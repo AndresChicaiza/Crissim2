@@ -55,7 +55,8 @@ data class Scenario(
  */
 enum class ScenarioType {
     EARTHQUAKE,  // Sismo
-    FIRE         // Incendio
+    FIRE,        // Incendio
+    SMOKE        // Humo
 }
 
 /**

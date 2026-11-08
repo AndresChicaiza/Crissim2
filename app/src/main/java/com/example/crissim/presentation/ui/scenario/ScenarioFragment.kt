@@ -17,6 +17,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import com.example.crissim.R
 import com.example.crissim.databinding.FragmentScenarioBinding
 import com.example.crissim.databinding.ItemOptionBinding
@@ -60,14 +61,14 @@ class ScenarioFragment : Fragment() {
         observeViewModel()
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
         viewModel.resumeTimer()
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun onPause() {
         viewModel.pauseTimer()
+        super.onPause()
     }
 
     override fun onDestroyView() {
@@ -114,10 +115,30 @@ class ScenarioFragment : Fragment() {
             is ScenarioUiState.Question -> renderQuestion(state.node)
             is ScenarioUiState.Answered -> renderAnswer(state.answer)
             is ScenarioUiState.Finished -> {
-                findNavController().navigate(
-                    R.id.scenarioResultFragment,
-                    bundleOf(ARG_SCENARIO_ID to scenarioId)
-                )
+                val navController = findNavController()
+                if (navController.currentDestination?.id == R.id.scenarioFragment) {
+                    val result = state.result
+                    val correctCount = result.score / 10
+                    navController.navigate(
+                        R.id.scenarioResultFragment,
+                        bundleOf(
+                            ARG_SCENARIO_ID to scenarioId,
+                            ScenarioResultFragment.ARG_SCENARIO_TITLE to viewModel.title.value,
+                            ScenarioResultFragment.ARG_RESULT_PASSED to result.isPassed,
+                            ScenarioResultFragment.ARG_RESULT_CORRECT_COUNT to correctCount,
+                            ScenarioResultFragment.ARG_RESULT_TOTAL_COUNT to result.decisionsCount,
+                            ScenarioResultFragment.ARG_RESULT_PERCENT to result.percent,
+                            ScenarioResultFragment.ARG_RESULT_SCORE to result.score,
+                            ScenarioResultFragment.ARG_RESULT_MAX_SCORE to result.maxScore,
+                            ScenarioResultFragment.ARG_RESULT_DURATION to result.durationSeconds,
+                            ScenarioResultFragment.ARG_RESULT_SAVED to result.saved
+                        ),
+                        navOptions {
+                            popUpTo(R.id.scenarioFragment) { inclusive = true }
+                            launchSingleTop = true
+                        }
+                    )
+                }
             }
         }
     }
@@ -128,7 +149,7 @@ class ScenarioFragment : Fragment() {
     }
 
     private fun renderQuestion(node: NodeUi) {
-        binding.tvStep.text = "${scenarioId.uppercase()} · Decisión ${node.step} de 5"
+        binding.tvStep.text = "${scenarioId.uppercase()} · Decisión ${node.step} de ${node.questionCount}"
         binding.tvNarrative.text = node.narrative
         binding.optionsContainer.removeAllViews()
         node.options.forEach { option ->
@@ -153,21 +174,20 @@ class ScenarioFragment : Fragment() {
             binding.tvVerdict.text = getString(R.string.verdict_correct_title)
             binding.tvVerdict.setTextColor(Color.parseColor("#176343"))
 
-            binding.tvChoiceMade.isVisible = false
+            binding.tvChoiceMade.isVisible = answer.wasTimeout
+            if (answer.wasTimeout) {
+                binding.tvChoiceMade.text = getString(
+                    R.string.scenario_timeout_choice,
+                    answer.selectedOptionText
+                )
+            }
             binding.tvFeedbackText.text = feedback?.text.orEmpty().ifBlank { getString(R.string.verdict_correct_desc) }
             binding.tvFeedbackNext.text = getString(R.string.verdict_correct_next)
             binding.tvFeedbackCaption.text = getString(R.string.verdict_timer_paused)
 
             binding.btnContinue.text = getString(if (answer.isLast) R.string.scenario_see_result else R.string.scenario_continue)
             binding.btnContinue.setOnClickListener {
-                if (answer.isLast) {
-                    findNavController().navigate(
-                        R.id.scenarioResultFragment,
-                        bundleOf(ARG_SCENARIO_ID to scenarioId)
-                    )
-                } else {
-                    viewModel.continueAfterAnswer()
-                }
+                viewModel.continueAfterAnswer()
             }
         } else {
             binding.groupAnswered.strokeColor = Color.parseColor("#C5221F")
@@ -180,18 +200,22 @@ class ScenarioFragment : Fragment() {
             binding.tvVerdict.setTextColor(Color.parseColor("#C5221F"))
 
             binding.tvChoiceMade.isVisible = true
-            binding.tvChoiceMade.text = getString(R.string.verdict_incorrect_choice)
+            binding.tvChoiceMade.text = if (answer.wasTimeout) {
+                getString(R.string.scenario_timeout_choice, answer.selectedOptionText)
+            } else {
+                answer.selectedOptionText
+            }
 
             binding.tvFeedbackText.text = feedback?.text.orEmpty().ifBlank { getString(R.string.verdict_incorrect_desc) }
             binding.tvFeedbackNext.text = getString(R.string.verdict_incorrect_learn)
             binding.tvFeedbackCaption.text = getString(R.string.verdict_error_logged)
 
-            binding.btnContinue.text = getString(R.string.verdict_correct_action)
+            binding.btnContinue.text = getString(
+                if (answer.isLast) R.string.scenario_see_result else R.string.scenario_continue
+            )
             binding.btnContinue.setOnClickListener {
-                findNavController().navigate(
-                    R.id.scenarioRecoveryFragment,
-                    bundleOf(ARG_SCENARIO_ID to scenarioId)
-                )
+                // Keep the same attempt alive; it is saved with every decision at scenario end.
+                viewModel.continueAfterAnswer()
             }
         }
     }

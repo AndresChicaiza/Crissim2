@@ -89,20 +89,28 @@ class LevelsFragment : Fragment() {
             val allScenarios = state.sections.flatMap { it.scenarios }
             val sismos = allScenarios.filter { it.type == ScenarioType.EARTHQUAKE }
             val incendios = allScenarios.filter { it.type == ScenarioType.FIRE }
+            val humo = allScenarios.filter { it.type == ScenarioType.SMOKE }
 
-            renderScenarios(binding.containerSismos, sismos)
+            renderScenarios(binding.containerHumo, humo)
             renderScenarios(binding.containerIncendios, incendios)
+            renderScenarios(binding.containerSismos, sismos)
         }
     }
 
     private fun renderScenarios(container: ViewGroup, items: List<ScenarioItemUi>) {
         container.removeAllViews()
-        items.forEach { item ->
+        val orderedItems = items.sortedBy { progressionOrder(it.id) }
+        orderedItems.forEachIndexed { index, item ->
             val cardBinding = ItemScenarioCardBinding.inflate(layoutInflater, container, false)
 
             val code = item.id.uppercase()
-            val isUnlocked = !item.id.contains("03") && !item.id.contains("04") // Nivel 3 y 4 simulados como bloqueados
-            val statusText = if (isUnlocked) "Disponible" else "Bloqueado"
+            val isUnlocked = index == 0 || orderedItems.take(index).all { it.isPassed }
+            val statusText = when {
+                item.isPassed -> getString(R.string.level_status_passed)
+                item.attemptsUsed > 0 && isUnlocked -> getString(R.string.level_status_failed)
+                isUnlocked -> getString(R.string.level_status_available)
+                else -> getString(R.string.level_status_locked)
+            }
 
             cardBinding.tvScenarioCodeStatus.text = "$code · $statusText"
             cardBinding.tvScenarioTitle.text = item.title
@@ -130,19 +138,23 @@ class LevelsFragment : Fragment() {
     }
 
     private fun levelLabel(item: ScenarioItemUi): String {
-        return when {
-            item.id.contains("01") || item.id.contains("02") -> "Básico"
-            item.id.contains("03") -> "Intermedio"
-            else -> "Avanzado"
-        }
+        return "Nivel ${progressionOrder(item.id)}"
     }
 
     private fun estimatedTime(item: ScenarioItemUi): String {
+        val seconds = item.questionCount * 30
+        val minutes = (seconds + 59) / 60
+        return "${item.questionCount} preguntas · $minutes min"
+    }
+
+    private fun progressionOrder(id: String): Int {
+        val numericSuffix = id.substringAfterLast('-').toIntOrNull()
         return when {
-            item.id.contains("01") -> "2 min estimados"
-            item.id.contains("02") -> "3 min estimados"
-            item.id.contains("03") -> "4 min estimados"
-            else -> "3 min estimados"
+            id.startsWith("sis-") -> numericSuffix ?: Int.MAX_VALUE
+            id.startsWith("hum-") -> numericSuffix ?: Int.MAX_VALUE
+            id == "fire-basic-01" -> 1
+            id.startsWith("inc-") -> (numericSuffix ?: Int.MAX_VALUE) + 1
+            else -> Int.MAX_VALUE
         }
     }
 }

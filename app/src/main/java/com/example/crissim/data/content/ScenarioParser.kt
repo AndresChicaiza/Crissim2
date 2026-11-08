@@ -107,6 +107,7 @@ object ScenarioParser {
         return when (type.lowercase()) {
             "earthquake", "sismo" -> ScenarioType.EARTHQUAKE
             "fire", "incendio" -> ScenarioType.FIRE
+            "smoke", "humo" -> ScenarioType.SMOKE
             else -> ScenarioType.FIRE
         }
     }

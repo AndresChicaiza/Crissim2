@@ -1,0 +1,386 @@
+{
+  "id": "sis-05",
+  "version": "2.0",
+  "type": "earthquake",
+  "level": "advanced",
+  "title": {
+    "es": "Nivel 5: Réplicas y situaciónes críticas",
+    "en": "Level 5: Aftershocks and critical situations"
+  },
+  "description": {
+    "es": "Cinco preguntas avanzadas; se aprueba con al menos cuatro respuestas correctas.",
+    "en": "Five advanced questions; pass with at least four correct answers."
+  },
+  "start_node": "node_01",
+  "passing_score": 80,
+  "max_attempts": 3,
+  "nodes": [
+    {
+      "id": "node_01",
+      "narrative": {
+        "es": "Una réplica comienza mientras el grupo está reunido afuera. ¿Qué haces?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "sis05_q1_1",
+          "text": {
+            "es": "Alejarte de fachadas, postes y cables; protegerte y atender instrucciones"
+          },
+          "next_node": "node_02",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Alejarte de fachadas, postes y cables; protegerte y atender instrucciones"
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis05_q1_2",
+          "text": {
+            "es": "Volver a entrar al edificio para buscar una mesa"
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "Durante réplicas, mantente lejos de elementos que puedan caer y sigue las instrucciones. La respuesta adecuada es: Alejarte de fachadas, postes y cables; protegerte y atender instrucciones"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis05_q1_3",
+          "text": {
+            "es": "Ubicarte bajo un balcón para evitar la lluvia de polvo"
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "Durante réplicas, mantente lejos de elementos que puedan caer y sigue las instrucciones. La respuesta adecuada es: Alejarte de fachadas, postes y cables; protegerte y atender instrucciones"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis05_q1_4",
+          "text": {
+            "es": "Correr hacia la calle sin mirar el entorno"
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "Durante réplicas, mantente lejos de elementos que puedan caer y sigue las instrucciones. La respuesta adecuada es: Alejarte de fachadas, postes y cables; protegerte y atender instrucciones"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_02",
+      "narrative": {
+        "es": "Ves cables caídos cerca de la ruta al punto de encuentro. ¿Qué haces?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "sis05_q2_1",
+          "text": {
+            "es": "Apartarlos con un objeto seco para despejar el paso"
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No toques cables caídos; mantén distancia y reporta el peligro. La respuesta adecuada es: Mantener distancia, alertar al grupo y reportarlo a emergencias"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis05_q2_2",
+          "text": {
+            "es": "Mantener distancia, alertar al grupo y reportarlo a emergencias"
+          },
+          "next_node": "node_03",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Mantener distancia, alertar al grupo y reportarlo a emergencias"
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis05_q2_3",
+          "text": {
+            "es": "Pasar por encima si nadie los está tocando"
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No toques cables caídos; mantén distancia y reporta el peligro. La respuesta adecuada es: Mantener distancia, alertar al grupo y reportarlo a emergencias"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis05_q2_4",
+          "text": {
+            "es": "Pedir a un compañero que revise si tienen corriente"
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No toques cables caídos; mantén distancia y reporta el peligro. La respuesta adecuada es: Mantener distancia, alertar al grupo y reportarlo a emergencias"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_03",
+      "narrative": {
+        "es": "Una persona quedó dentro y no puedes comunicarte con ella desde una zona segura. ¿Qué haces?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "sis05_q3_1",
+          "text": {
+            "es": "Entrar acompañado para buscarla rápidamente"
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No ingreses a una zona dañada; entrega a los equipos la ubicación conocida. La respuesta adecuada es: Informar a los equipos de emergencia su última ubicación conocida"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis05_q3_2",
+          "text": {
+            "es": "Esperar sin avisar porque los equipos ya deben saberlo"
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No ingreses a una zona dañada; entrega a los equipos la ubicación conocida. La respuesta adecuada es: Informar a los equipos de emergencia su última ubicación conocida"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis05_q3_3",
+          "text": {
+            "es": "Informar a los equipos de emergencia su última ubicación conocida"
+          },
+          "next_node": "node_04",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Informar a los equipos de emergencia su última ubicación conocida"
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis05_q3_4",
+          "text": {
+            "es": "Romper una ventana cercana para llamar su atención"
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No ingreses a una zona dañada; entrega a los equipos la ubicación conocida. La respuesta adecuada es: Informar a los equipos de emergencia su última ubicación conocida"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_04",
+      "narrative": {
+        "es": "Un compañero está lesionado en el punto de encuentro. ¿Cuál es la prioridad?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "sis05_q4_1",
+          "text": {
+            "es": "Moverlo de inmediato aunque no haya peligro inminente"
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "Solicita atención y no muevas a la persona salvo que exista un peligro inmediato. La respuesta adecuada es: Avisar al responsable y solicitar asistencia; evitar moverlo salvo peligro inmediato"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis05_q4_2",
+          "text": {
+            "es": "Avisar al responsable y solicitar asistencia; evitar moverlo salvo peligro inmediato"
+          },
+          "next_node": "node_05",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Avisar al responsable y solicitar asistencia; evitar moverlo salvo peligro inmediato"
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis05_q4_3",
+          "text": {
+            "es": "Darle medicamentos de otra persona"
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "Solicita atención y no muevas a la persona salvo que exista un peligro inmediato. La respuesta adecuada es: Avisar al responsable y solicitar asistencia; evitar moverlo salvo peligro inmediato"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis05_q4_4",
+          "text": {
+            "es": "Dejarlo descansar y reportarlo al final del conteo"
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "Solicita atención y no muevas a la persona salvo que exista un peligro inmediato. La respuesta adecuada es: Avisar al responsable y solicitar asistencia; evitar moverlo salvo peligro inmediato"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_05",
+      "narrative": {
+        "es": "Las autoridades todavía inspeccionan el edificio. ¿Cuándo puede regresar el grupo?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "sis05_q5_1",
+          "text": {
+            "es": "Cuando deje de sentirse el movimiento"
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "El reingreso requiere autorización expresa de las autoridades. La respuesta adecuada es: Después de que lo autoricen expresamente las autoridades competentes"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis05_q5_2",
+          "text": {
+            "es": "Cuando el docente vea que no hay daños desde afuera"
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "El reingreso requiere autorización expresa de las autoridades. La respuesta adecuada es: Después de que lo autoricen expresamente las autoridades competentes"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis05_q5_3",
+          "text": {
+            "es": "Después de que lo autoricen expresamente las autoridades competentes"
+          },
+          "next_node": "node_end",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Después de que lo autoricen expresamente las autoridades competentes"
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "sis05_q5_4",
+          "text": {
+            "es": "Cuando alguien del grupo entre primero a revisar"
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "El reingreso requiere autorización expresa de las autoridades. La respuesta adecuada es: Después de que lo autoricen expresamente las autoridades competentes"
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end",
+      "narrative": {
+        "es": "Terminaste las cinco preguntas. Permanece en el punto de encuentro hasta recibir instrucciones.",
+        "en": "You completed all five questions. Stay at the meeting point until you receive instructions."
+      },
+      "is_end": true,
+      "end_type": "success",
+      "feedback": {
+        "text": {
+          "es": "Se requieren al menos cuatro respuestas correctas para aprobar este nivel.",
+          "en": "At least four correct answers are required to pass this level."
+        },
+        "is_correct": true,
+        "protocol_source": "Progresión educativa"
+      }
+    }
+  ]
+}

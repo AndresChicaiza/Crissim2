@@ -33,6 +33,7 @@ data class OptionUi(val id: String, val text: String)
 
 data class NodeUi(
     val step: Int,
+    val questionCount: Int,
     val narrative: String,
     val options: List<OptionUi>,
     val timeLimitSeconds: Int?
@@ -46,6 +47,7 @@ data class FeedbackUi(
 
 data class AnswerUi(
     val feedback: FeedbackUi?,
+    val selectedOptionText: String,
     val scoreChange: Int,
     val wasTimeout: Boolean,
     val isLast: Boolean
@@ -108,6 +110,7 @@ class ScenarioViewModel(
     private var userId: Long = 0L
     private var pendingResult: OptionResult? = null
     private var finalFeedback: Feedback? = null
+    private var isScenarioScreenActive = false
 
     init {
         load()
@@ -136,16 +139,29 @@ class ScenarioViewModel(
     }
 
     fun pauseTimer() {
+        isScenarioScreenActive = false
         timer.pause()
     }
 
     fun resumeTimer() {
+        isScenarioScreenActive = true
         if (_state.value is ScenarioUiState.Question) {
-            timer.resume { onTimeout() }
+            val remaining = timer.remainingSeconds.value
+            if (timer.isRunning.value && remaining > 0) {
+                timer.resume { onTimeout() }
+            } else {
+                startTimerForCurrentNode()
+            }
         }
     }
 
     // ─── Flujo interno ───
+
+    private fun startTimerForCurrentNode() {
+        if (!isScenarioScreenActive || _state.value !is ScenarioUiState.Question) return
+        val limit = engine.state.currentNode?.timeLimitSeconds?.takeIf { it > 0 } ?: return
+        timer.start(limit) { onTimeout() }
+    }
 
     private fun load() {
         viewModelScope.launch {
@@ -181,13 +197,12 @@ class ScenarioViewModel(
             _state.value = ScenarioUiState.Failed(ScenarioError.NOT_FOUND)
             return
         }
-        val limit = node.timeLimitSeconds?.takeIf { it > 0 }
-        if (limit != null) timer.start(limit) { onTimeout() }
         _state.value = ScenarioUiState.Question(node.toUi(engine.state.decisions.size + 1))
+        startTimerForCurrentNode()
     }
 
     private fun onTimeout() {
-        if (_state.value !is ScenarioUiState.Question) return
+        if (!isScenarioScreenActive || _state.value !is ScenarioUiState.Question) return
         // Sin opción por defecto, el usuario puede seguir respondiendo sin límite.
         val result = engine.handleTimeout() ?: return
         showAnswer(result)
@@ -199,6 +214,7 @@ class ScenarioViewModel(
         _state.value = ScenarioUiState.Answered(
             AnswerUi(
                 feedback = result.feedback?.toUi(),
+                selectedOptionText = result.selectedOptionText,
                 scoreChange = result.scoreChange,
                 wasTimeout = result.wasTimeout,
                 isLast = result.isScenarioEnd
@@ -252,6 +268,7 @@ class ScenarioViewModel(
 
     private fun ScenarioNode.toUi(step: Int) = NodeUi(
         step = step,
+        questionCount = scenario?.nodes?.count { it.options.isNotEmpty() } ?: step,
         narrative = narrative.get(),
         options = options.map { OptionUi(it.id, it.text.get()) },
         timeLimitSeconds = timeLimitSeconds?.takeIf { it > 0 }

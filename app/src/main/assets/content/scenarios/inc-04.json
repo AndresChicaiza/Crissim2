@@ -1,63 +1,430 @@
 {
   "id": "inc-04",
-  "version": "1.0",
+  "version": "2.0",
   "type": "fire",
   "level": "advanced",
   "title": {
-    "es": "Reporte a la brigada",
-    "en": "Report to the Brigade"
+    "es": "Nivel 5: Supervivencia y situaciónes críticas",
+    "en": "Level 5: Fire safety"
   },
   "description": {
-    "es": "Comunicación clara de datos clave (ubicación, heridos, extensión) al llegar a zona segura.",
-    "en": "Clear communication of key data (location, injured, extent) upon reaching safe zone."
+    "es": "Cinco preguntas; se aprueba con al menos cuatro respuestas correctas.",
+    "en": "Five questions; pass with at least four correct answers."
   },
   "start_node": "node_01",
-  "passing_score": 70,
-  "max_attempts": 3,
+  "passing_score": 80,
+  "max_attempts": 0,
   "nodes": [
     {
       "id": "node_01",
       "narrative": {
-        "es": "Llegas a salvo afuera y ves al brigadista líder. ¿Qué información le brindas?",
-        "en": "You arrive safely outside and see the brigade leader. What information do you provide?"
+        "es": "Un grupo de estudiantes queda atrapado en un aula porque el fuego bloquea la salida principal. ¿Cuál es la estrategia más adecuada?",
+        "en": "Un grupo de estudiantes queda atrapado en un aula porque el fuego bloquea la salida principal. ¿Cuál es la estrategia más adecuada?"
       },
-      "time_limit_seconds": 15,
+      "time_limit_seconds": 30,
       "default_option_index": 0,
       "options": [
         {
-          "id": "opt_01a",
+          "id": "fue_21_a",
           "text": {
-            "es": "Informar el piso exacto, origen observado del fuego y si queda alguien adentro",
-            "en": "Report exact floor, observed fire origin and if anyone remains inside"
+            "es": "Romper la puerta y atravesar el fuego rápidamente.",
+            "en": "Romper la puerta y atravesar el fuego rápidamente."
           },
-          "next_node": "node_end_success",
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Permanecer en una zona protegida, cerrar la puerta, bloquear las rendijas si es posible y llamar a emergencias indicando su ubicación.",
+              "en": "La respuesta más segura es: Permanecer en una zona protegida, cerrar la puerta, bloquear las rendijas si es posible y llamar a emergencias indicando su ubicación."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_21_b",
+          "text": {
+            "es": "Permanecer en una zona protegida, cerrar la puerta, bloquear las rendijas si es posible y llamar a emergencias indicando su ubicación.",
+            "en": "Permanecer en una zona protegida, cerrar la puerta, bloquear las rendijas si es posible y llamar a emergencias indicando su ubicación."
+          },
+          "next_node": "node_02",
           "score_change": 10,
           "feedback": {
             "text": {
-              "es": "¡Correcto! Los datos precisos salvan tiempo valioso a los cuerpos de socorro.",
-              "en": "Correct! Precise data saves valuable time for response teams."
+              "es": "Correcto. Permanecer en una zona protegida, cerrar la puerta, bloquear las rendijas si es posible y llamar a emergencias indicando su ubicación.",
+              "en": "Correcto. Permanecer en una zona protegida, cerrar la puerta, bloquear las rendijas si es posible y llamar a emergencias indicando su ubicación."
             },
             "is_correct": true,
-            "protocol_source": "ILC Brigada de Emergencia"
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_21_c",
+          "text": {
+            "es": "Saltar por cualquier ventana disponible.",
+            "en": "Saltar por cualquier ventana disponible."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Permanecer en una zona protegida, cerrar la puerta, bloquear las rendijas si es posible y llamar a emergencias indicando su ubicación.",
+              "en": "La respuesta más segura es: Permanecer en una zona protegida, cerrar la puerta, bloquear las rendijas si es posible y llamar a emergencias indicando su ubicación."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_21_d",
+          "text": {
+            "es": "Intentar apagar el fuego utilizando agua de los lavamanos.",
+            "en": "Intentar apagar el fuego utilizando agua de los lavamanos."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Permanecer en una zona protegida, cerrar la puerta, bloquear las rendijas si es posible y llamar a emergencias indicando su ubicación.",
+              "en": "La respuesta más segura es: Permanecer en una zona protegida, cerrar la puerta, bloquear las rendijas si es posible y llamar a emergencias indicando su ubicación."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
           }
         }
       ]
     },
     {
-      "id": "node_end_success",
+      "id": "node_02",
       "narrative": {
-        "es": "Reporte efectivo entregado a la brigada.",
-        "en": "Effective report delivered to brigade."
+        "es": "Una vez que un compañero con quemaduras está fuera de peligro, ¿qué primera atención debes facilitar?",
+        "en": "Un estudiante observa que un compañero tiene quemaduras después de un incendio. ¿Cuál debería ser la primera medida de atención?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "fue_22_a",
+          "text": {
+            "es": "Aplicar hielo directamente para detener el dolor.",
+            "en": "Aplicar hielo directamente para detener el dolor."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "El hielo puede dañar más la piel; usa agua corriente fresca y solicita atención médica.",
+              "en": "La respuesta más segura es: Alejarlo del peligro, solicitar atención médica y enfriar la quemadura con agua corriente fresca durante unos 20 minutos, si es posible."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / NHS; seguir protocolo local"
+          }
+        },
+        {
+          "id": "fue_22_b",
+          "text": {
+            "es": "Retirar inmediatamente cualquier prenda adherida a la piel.",
+            "en": "Retirar inmediatamente cualquier prenda adherida a la piel."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No retires ropa pegada a la piel: podrías agravar la lesión; pide ayuda médica.",
+              "en": "La respuesta más segura es: Alejarlo del peligro, solicitar atención médica y enfriar la quemadura con agua corriente fresca durante unos 20 minutos, si es posible."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / NHS; seguir protocolo local"
+          }
+        },
+        {
+          "id": "fue_22_c",
+          "text": {
+            "es": "Aplicar crema, aceite o pasta dental sobre la quemadura.",
+            "en": "Aplicar crema, aceite o pasta dental sobre la quemadura."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "No apliques cremas ni remedios caseros; pueden dificultar la atención de la quemadura.",
+              "en": "La respuesta más segura es: Alejarlo del peligro, solicitar atención médica y enfriar la quemadura con agua corriente fresca durante unos 20 minutos, si es posible."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / NHS; seguir protocolo local"
+          }
+        },
+        {
+          "id": "fue_22_d",
+          "text": {
+            "es": "Solicitar atención médica y enfriar de inmediato la quemadura con agua corriente fresca, según el protocolo local; no usar hielo ni retirar prendas adheridas.",
+            "en": "Call for medical help and immediately cool the burn with cool running water, following local guidance; do not use ice or remove clothing stuck to the skin."
+          },
+          "next_node": "node_03",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Prioriza ayuda médica y agua corriente fresca según el protocolo local. No apliques hielo ni retires ropa pegada a la quemadura.",
+              "en": "Correcto. Alejarlo del peligro, solicitar atención médica y enfriar la quemadura con agua corriente fresca durante unos 20 minutos, si es posible."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / NHS; seguir protocolo local"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_03",
+      "narrative": {
+        "es": "Durante un incendio, una persona pierde el conocimiento por posible inhalación de humo. ¿Qué debe hacer quien la encuentra?",
+        "en": "Durante un incendio, una persona pierde el conocimiento por posible inhalación de humo. ¿Qué debe hacer quien la encuentra?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "fue_23_a",
+          "text": {
+            "es": "No ingresar a la zona peligrosa, solicitar rescate y atención médica inmediata e informar la ubicación de la víctima.",
+            "en": "No ingresar a la zona peligrosa, solicitar rescate y atención médica inmediata e informar la ubicación de la víctima."
+          },
+          "next_node": "node_04",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. No ingresar a la zona peligrosa, solicitar rescate y atención médica inmediata e informar la ubicación de la víctima.",
+              "en": "Correcto. No ingresar a la zona peligrosa, solicitar rescate y atención médica inmediata e informar la ubicación de la víctima."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_23_b",
+          "text": {
+            "es": "Entrar rápidamente y arrastrarla hasta un lugar seguro, aunque el área siga llena de humo.",
+            "en": "Entrar rápidamente y arrastrarla hasta un lugar seguro, aunque el área siga llena de humo."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: No ingresar a la zona peligrosa, solicitar rescate y atención médica inmediata e informar la ubicación de la víctima.",
+              "en": "La respuesta más segura es: No ingresar a la zona peligrosa, solicitar rescate y atención médica inmediata e informar la ubicación de la víctima."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_23_c",
+          "text": {
+            "es": "Darle agua para que recupere el conocimiento.",
+            "en": "Darle agua para que recupere el conocimiento."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: No ingresar a la zona peligrosa, solicitar rescate y atención médica inmediata e informar la ubicación de la víctima.",
+              "en": "La respuesta más segura es: No ingresar a la zona peligrosa, solicitar rescate y atención médica inmediata e informar la ubicación de la víctima."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_23_d",
+          "text": {
+            "es": "Esperar a que despierte antes de informar a los servicios de emergencia.",
+            "en": "Esperar a que despierte antes de informar a los servicios de emergencia."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: No ingresar a la zona peligrosa, solicitar rescate y atención médica inmediata e informar la ubicación de la víctima.",
+              "en": "La respuesta más segura es: No ingresar a la zona peligrosa, solicitar rescate y atención médica inmediata e informar la ubicación de la víctima."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_04",
+      "narrative": {
+        "es": "Un incendio parece haberse extinguido y los estudiantes están reunidos en el punto de encuentro. ¿Por qué no deben regresar inmediatamente al aula?",
+        "en": "Un incendio parece haberse extinguido y los estudiantes están reunidos en el punto de encuentro. ¿Por qué no deben regresar inmediatamente al aula?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "fue_24_a",
+          "text": {
+            "es": "Porque los docentes todavía deben terminar de contar la asistencia.",
+            "en": "Porque los docentes todavía deben terminar de contar la asistencia."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque pueden existir focos ocultos, estructuras inestables, gases peligrosos u otros riesgos que requieren inspección.",
+              "en": "La respuesta más segura es: Porque pueden existir focos ocultos, estructuras inestables, gases peligrosos u otros riesgos que requieren inspección."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_24_b",
+          "text": {
+            "es": "Porque las instalaciones necesitan permanecer cerradas durante varias horas obligatoriamente.",
+            "en": "Porque las instalaciones necesitan permanecer cerradas durante varias horas obligatoriamente."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque pueden existir focos ocultos, estructuras inestables, gases peligrosos u otros riesgos que requieren inspección.",
+              "en": "La respuesta más segura es: Porque pueden existir focos ocultos, estructuras inestables, gases peligrosos u otros riesgos que requieren inspección."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_24_c",
+          "text": {
+            "es": "Porque pueden existir focos ocultos, estructuras inestables, gases peligrosos u otros riesgos que requieren inspección.",
+            "en": "Porque pueden existir focos ocultos, estructuras inestables, gases peligrosos u otros riesgos que requieren inspección."
+          },
+          "next_node": "node_05",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Porque pueden existir focos ocultos, estructuras inestables, gases peligrosos u otros riesgos que requieren inspección.",
+              "en": "Correcto. Porque pueden existir focos ocultos, estructuras inestables, gases peligrosos u otros riesgos que requieren inspección."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_24_d",
+          "text": {
+            "es": "Porque los extintores deben ser recargados antes de permitir el ingreso.",
+            "en": "Porque los extintores deben ser recargados antes de permitir el ingreso."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque pueden existir focos ocultos, estructuras inestables, gases peligrosos u otros riesgos que requieren inspección.",
+              "en": "La respuesta más segura es: Porque pueden existir focos ocultos, estructuras inestables, gases peligrosos u otros riesgos que requieren inspección."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_05",
+      "narrative": {
+        "es": "Se presenta un incendio que afecta simultáneamente dos aulas, el pasillo principal y una instalación eléctrica. El docente debe coordinar la salida de los estudiantes. ¿Cuál es la decisión prioritaria?",
+        "en": "Se presenta un incendio que afecta simultáneamente dos aulas, el pasillo principal y una instalación eléctrica. El docente debe coordinar la salida de los estudiantes. ¿Cuál es la decisión prioritaria?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "fue_25_a",
+          "text": {
+            "es": "Distribuir a los estudiantes en pequeños grupos para que cada uno busque una salida.",
+            "en": "Distribuir a los estudiantes en pequeños grupos para que cada uno busque una salida."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Activar el plan de emergencia, coordinar una evacuación por rutas seguras, informar a los organismos de emergencia y verificar a las personas en el punto de encuentro.",
+              "en": "La respuesta más segura es: Activar el plan de emergencia, coordinar una evacuación por rutas seguras, informar a los organismos de emergencia y verificar a las personas en el punto de encuentro."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_25_b",
+          "text": {
+            "es": "Activar el plan de emergencia, coordinar una evacuación por rutas seguras, informar a los organismos de emergencia y verificar a las personas en el punto de encuentro.",
+            "en": "Activar el plan de emergencia, coordinar una evacuación por rutas seguras, informar a los organismos de emergencia y verificar a las personas en el punto de encuentro."
+          },
+          "next_node": "node_end",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Activar el plan de emergencia, coordinar una evacuación por rutas seguras, informar a los organismos de emergencia y verificar a las personas en el punto de encuentro.",
+              "en": "Correcto. Activar el plan de emergencia, coordinar una evacuación por rutas seguras, informar a los organismos de emergencia y verificar a las personas en el punto de encuentro."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_25_c",
+          "text": {
+            "es": "Intentar controlar primero el incendio eléctrico para recuperar la ruta principal.",
+            "en": "Intentar controlar primero el incendio eléctrico para recuperar la ruta principal."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Activar el plan de emergencia, coordinar una evacuación por rutas seguras, informar a los organismos de emergencia y verificar a las personas en el punto de encuentro.",
+              "en": "La respuesta más segura es: Activar el plan de emergencia, coordinar una evacuación por rutas seguras, informar a los organismos de emergencia y verificar a las personas en el punto de encuentro."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_25_d",
+          "text": {
+            "es": "Esperar instrucciones de los bomberos antes de iniciar cualquier evacuación.",
+            "en": "Esperar instrucciones de los bomberos antes de iniciar cualquier evacuación."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Activar el plan de emergencia, coordinar una evacuación por rutas seguras, informar a los organismos de emergencia y verificar a las personas en el punto de encuentro.",
+              "en": "La respuesta más segura es: Activar el plan de emergencia, coordinar una evacuación por rutas seguras, informar a los organismos de emergencia y verificar a las personas en el punto de encuentro."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end",
+      "narrative": {
+        "es": "Terminaste las cinco preguntas. Revisa el resultado y los comentarios de cada decisión.",
+        "en": "You completed all five questions. Review the score and feedback for each decision."
       },
       "is_end": true,
       "end_type": "success",
       "feedback": {
         "text": {
-          "es": "¡Capacidad de respuesta avanzada demostrada!",
-          "en": "Advanced response capability demonstrated!"
+          "es": "Para aprobar este nivel necesitas al menos cuatro respuestas correctas de cinco.",
+          "en": "You need at least four correct answers out of five to pass this level."
         },
         "is_correct": true,
-        "protocol_source": "Cruz Roja"
+        "protocol_source": "Progresión educativa"
       }
     }
   ]

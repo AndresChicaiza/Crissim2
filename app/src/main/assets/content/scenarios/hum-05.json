@@ -1,0 +1,386 @@
+{
+  "id": "hum-05",
+  "version": "2.0",
+  "type": "smoke",
+  "level": "advanced",
+  "title": {
+    "es": "Nivel 5: Supervivencia y escenarios críticos",
+    "en": "Level 5: Smoke safety"
+  },
+  "description": {
+    "es": "Cinco preguntas; se aprueba con al menos cuatro respuestas correctas.",
+    "en": "Five questions; pass with at least four correct answers."
+  },
+  "start_node": "node_01",
+  "passing_score": 80,
+  "max_attempts": 0,
+  "nodes": [
+    {
+      "id": "node_01",
+      "narrative": {
+        "es": "Un grupo de estudiantes queda atrapado en un salón sin salida segura. El humo se acumula en el pasillo y no pueden comunicarse verbalmente con los rescatistas. ¿Cuál es la mejor estrategia?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "hum_21_a",
+          "text": {
+            "es": "Mantener la puerta cerrada, protegerse del humo, comunicarse por teléfono y hacerse visibles desde una ventana segura."
+          },
+          "next_node": "node_02",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Mantener la puerta cerrada, protegerse del humo, comunicarse por teléfono y hacerse visibles desde una ventana segura."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_21_b",
+          "text": {
+            "es": "Romper la puerta y avanzar juntos por el pasillo para encontrar una salida."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Mantener la puerta cerrada, protegerse del humo, comunicarse por teléfono y hacerse visibles desde una ventana segura."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_21_c",
+          "text": {
+            "es": "Dividir el grupo para que cada estudiante intente encontrar una salida independiente."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Mantener la puerta cerrada, protegerse del humo, comunicarse por teléfono y hacerse visibles desde una ventana segura."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_21_d",
+          "text": {
+            "es": "Permanecer debajo de las mesas hasta que los bomberos terminen de revisar el edificio."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Mantener la puerta cerrada, protegerse del humo, comunicarse por teléfono y hacerse visibles desde una ventana segura."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_02",
+      "narrative": {
+        "es": "Durante una emergencia, un estudiante presenta confusión, debilidad y pérdida de coordinación después de inhalar humo. ¿Qué podría indicar esta situación?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "hum_22_a",
+          "text": {
+            "es": "Una reacción temporal al estrés que no requiere atención médica."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Una posible intoxicación por inhalación de gases peligrosos que requiere atención médica urgente."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_22_b",
+          "text": {
+            "es": "Una respuesta normal del organismo al aumento de temperatura."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Una posible intoxicación por inhalación de gases peligrosos que requiere atención médica urgente."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_22_c",
+          "text": {
+            "es": "Una posible intoxicación por inhalación de gases peligrosos que requiere atención médica urgente."
+          },
+          "next_node": "node_03",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Una posible intoxicación por inhalación de gases peligrosos que requiere atención médica urgente."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_22_d",
+          "text": {
+            "es": "Un agotamiento físico que puede solucionarse descansando unos minutos."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Una posible intoxicación por inhalación de gases peligrosos que requiere atención médica urgente."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_03",
+      "narrative": {
+        "es": "Un estudiante se encuentra en un aula con humo y descubre que una ventana da hacia un patio interior, pero no sabe si existe una ruta segura para salir por ella. ¿Qué debería hacer?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "hum_23_a",
+          "text": {
+            "es": "Saltar al patio porque cualquier espacio exterior es más seguro."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Utilizar la ventana únicamente si puede hacerlo mediante una salida segura y autorizada; de lo contrario, solicitar rescate y comunicar su ubicación."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_23_b",
+          "text": {
+            "es": "Utilizar la ventana únicamente si puede hacerlo mediante una salida segura y autorizada; de lo contrario, solicitar rescate y comunicar su ubicación."
+          },
+          "next_node": "node_04",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Utilizar la ventana únicamente si puede hacerlo mediante una salida segura y autorizada; de lo contrario, solicitar rescate y comunicar su ubicación."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_23_c",
+          "text": {
+            "es": "Romper el vidrio y pedir a los demás que salten primero."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Utilizar la ventana únicamente si puede hacerlo mediante una salida segura y autorizada; de lo contrario, solicitar rescate y comunicar su ubicación."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_23_d",
+          "text": {
+            "es": "Esperar a que el humo desaparezca antes de tomar una decisión."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Utilizar la ventana únicamente si puede hacerlo mediante una salida segura y autorizada; de lo contrario, solicitar rescate y comunicar su ubicación."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_04",
+      "narrative": {
+        "es": "Una vez que todos los estudiantes han llegado al punto de encuentro, ¿qué procedimiento permite verificar que la evacuación fue completa?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "hum_24_a",
+          "text": {
+            "es": "Contar únicamente a los estudiantes que participaron en la evacuación."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Realizar el conteo con las listas de asistencia e informar inmediatamente cualquier ausencia a los responsables."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_24_b",
+          "text": {
+            "es": "Preguntar a los representantes de cada curso si todos salieron."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Realizar el conteo con las listas de asistencia e informar inmediatamente cualquier ausencia a los responsables."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_24_c",
+          "text": {
+            "es": "Esperar a que los bomberos confirmen que no hay personas dentro."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Realizar el conteo con las listas de asistencia e informar inmediatamente cualquier ausencia a los responsables."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_24_d",
+          "text": {
+            "es": "Realizar el conteo con las listas de asistencia e informar inmediatamente cualquier ausencia a los responsables."
+          },
+          "next_node": "node_05",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Realizar el conteo con las listas de asistencia e informar inmediatamente cualquier ausencia a los responsables."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_05",
+      "narrative": {
+        "es": "Después de un incendio, un estudiante observa que ya no hay humo visible y quiere regresar al aula por su computador. ¿Cuál es la decisión correcta?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "hum_25_a",
+          "text": {
+            "es": "Esperar cinco minutos y regresar acompañado."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: No regresar hasta que las autoridades o los bomberos autoricen expresamente el reingreso."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_25_b",
+          "text": {
+            "es": "Entrar únicamente si la puerta está fría."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: No regresar hasta que las autoridades o los bomberos autoricen expresamente el reingreso."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_25_c",
+          "text": {
+            "es": "No regresar hasta que las autoridades o los bomberos autoricen expresamente el reingreso."
+          },
+          "next_node": "node_end",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. No regresar hasta que las autoridades o los bomberos autoricen expresamente el reingreso."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_25_d",
+          "text": {
+            "es": "Pedirle al docente que entre primero para comprobar las condiciones."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: No regresar hasta que las autoridades o los bomberos autoricen expresamente el reingreso."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end",
+      "narrative": {
+        "es": "Terminaste las cinco preguntas. Permanece en un lugar seguro y sigue las instrucciones del personal.",
+        "en": "You completed all five questions. Stay in a safe place and follow staff instructions."
+      },
+      "is_end": true,
+      "end_type": "success",
+      "feedback": {
+        "text": {
+          "es": "Se requieren al menos cuatro respuestas correctas para aprobar este nivel.",
+          "en": "At least four correct answers are required to pass this level."
+        },
+        "is_correct": true,
+        "protocol_source": "Progresión educativa"
+      }
+    }
+  ]
+}

@@ -73,6 +73,42 @@
         <argument
             android:name="scenarioId"
             app:argType="string" />
+        <argument
+            android:name="scenarioTitle"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="resultPassed"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="resultCorrectCount"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="resultTotalCount"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="resultPercent"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="resultScore"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="resultMaxScore"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="resultDurationSeconds"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <argument
+            android:name="resultSaved"
+            app:argType="boolean"
+            android:defaultValue="true" />
     </fragment>
 
     <fragment
@@ -87,7 +123,7 @@
 
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.example.crissim.presentation.ui.placeholder.PlaceholderFragment"
+        android:name="com.example.crissim.presentation.ui.history.HistoryFragment"
         android:label="@string/nav_history" />
 
     <fragment

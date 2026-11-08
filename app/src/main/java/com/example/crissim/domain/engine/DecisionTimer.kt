@@ -23,6 +23,7 @@ class DecisionTimer(
 
     private var timerJob: Job? = null
     private var onTimeoutCallback: (() -> Unit)? = null
+    private var generation: Long = 0
 
     /**
      * Inicia la cuenta regresiva.
@@ -32,18 +33,23 @@ class DecisionTimer(
      */
     fun start(seconds: Int, onTimeout: () -> Unit) {
         stop()
+        val currentGeneration = ++generation
         onTimeoutCallback = onTimeout
         _remainingSeconds.value = seconds
         _isRunning.value = true
 
         timerJob = scope.launch {
             for (remaining in seconds downTo 1) {
+                if (currentGeneration != generation) return@launch
                 _remainingSeconds.value = remaining
                 delay(1000L)
             }
+            if (currentGeneration != generation) return@launch
             _remainingSeconds.value = 0
             _isRunning.value = false
-            onTimeoutCallback?.invoke()
+            val callback = onTimeoutCallback
+            onTimeoutCallback = null
+            callback?.invoke()
         }
     }
 
@@ -51,6 +57,7 @@ class DecisionTimer(
      * Detiene el temporizador (cuando el usuario decide antes del timeout).
      */
     fun stop() {
+        generation++
         timerJob?.cancel()
         timerJob = null
         _isRunning.value = false
@@ -61,6 +68,7 @@ class DecisionTimer(
      * Pausa el temporizador (ej: al mostrar feedback).
      */
     fun pause() {
+        generation++
         timerJob?.cancel()
         timerJob = null
         // Mantiene _isRunning en true para indicar que hay timer activo
@@ -70,7 +78,7 @@ class DecisionTimer(
      * Reanuda el temporizador con el tiempo restante.
      */
     fun resume(onTimeout: () -> Unit) {
-        if (_isRunning.value && _remainingSeconds.value > 0) {
+        if (_isRunning.value && _remainingSeconds.value > 0 && timerJob?.isActive != true) {
             start(_remainingSeconds.value, onTimeout)
         }
     }

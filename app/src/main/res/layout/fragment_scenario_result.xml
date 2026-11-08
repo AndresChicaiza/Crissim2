@@ -75,6 +75,7 @@
             android:src="@drawable/ic_shield" />
 
         <TextView
+            android:id="@+id/tv_result_badge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -242,6 +243,7 @@
 
         <!-- Competence Evidence Card -->
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_result_evidence"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -258,6 +260,7 @@
                 android:padding="16dp">
 
                 <TextView
+                    android:id="@+id/tv_result_evidence_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/result_evidence_title"
@@ -278,6 +281,7 @@
                         android:src="@drawable/ic_check" />
 
                     <TextView
+                        android:id="@+id/tv_result_evidence_1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -300,6 +304,7 @@
                         android:src="@drawable/ic_check" />
 
                     <TextView
+                        android:id="@+id/tv_result_evidence_2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -313,6 +318,7 @@
 
         <!-- Improvement Opportunity Card -->
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_result_improvement"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -328,6 +334,7 @@
                 android:padding="16dp">
 
                 <TextView
+                    android:id="@+id/tv_result_improvement_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/result_improvement_title"
@@ -336,6 +343,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tv_result_improvement_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -373,6 +381,19 @@
             app:iconTint="@color/primary"
             app:strokeColor="@color/primary"
             app:strokeWidth="1.5dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_return_dashboard"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/result_dashboard_button"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:textColor="@color/text_primary"
+            app:cornerRadius="12dp"
+            app:strokeColor="@color/text_secondary"
+            app:strokeWidth="1dp" />
 
         <TextView
             android:layout_width="match_parent"

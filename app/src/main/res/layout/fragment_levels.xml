@@ -92,6 +92,26 @@
             android:textAppearance="?attr/textAppearanceBodyLarge"
             android:textColor="@color/text_secondary" />
 
+        <!-- Incendios Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_pill_incendios"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:text="Incendios ? 5 niveles"
+            android:textAppearance="?attr/textAppearanceLabelMedium"
+            android:textColor="@color/incendios_badge_text"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/container_incendios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical" />
+
         <!-- Sismos Section -->
         <TextView
             android:layout_width="wrap_content"
@@ -100,7 +120,7 @@
             android:background="@drawable/bg_pill_sismos"
             android:paddingHorizontal="12dp"
             android:paddingVertical="6dp"
-            android:text="Sismos · 4 escenarios"
+            android:text="Sismos ? 5 niveles"
             android:textAppearance="?attr/textAppearanceLabelMedium"
             android:textColor="@color/primary"
             android:textStyle="bold" />
@@ -112,21 +132,21 @@
             android:layout_marginTop="8dp"
             android:orientation="vertical" />
 
-        <!-- Incendios Section -->
+        <!-- Humo Section -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/bg_pill_incendios"
             android:paddingHorizontal="12dp"
             android:paddingVertical="6dp"
-            android:text="Incendios · 4 escenarios"
+            android:text="Humo ? 5 niveles"
             android:textAppearance="?attr/textAppearanceLabelMedium"
             android:textColor="@color/incendios_badge_text"
             android:textStyle="bold" />
 
         <LinearLayout
-            android:id="@+id/container_incendios"
+            android:id="@+id/container_humo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

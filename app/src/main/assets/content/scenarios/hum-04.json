@@ -1,0 +1,386 @@
+{
+  "id": "hum-04",
+  "version": "2.0",
+  "type": "smoke",
+  "level": "advanced",
+  "title": {
+    "es": "Nivel 4: Situaciones de riesgo avanzado",
+    "en": "Level 4: Smoke safety"
+  },
+  "description": {
+    "es": "Cinco preguntas; se aprueba con al menos cuatro respuestas correctas.",
+    "en": "Five questions; pass with at least four correct answers."
+  },
+  "start_node": "node_01",
+  "passing_score": 80,
+  "max_attempts": 0,
+  "nodes": [
+    {
+      "id": "node_01",
+      "narrative": {
+        "es": "Un estudiante evacúa por un pasillo con humo y comienza a experimentar mareos y desorientación. ¿Cuál es la mejor actuación?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "hum_16_a",
+          "text": {
+            "es": "Continuar avanzando hacia la salida sin detenerse."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Buscar aire limpio y ayuda de emergencia lo antes posible, evitando volver a entrar en la zona contaminada."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_16_b",
+          "text": {
+            "es": "Buscar aire limpio y ayuda de emergencia lo antes posible, evitando volver a entrar en la zona contaminada."
+          },
+          "next_node": "node_02",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Buscar aire limpio y ayuda de emergencia lo antes posible, evitando volver a entrar en la zona contaminada."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_16_c",
+          "text": {
+            "es": "Sentarse junto a una pared y esperar a que desaparezca el mareo."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Buscar aire limpio y ayuda de emergencia lo antes posible, evitando volver a entrar en la zona contaminada."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_16_d",
+          "text": {
+            "es": "Retirarse el calzado y caminar lentamente para conservar energía."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Buscar aire limpio y ayuda de emergencia lo antes posible, evitando volver a entrar en la zona contaminada."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_02",
+      "narrative": {
+        "es": "Durante un incendio, el humo comienza a ingresar por las rendijas de la puerta del aula donde hay estudiantes atrapados. ¿Qué acción puede ayudar a ganar tiempo mientras llega el rescate?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "hum_17_a",
+          "text": {
+            "es": "Mantener la puerta cerrada, bloquear las rendijas con materiales disponibles y comunicar la ubicación exacta."
+          },
+          "next_node": "node_03",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Mantener la puerta cerrada, bloquear las rendijas con materiales disponibles y comunicar la ubicación exacta."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_17_b",
+          "text": {
+            "es": "Abrir la puerta periódicamente para liberar el humo acumulado."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Mantener la puerta cerrada, bloquear las rendijas con materiales disponibles y comunicar la ubicación exacta."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_17_c",
+          "text": {
+            "es": "Apagar las luces y permanecer en silencio para no atraer el fuego."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Mantener la puerta cerrada, bloquear las rendijas con materiales disponibles y comunicar la ubicación exacta."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_17_d",
+          "text": {
+            "es": "Colocar muebles contra la puerta y dejar de comunicarse para conservar la batería del teléfono."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Mantener la puerta cerrada, bloquear las rendijas con materiales disponibles y comunicar la ubicación exacta."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_03",
+      "narrative": {
+        "es": "Un estudiante observa que el humo entra desde una instalación eléctrica cercana. ¿Qué debería evitar especialmente?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "hum_18_a",
+          "text": {
+            "es": "Informar al docente sobre el origen aparente del humo."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Intentar desconectar o manipular cables eléctricos sin capacitación ni condiciones seguras."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_18_b",
+          "text": {
+            "es": "Alejarse de los equipos y cables afectados."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Intentar desconectar o manipular cables eléctricos sin capacitación ni condiciones seguras."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_18_c",
+          "text": {
+            "es": "Intentar desconectar o manipular cables eléctricos sin capacitación ni condiciones seguras."
+          },
+          "next_node": "node_04",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Intentar desconectar o manipular cables eléctricos sin capacitación ni condiciones seguras."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_18_d",
+          "text": {
+            "es": "Alertar a los responsables de mantenimiento y emergencia."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Intentar desconectar o manipular cables eléctricos sin capacitación ni condiciones seguras."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_04",
+      "narrative": {
+        "es": "¿Por qué puede ser peligroso intentar evacuar por una escalera que está llena de humo?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "hum_19_a",
+          "text": {
+            "es": "Porque las escaleras suelen tener menos espacio para caminar."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque puede producir intoxicación, desorientación y pérdida de visibilidad durante el desplazamiento."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_19_b",
+          "text": {
+            "es": "Porque los estudiantes pueden perder el orden de salida."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque puede producir intoxicación, desorientación y pérdida de visibilidad durante el desplazamiento."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_19_c",
+          "text": {
+            "es": "Porque el humo dificulta principalmente la comunicación entre docentes."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Porque puede producir intoxicación, desorientación y pérdida de visibilidad durante el desplazamiento."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_19_d",
+          "text": {
+            "es": "Porque puede producir intoxicación, desorientación y pérdida de visibilidad durante el desplazamiento."
+          },
+          "next_node": "node_05",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Porque puede producir intoxicación, desorientación y pérdida de visibilidad durante el desplazamiento."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_05",
+      "narrative": {
+        "es": "Un estudiante logra evacuar, pero observa que otro compañero está inconsciente cerca de una zona con humo. ¿Qué debe hacer?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "hum_20_a",
+          "text": {
+            "es": "Entrar nuevamente para arrastrarlo hasta la salida."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Avisar inmediatamente a los equipos de emergencia e indicar con precisión dónde está la persona."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_20_b",
+          "text": {
+            "es": "Avisar inmediatamente a los equipos de emergencia e indicar con precisión dónde está la persona."
+          },
+          "next_node": "node_end",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Avisar inmediatamente a los equipos de emergencia e indicar con precisión dónde está la persona."
+            },
+            "is_correct": true,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_20_c",
+          "text": {
+            "es": "Esperar a que el compañero recupere el conocimiento antes de solicitar ayuda."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Avisar inmediatamente a los equipos de emergencia e indicar con precisión dónde está la persona."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "hum_20_d",
+          "text": {
+            "es": "Pedir a dos compañeros que ingresen mientras él busca al docente."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Avisar inmediatamente a los equipos de emergencia e indicar con precisión dónde está la persona."
+            },
+            "is_correct": false,
+            "protocol_source": "Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end",
+      "narrative": {
+        "es": "Terminaste las cinco preguntas. Permanece en un lugar seguro y sigue las instrucciones del personal.",
+        "en": "You completed all five questions. Stay in a safe place and follow staff instructions."
+      },
+      "is_end": true,
+      "end_type": "success",
+      "feedback": {
+        "text": {
+          "es": "Se requieren al menos cuatro respuestas correctas para aprobar este nivel.",
+          "en": "At least four correct answers are required to pass this level."
+        },
+        "is_correct": true,
+        "protocol_source": "Progresión educativa"
+      }
+    }
+  ]
+}
