@@ -3,6 +3,7 @@
   "version": "2.0",
   "type": "fire",
   "level": "basic",
+  "required_for_level": true,
   "title": {
     "es": "Nivel 1: Reconocimiento del fuego",
     "en": "Level 1: Fire safety"

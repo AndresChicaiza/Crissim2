@@ -135,7 +135,8 @@
                     android:minLines="3"
                     android:text="@string/reflection_default_text"
                     android:textAppearance="?attr/textAppearanceBodyMedium"
-                    android:textColor="@color/text_primary" />
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

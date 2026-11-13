@@ -12,6 +12,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.crissim.R
 import com.example.crissim.databinding.FragmentSettingsBinding
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import androidx.navigation.navOptions
 
 class SettingsFragment : Fragment() {
 
@@ -53,6 +55,15 @@ class SettingsFragment : Fragment() {
 
         binding.cardMeetingPoint.setOnClickListener {
             findNavController().navigate(R.id.meetingPointFragment)
+        }
+
+        binding.btnSignOut.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            findNavController().navigate(
+                R.id.authFragment,
+                null,
+                navOptions { popUpTo(R.id.nav_graph) { inclusive = true } }
+            )
         }
     }
 }

@@ -4,6 +4,8 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import androidx.room.ColumnInfo
+import java.util.UUID
 
 /**
  * Entidad Room: certificado digital generado (RF-07, A4).
@@ -19,12 +21,15 @@ import androidx.room.PrimaryKey
         )
     ],
     indices = [
-        Index("userId")
+        Index("userId"),
+        Index(value = ["certificateUuid"], unique = true)
     ]
 )
 data class CertificateEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
+    @ColumnInfo(defaultValue = "''")
+    val certificateUuid: String = UUID.randomUUID().toString(),
     val userId: Long,
     val userName: String,
     val level: String,          // "BASIC", "INTERMEDIATE", "ADVANCED"

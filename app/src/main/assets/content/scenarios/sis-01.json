@@ -3,6 +3,7 @@
   "version": "2.0",
   "type": "earthquake",
   "level": "basic",
+  "required_for_level": true,
   "title": {
     "es": "Nivel 1: Protección durante el sismo",
     "en": "Level 1: Protecting yourself during an earthquake"

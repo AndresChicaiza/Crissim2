@@ -8,6 +8,7 @@ import com.example.crissim.data.repository.impl.CertificateRepositoryImpl
 import com.example.crissim.data.repository.impl.ProgressRepositoryImpl
 import com.example.crissim.data.repository.impl.ScenarioRepositoryImpl
 import com.example.crissim.data.repository.impl.UserRepositoryImpl
+import com.example.crissim.data.repository.impl.StudentCloudSync
 
 /**
  * Contenedor simple de dependencias (sin librerías de inyección).
@@ -17,12 +18,16 @@ class AppContainer(app: CrisisSimApp) {
 
     private val db = app.database
 
+    val studentCloudSync: StudentCloudSync = StudentCloudSync(app, db)
+
     val userRepository: UserRepository = UserRepositoryImpl(db.userDao())
 
-    val progressRepository: ProgressRepository =
-        ProgressRepositoryImpl(db.attemptDao(), db.levelProgressDao())
-
     val scenarioRepository: ScenarioRepository = ScenarioRepositoryImpl(app)
+
+    val progressRepository: ProgressRepository = ProgressRepositoryImpl(
+        db, db.attemptDao(), db.levelProgressDao(), db.scenarioProgressDao(),
+        db.scenarioProgressBackfillDao(), scenarioRepository
+    )
 
     val certificateRepository: CertificateRepository =
         CertificateRepositoryImpl(db.certificateDao())

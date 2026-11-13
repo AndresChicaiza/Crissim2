@@ -4,6 +4,8 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import androidx.room.ColumnInfo
+import java.util.UUID
 
 /**
  * Entidad Room: resultado de un intento de escenario.
@@ -20,12 +22,15 @@ import androidx.room.PrimaryKey
     ],
     indices = [
         Index("userId"),
-        Index("scenarioId")
+        Index("scenarioId"),
+        Index(value = ["attemptUuid"], unique = true)
     ]
 )
 data class AttemptEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
+    @ColumnInfo(defaultValue = "''")
+    val attemptUuid: String = UUID.randomUUID().toString(),
     val scenarioId: String,
     val userId: Long,
     val score: Int,
@@ -35,5 +40,6 @@ data class AttemptEntity(
     val completedAt: Long,
     val endNodeId: String,
     val endType: String,
-    val decisionsJson: String  // JSON serializado de las decisiones
+    val decisionsJson: String,  // JSON serializado de las decisiones
+    val scenarioVersion: String? = null
 )

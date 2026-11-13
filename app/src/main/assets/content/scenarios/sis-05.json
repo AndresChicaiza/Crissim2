@@ -3,6 +3,7 @@
   "version": "2.0",
   "type": "earthquake",
   "level": "advanced",
+  "required_for_level": true,
   "title": {
     "es": "Nivel 5: Réplicas y situaciónes críticas",
     "en": "Level 5: Aftershocks and critical situations"

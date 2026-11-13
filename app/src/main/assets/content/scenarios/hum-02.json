@@ -3,6 +3,7 @@
   "version": "2.0",
   "type": "smoke",
   "level": "basic",
+  "required_for_level": true,
   "title": {
     "es": "Nivel 2: Primeras acciones ante el humo",
     "en": "Level 2: Smoke safety"

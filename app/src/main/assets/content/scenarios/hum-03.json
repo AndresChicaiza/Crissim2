@@ -3,6 +3,7 @@
   "version": "2.0",
   "type": "smoke",
   "level": "intermediate",
+  "required_for_level": true,
   "title": {
     "es": "Nivel 3: Toma de decisiones",
     "en": "Level 3: Smoke safety"

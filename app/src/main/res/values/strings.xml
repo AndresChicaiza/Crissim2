@@ -206,7 +206,7 @@
     <string name="settings_font_normal">Normal</string>
     <string name="settings_font_large">Grande</string>
     <string name="settings_privacy_title">Privacidad y datos locales</string>
-    <string name="settings_privacy_desc">Perfil, reflexiones, intentos y constancias permanecen en el dispositivo. No se requiere correo ni sincronización. Borrar datos elimina el progreso local.</string>
+    <string name="settings_privacy_desc">El perfil y el progreso se guardan localmente y, cuando inicias sesión con internet, se sincronizan con tu cuenta. Cerrar sesión conserva los datos de este dispositivo.</string>
     <string name="settings_clear_data">Borrar datos del dispositivo</string>
     <string name="settings_note">Estados visuales de ejemplo. Estos controles no cambian la configuración en esta maqueta.</string>
 
@@ -254,4 +254,23 @@
     <string name="scenario_result_stats">Decisiones: %1$d · Tiempos agotados: %2$d · Duración: %3$d s · Intentos usados: %4$d</string>
     <string name="scenario_result_not_saved">No se pudo guardar este resultado en el dispositivo.</string>
     <string name="scenario_retry">Intentar de nuevo</string>
+    <string name="auth_title_login">Inicia sesión</string>
+    <string name="auth_title_register">Crea tu cuenta de estudiante</string>
+    <string name="auth_subtitle">Accede desde otro dispositivo y conserva tu progreso.</string>
+    <string name="auth_name_label">Nombre</string>
+    <string name="auth_email_label">Correo electrónico</string>
+    <string name="auth_password_label">Contraseña</string>
+    <string name="auth_name_hint">Tu nombre</string>
+    <string name="auth_email_hint">estudiante@correo.com</string>
+    <string name="auth_password_hint">Mínimo 6 caracteres</string>
+    <string name="auth_login_button">Iniciar sesión</string>
+    <string name="auth_register_button">Crear cuenta</string>
+    <string name="auth_switch_register">¿No tienes cuenta? Regístrate</string>
+    <string name="auth_switch_login">¿Ya tienes cuenta? Inicia sesión</string>
+    <string name="auth_forgot_password">Olvidé mi contraseña</string>
+    <string name="auth_continue_offline">Continuar sin cuenta en este dispositivo</string>
+    <string name="auth_offline_note">Sin cuenta, el progreso solo estará disponible en este dispositivo.</string>
+    <string name="auth_reset_sent">Te enviamos un enlace para restablecer la contraseña.</string>
+    <string name="settings_sign_out">Cerrar sesión</string>
+    <string name="settings_sign_out_note">Tus datos locales se conservan en este dispositivo.</string>
 </resources>

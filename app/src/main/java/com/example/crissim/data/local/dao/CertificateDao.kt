@@ -9,7 +9,7 @@ import com.example.crissim.data.local.entity.CertificateEntity
 @Dao
 interface CertificateDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCertificate(certificate: CertificateEntity): Long
 
     @Update
@@ -20,6 +20,9 @@ interface CertificateDao {
 
     @Query("SELECT * FROM certificates WHERE id = :certificateId")
     suspend fun getCertificateById(certificateId: Long): CertificateEntity?
+
+    @Query("SELECT * FROM certificates WHERE certificateUuid = :certificateUuid LIMIT 1")
+    suspend fun getCertificateByUuid(certificateUuid: String): CertificateEntity?
 
     @Query("SELECT * FROM certificates WHERE userId = :userId AND level = :level AND scenarioId = :scenarioId LIMIT 1")
     suspend fun getCertificate(userId: Long, level: String, scenarioId: String): CertificateEntity?

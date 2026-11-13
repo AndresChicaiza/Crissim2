@@ -1,5 +1,6 @@
 package com.example.crissim.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -9,17 +10,21 @@ import com.example.crissim.CrisisSimApp
 import com.example.crissim.data.repository.ProgressRepository
 import com.example.crissim.data.repository.ScenarioRepository
 import com.example.crissim.data.repository.UserRepository
+import com.example.crissim.data.repository.impl.StudentCloudSync
 import com.example.crissim.domain.model.Level
 import com.example.crissim.domain.model.UserRole
 import com.example.crissim.domain.usecase.CheckLevelUnlockedUseCase
 import com.example.crissim.domain.usecase.GetAllProgressUseCase
 import com.example.crissim.domain.usecase.GetScenariosUseCase
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import com.google.firebase.auth.FirebaseAuth
 
 /** Datos de un nivel listos para mostrar en pantalla. */
 data class LevelUi(
@@ -53,7 +58,8 @@ sealed interface HomeUiState {
 class HomeViewModel(
     private val userRepository: UserRepository,
     progressRepository: ProgressRepository,
-    scenarioRepository: ScenarioRepository
+    scenarioRepository: ScenarioRepository,
+    private val cloudSync: StudentCloudSync
 ) : ViewModel() {
 
     private val getAllProgress = GetAllProgressUseCase(progressRepository)
@@ -62,6 +68,7 @@ class HomeViewModel(
 
     private val _state = MutableStateFlow<HomeUiState>(HomeUiState.Loading)
     val state: StateFlow<HomeUiState> = _state.asStateFlow()
+    private var refreshJob: Job? = null
 
     init {
         refresh()
@@ -69,7 +76,23 @@ class HomeViewModel(
 
     /** Recarga el estado desde la base de datos local. */
     fun refresh() {
-        viewModelScope.launch {
+        if (refreshJob?.isActive == true) return
+        refreshJob = viewModelScope.launch {
+            val account = FirebaseAuth.getInstance().currentUser
+            if (account != null) {
+                try {
+                    cloudSync.synchronize(
+                        account.uid,
+                        account.displayName ?: account.email?.substringBefore('@').orEmpty()
+                    )
+                } catch (error: CancellationException) {
+                    throw error
+                } catch (error: Exception) {
+                    val code = (error as? com.google.firebase.firestore.FirebaseFirestoreException)?.code?.name
+                    val reason = code ?: if (error is IllegalArgumentException) "local-account-binding" else "unknown"
+                    Log.e(TAG, "Automatic sync retry failed (reason=$reason)", error)
+                }
+            }
             _state.value = loadState()
         }
     }
@@ -103,13 +126,16 @@ class HomeViewModel(
     }
 
     companion object {
+        private const val TAG = "HomeViewModel"
+
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val container = CrisisSimApp.instance.container
                 HomeViewModel(
                     container.userRepository,
                     container.progressRepository,
-                    container.scenarioRepository
+                    container.scenarioRepository,
+                    container.studentCloudSync
                 )
             }
         }

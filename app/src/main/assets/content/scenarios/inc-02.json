@@ -3,6 +3,7 @@
   "version": "2.0",
   "type": "fire",
   "level": "intermediate",
+  "required_for_level": true,
   "title": {
     "es": "Nivel 3: Decisiones ante diferentes tipos de fuego",
     "en": "Level 3: Fire safety"

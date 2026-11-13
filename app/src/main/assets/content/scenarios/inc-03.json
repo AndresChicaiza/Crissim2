@@ -3,6 +3,7 @@
   "version": "2.0",
   "type": "fire",
   "level": "intermediate",
+  "required_for_level": true,
   "title": {
     "es": "Nivel 4: Control y prevención de la propagación",
     "en": "Level 4: Fire safety"

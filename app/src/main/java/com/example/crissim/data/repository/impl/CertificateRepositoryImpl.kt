@@ -127,6 +127,7 @@ class CertificateRepositoryImpl(
     private fun Certificate.toEntity(): CertificateEntity {
         return CertificateEntity(
             id = id,
+            certificateUuid = certificateUuid,
             userId = userId,
             userName = userName,
             level = level.name,
@@ -142,6 +143,7 @@ class CertificateRepositoryImpl(
     private fun CertificateEntity.toDomain(): Certificate {
         return Certificate(
             id = id,
+            certificateUuid = certificateUuid,
             userId = userId,
             userName = userName,
             level = Level.valueOf(level),

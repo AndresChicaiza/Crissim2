@@ -18,6 +18,12 @@ interface UserDao {
     @Query("SELECT * FROM users WHERE id = :userId")
     suspend fun getUserById(userId: Long): UserEntity?
 
+    @Query("SELECT * FROM users WHERE firebaseUid = :firebaseUid LIMIT 1")
+    suspend fun getUserByFirebaseUid(firebaseUid: String): UserEntity?
+
+    @Query("SELECT * FROM users WHERE accountType = :accountType ORDER BY id")
+    suspend fun getUsersByAccountType(accountType: String): List<UserEntity>
+
     @Query("SELECT * FROM users LIMIT 1")
     suspend fun getActiveUser(): UserEntity?
 

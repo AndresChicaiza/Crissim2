@@ -14,7 +14,8 @@ data class Certificate(
     val maxScore: Int,
     val issuedAt: Long = System.currentTimeMillis(),
     val signature: String = "",
-    val pdfPath: String? = null
+    val pdfPath: String? = null,
+    val certificateUuid: String = java.util.UUID.randomUUID().toString()
 ) {
     /**
      * Payload que se codifica en el QR.

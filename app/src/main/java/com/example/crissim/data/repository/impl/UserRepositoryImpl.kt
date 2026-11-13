@@ -5,6 +5,7 @@ import com.example.crissim.data.local.entity.UserEntity
 import com.example.crissim.data.repository.UserRepository
 import com.example.crissim.domain.model.UserProfile
 import com.example.crissim.domain.model.UserRole
+import com.example.crissim.domain.model.UserAccountType
 
 /**
  * Implementación del repositorio de usuario con Room.
@@ -55,7 +56,10 @@ class UserRepositoryImpl(
             name = name,
             role = parsedRole,
             language = language,
-            createdAt = createdAt
+            createdAt = createdAt,
+            accountType = runCatching { UserAccountType.valueOf(accountType) }
+                .getOrDefault(UserAccountType.GUEST),
+            firebaseUid = firebaseUid
         )
     }
 }

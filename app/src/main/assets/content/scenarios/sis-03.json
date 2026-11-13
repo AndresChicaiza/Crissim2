@@ -3,6 +3,7 @@
   "version": "2.0",
   "type": "earthquake",
   "level": "intermediate",
+  "required_for_level": true,
   "title": {
     "es": "Nivel 3: Persona con movilidad reducida",
     "en": "Person with reduced mobility"

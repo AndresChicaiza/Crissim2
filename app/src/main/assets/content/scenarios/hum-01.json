@@ -3,6 +3,7 @@
   "version": "2.0",
   "type": "smoke",
   "level": "basic",
+  "required_for_level": true,
   "title": {
     "es": "Nivel 1: Reconocimiento del humo",
     "en": "Level 1: Smoke safety"

@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--
-        A6: SIN permiso INTERNET.
-        Esto es la prueba objetiva de que la app es 100 % offline.
-        Si alguna librería lo inyecta, se elimina explícitamente:
-    -->
-    <uses-permission android:name="android.permission.INTERNET"
-        tools:node="remove" />
+    <!-- Internet permite autenticación y sincronización; Room conserva el modo local sin conexión. -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".CrisisSimApp"

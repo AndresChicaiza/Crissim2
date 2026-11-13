@@ -15,7 +15,8 @@ data class Scenario(
     val startNodeId: String,
     val passingScore: Int,
     val maxAttempts: Int,
-    val nodes: List<ScenarioNode>
+    val nodes: List<ScenarioNode>,
+    val requiredForLevel: Boolean = true
 ) {
     /** Obtiene un nodo por su ID. */
     fun getNode(nodeId: String): ScenarioNode? =

@@ -10,8 +10,8 @@
     <!-- Backgrounds -->
     <color name="background_light">#F7F9FC</color>
     <color name="surface_light">#FFFFFF</color>
-    <color name="text_primary">#0F1D2F</color>
-    <color name="text_secondary">#5A6B82</color>
+    <color name="text_primary">#000000</color>
+    <color name="text_secondary">#424242</color>
 
     <!-- Meeting Point Green -->
     <color name="meeting_point_bg">#E2F4EC</color>

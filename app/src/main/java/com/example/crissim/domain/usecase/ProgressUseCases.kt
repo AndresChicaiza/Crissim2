@@ -10,8 +10,7 @@ class SaveAttemptResultUseCase(
     private val progressRepository: ProgressRepository
 ) {
     suspend fun execute(result: AttemptResult) {
-        progressRepository.saveAttemptResult(result)
-        progressRepository.updateLevelProgress(result)
+        progressRepository.recordAttemptResult(result)
     }
 }
 

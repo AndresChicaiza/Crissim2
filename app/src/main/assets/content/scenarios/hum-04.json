@@ -3,6 +3,7 @@
   "version": "2.0",
   "type": "smoke",
   "level": "advanced",
+  "required_for_level": true,
   "title": {
     "es": "Nivel 4: Situaciones de riesgo avanzado",
     "en": "Level 4: Smoke safety"

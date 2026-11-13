@@ -7,6 +7,8 @@ enum class UserRole(val labelEs: String) {
     BRIGADIST("Brigadista")
 }
 
+enum class UserAccountType { GUEST, AUTHENTICATED }
+
 /**
  * Perfil local del usuario (RF-08).
  * A7: Solo nombre, rol, idioma y resultados. Sin cuenta, sin red.
@@ -16,7 +18,9 @@ data class UserProfile(
     val name: String,
     val role: UserRole = UserRole.STUDENT,
     val language: String = "ES",
-    val createdAt: Long = System.currentTimeMillis()
+    val createdAt: Long = System.currentTimeMillis(),
+    val accountType: UserAccountType = UserAccountType.GUEST,
+    val firebaseUid: String? = null
 )
 
 /**
@@ -53,7 +57,9 @@ data class AttemptResult(
     val startedAt: Long,
     val completedAt: Long,
     val endNodeId: String,
-    val endType: EndType
+    val endType: EndType,
+    val attemptUuid: String = java.util.UUID.randomUUID().toString(),
+    val scenarioVersion: String? = null
 ) {
     val durationSeconds: Long
         get() = (completedAt - startedAt) / 1000

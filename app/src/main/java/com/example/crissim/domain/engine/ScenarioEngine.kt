@@ -128,7 +128,8 @@ class ScenarioEngine {
             startedAt = startTime,
             completedAt = System.currentTimeMillis(),
             endNodeId = n.id,
-            endType = n.endType ?: EndType.SUCCESS
+            endType = n.endType ?: EndType.SUCCESS,
+            scenarioVersion = s.version
         )
     }
 

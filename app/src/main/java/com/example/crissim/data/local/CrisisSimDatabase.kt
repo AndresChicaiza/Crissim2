@@ -8,8 +8,7 @@ import com.example.crissim.data.local.dao.*
 import com.example.crissim.data.local.entity.*
 
 /**
- * Base de datos Room de CrisisSim.
- * A7: Solo almacena nombre y resultados. Datos mínimos.
+ * Room persistence for local profiles, scenario progress, attempt history, certificates and sync preparation.
  */
 @Database(
     entities = [
@@ -17,9 +16,13 @@ import com.example.crissim.data.local.entity.*
         AttemptEntity::class,
         LevelProgressEntity::class,
         CertificateEntity::class,
-        SavedStateEntity::class
+        SavedStateEntity::class,
+        ScenarioProgressEntity::class,
+        ScenarioProgressBackfillEntity::class,
+        CertificateFileEntity::class,
+        SyncOutboxEntity::class
     ],
-    version = 2,
+    version = 3,
     exportSchema = true
 )
 abstract class CrisisSimDatabase : RoomDatabase() {
@@ -29,6 +32,10 @@ abstract class CrisisSimDatabase : RoomDatabase() {
     abstract fun levelProgressDao(): LevelProgressDao
     abstract fun certificateDao(): CertificateDao
     abstract fun savedStateDao(): SavedStateDao
+    abstract fun scenarioProgressDao(): ScenarioProgressDao
+    abstract fun scenarioProgressBackfillDao(): ScenarioProgressBackfillDao
+    abstract fun certificateFileDao(): CertificateFileDao
+    abstract fun syncOutboxDao(): SyncOutboxDao
 
     companion object {
         private const val DATABASE_NAME = "crisissim.db"
@@ -48,7 +55,7 @@ abstract class CrisisSimDatabase : RoomDatabase() {
                 CrisisSimDatabase::class.java,
                 DATABASE_NAME
             )
-                .fallbackToDestructiveMigration()
+                .addMigrations(CrisisSimMigrations.MIGRATION_1_3, CrisisSimMigrations.MIGRATION_2_3)
                 .build()
         }
     }

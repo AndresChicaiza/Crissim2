@@ -54,7 +54,8 @@ object ScenarioParser {
             startNodeId = json.get("start_node").asString,
             passingScore = json.get("passing_score")?.asInt ?: 70,
             maxAttempts = json.get("max_attempts")?.asInt ?: 3,
-            nodes = nodes
+            nodes = nodes,
+            requiredForLevel = json.get("required_for_level")?.asBoolean ?: true
         )
     }
 

@@ -1,6 +1,7 @@
 package com.example.crissim.data.local.entity
 
 import androidx.room.Entity
+import androidx.room.ColumnInfo
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
@@ -20,7 +21,7 @@ import androidx.room.PrimaryKey
         )
     ],
     indices = [
-        Index(value = ["userId", "scenarioId"], unique = true)
+        Index(value = ["userId", "scenarioId", "deviceId"], unique = true)
     ]
 )
 data class SavedStateEntity(
@@ -32,5 +33,9 @@ data class SavedStateEntity(
     val score: Int,
     val decisionsJson: String,
     val startTime: Long,
-    val savedAt: Long = System.currentTimeMillis()
+    val savedAt: Long = System.currentTimeMillis(),
+    @ColumnInfo(defaultValue = "'legacy-device'")
+    val deviceId: String = "legacy-device",
+    @ColumnInfo(defaultValue = "0")
+    val revision: Long = 0
 )
