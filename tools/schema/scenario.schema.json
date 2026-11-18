@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["id", "version", "type", "level", "title", "description", "start_node", "passing_score", "max_attempts", "nodes"],
+  "properties": {
+    "id": { "type": "string" },
+    "version": { "type": "string" },
+    "type": { "type": "string", "enum": ["earthquake", "fire", "sismo", "incendio"] },
+    "level": { "type": "string", "enum": ["basic", "intermediate", "advanced", "basico", "básico", "intermedio", "avanzado"] },
+    "title": { "$ref": "#/definitions/localized_text" },
+    "description": { "$ref": "#/definitions/localized_text" },
+    "start_node": { "type": "string" },
+    "passing_score": { "type": "integer" },
+    "max_attempts": { "type": "integer" },
+    "nodes": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/node" }
+    }
+  },
+  "definitions": {
+    "localized_text": {
+      "type": "object",
+      "required": ["es"],
+      "properties": {
+        "es": { "type": "string" },
+        "en": { "type": "string" }
+      }
+    },
+    "feedback": {
+      "type": "object",
+      "required": ["text", "is_correct", "protocol_source"],
+      "properties": {
+        "text": { "$ref": "#/definitions/localized_text" },
+        "is_correct": { "type": "boolean" },
+        "protocol_source": { "type": "string" },
+        "protocol_ref": { "type": "string" }
+      }
+    },
+    "option": {
+      "type": "object",
+      "required": ["id", "text", "next_node", "score_change"],
+      "properties": {
+        "id": { "type": "string" },
+        "text": { "$ref": "#/definitions/localized_text" },
+        "next_node": { "type": "string" },
+        "score_change": { "type": "integer" },
+        "feedback": { "$ref": "#/definitions/feedback" }
+      }
+    },
+    "node": {
+      "type": "object",
+      "required": ["id", "narrative"],
+      "properties": {
+        "id": { "type": "string" },
+        "narrative": { "$ref": "#/definitions/localized_text" },
+        "image_ref": { "type": "string" },
+        "time_limit_seconds": { "type": "integer" },
+        "default_option_index": { "type": "integer" },
+        "options": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/option" }
+        },
+        "is_end": { "type": "boolean" },
+        "end_type": { "type": "string", "enum": ["success", "partial_success", "failure", "exito", "éxito", "parcial", "fallo"] },
+        "feedback": { "$ref": "#/definitions/feedback" }
+      }
+    }
+  }
+}

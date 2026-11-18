@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "255881823165",
+    "project_id": "crissim2-21032",
+    "storage_bucket": "crissim2-21032.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255881823165:android:c9fac31e2f41f5b0de48d4",
+        "android_client_info": {
+          "package_name": "com.example.crissim"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbqFcgStW23HKREbpeEfyolol3FqW6iz8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

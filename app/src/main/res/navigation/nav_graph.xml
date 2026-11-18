@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/authFragment">
+
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.example.crissim.presentation.ui.auth.AuthFragment"
+        android:label="@string/auth_title_login"
+        tools:layout="@layout/fragment_auth" />
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.crissim.presentation.ui.welcome.WelcomeFragment"
+        android:label="@string/welcome_title"
+        tools:layout="@layout/fragment_welcome" />
+
+    <fragment
+        android:id="@+id/profileSetupFragment"
+        android:name="com.example.crissim.presentation.ui.profile.ProfileSetupFragment"
+        android:label="@string/profile_title"
+        tools:layout="@layout/fragment_profile_setup" />
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.crissim.presentation.ui.home.HomeFragment"
+        android:label="@string/nav_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/levelsFragment"
+        android:name="com.example.crissim.presentation.ui.levels.LevelsFragment"
+        android:label="@string/nav_scenarios"
+        tools:layout="@layout/fragment_levels" />
+
+    <fragment
+        android:id="@+id/meetingPointFragment"
+        android:name="com.example.crissim.presentation.ui.map.MeetingPointFragment"
+        android:label="@string/meeting_point_title"
+        tools:layout="@layout/fragment_meeting_point" />
+
+    <fragment
+        android:id="@+id/scenarioContextFragment"
+        android:name="com.example.crissim.presentation.ui.scenario.ScenarioContextFragment"
+        android:label="@string/scenario_screen_label"
+        tools:layout="@layout/fragment_scenario_context">
+        <argument
+            android:name="scenarioId"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/scenarioFragment"
+        android:name="com.example.crissim.presentation.ui.scenario.ScenarioFragment"
+        android:label="@string/scenario_screen_label"
+        tools:layout="@layout/fragment_scenario">
+        <argument
+            android:name="scenarioId"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/scenarioRecoveryFragment"
+        android:name="com.example.crissim.presentation.ui.scenario.ScenarioRecoveryFragment"
+        android:label="@string/recovery_header_title"
+        tools:layout="@layout/fragment_scenario_recovery">
+        <argument
+            android:name="scenarioId"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/scenarioResultFragment"
+        android:name="com.example.crissim.presentation.ui.scenario.ScenarioResultFragment"
+        android:label="@string/result_header_title"
+        tools:layout="@layout/fragment_scenario_result">
+        <argument
+            android:name="scenarioId"
+            app:argType="string" />
+        <argument
+            android:name="scenarioTitle"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="resultPassed"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="resultCorrectCount"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="resultTotalCount"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="resultPercent"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="resultScore"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="resultMaxScore"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="resultDurationSeconds"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <argument
+            android:name="resultSaved"
+            app:argType="boolean"
+            android:defaultValue="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/scenarioReflectionFragment"
+        android:name="com.example.crissim.presentation.ui.scenario.ScenarioReflectionFragment"
+        android:label="@string/reflection_header_title"
+        tools:layout="@layout/fragment_scenario_reflection">
+        <argument
+            android:name="scenarioId"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.crissim.presentation.ui.history.HistoryFragment"
+        android:label="@string/nav_history" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.crissim.presentation.ui.settings.SettingsFragment"
+        android:label="@string/nav_settings"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/certificatesFragment"
+        android:name="com.example.crissim.presentation.ui.certificates.CertificatesFragment"
+        android:label="@string/nav_certificates"
+        tools:layout="@layout/fragment_certificates" />
+
+</navigation>

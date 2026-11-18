@@ -1,0 +1,432 @@
+{
+  "id": "fire-basic-01",
+  "version": "2.0",
+  "type": "fire",
+  "level": "basic",
+  "required_for_level": true,
+  "title": {
+    "es": "Nivel 1: Reconocimiento del fuego",
+    "en": "Level 1: Fire safety"
+  },
+  "description": {
+    "es": "Cinco preguntas; se aprueba con al menos cuatro respuestas correctas.",
+    "en": "Five questions; pass with at least four correct answers."
+  },
+  "start_node": "node_01",
+  "passing_score": 80,
+  "max_attempts": 0,
+  "nodes": [
+    {
+      "id": "node_01",
+      "narrative": {
+        "es": "Durante una clase, un estudiante observa una pequeña llama en una papelera. ¿Qué debería hacer primero?",
+        "en": "Durante una clase, un estudiante observa una pequeña llama en una papelera. ¿Qué debería hacer primero?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "fue_01_a",
+          "text": {
+            "es": "Intentar apagarla con los pies antes de que crezca.",
+            "en": "Intentar apagarla con los pies antes de que crezca."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Avisar inmediatamente al docente, activar la alarma y seguir el protocolo de emergencia.",
+              "en": "La respuesta más segura es: Avisar inmediatamente al docente, activar la alarma y seguir el protocolo de emergencia."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_01_b",
+          "text": {
+            "es": "Avisar inmediatamente al docente, activar la alarma y seguir el protocolo de emergencia.",
+            "en": "Avisar inmediatamente al docente, activar la alarma y seguir el protocolo de emergencia."
+          },
+          "next_node": "node_02",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Avisar inmediatamente al docente, activar la alarma y seguir el protocolo de emergencia.",
+              "en": "Correcto. Avisar inmediatamente al docente, activar la alarma y seguir el protocolo de emergencia."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_01_c",
+          "text": {
+            "es": "Retirar la papelera del aula para evitar que el fuego alcance otros objetos.",
+            "en": "Retirar la papelera del aula para evitar que el fuego alcance otros objetos."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Avisar inmediatamente al docente, activar la alarma y seguir el protocolo de emergencia.",
+              "en": "La respuesta más segura es: Avisar inmediatamente al docente, activar la alarma y seguir el protocolo de emergencia."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_01_d",
+          "text": {
+            "es": "Buscar agua y apagarla sin informar a los demás.",
+            "en": "Buscar agua y apagarla sin informar a los demás."
+          },
+          "next_node": "node_02",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Avisar inmediatamente al docente, activar la alarma y seguir el protocolo de emergencia.",
+              "en": "La respuesta más segura es: Avisar inmediatamente al docente, activar la alarma y seguir el protocolo de emergencia."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_02",
+      "narrative": {
+        "es": "¿Cuáles son los tres elementos que conforman el triángulo del fuego?",
+        "en": "¿Cuáles son los tres elementos que conforman el triángulo del fuego?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "fue_02_a",
+          "text": {
+            "es": "Humo, combustible y electricidad.",
+            "en": "Humo, combustible y electricidad."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Combustible, oxígeno y calor.",
+              "en": "La respuesta más segura es: Combustible, oxígeno y calor."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_02_b",
+          "text": {
+            "es": "Oxígeno, vapor y temperatura.",
+            "en": "Oxígeno, vapor y temperatura."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Combustible, oxígeno y calor.",
+              "en": "La respuesta más segura es: Combustible, oxígeno y calor."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_02_c",
+          "text": {
+            "es": "Combustible, agua y calor.",
+            "en": "Combustible, agua y calor."
+          },
+          "next_node": "node_03",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Combustible, oxígeno y calor.",
+              "en": "La respuesta más segura es: Combustible, oxígeno y calor."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_02_d",
+          "text": {
+            "es": "Combustible, oxígeno y calor.",
+            "en": "Combustible, oxígeno y calor."
+          },
+          "next_node": "node_03",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Combustible, oxígeno y calor.",
+              "en": "Correcto. Combustible, oxígeno y calor."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_03",
+      "narrative": {
+        "es": "¿Cuál de las siguientes acciones puede favorecer la propagación de un incendio dentro de un aula?",
+        "en": "¿Cuál de las siguientes acciones puede favorecer la propagación de un incendio dentro de un aula?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 1,
+      "options": [
+        {
+          "id": "fue_03_a",
+          "text": {
+            "es": "Dejar cajas de cartón y hojas apiladas junto a un calefactor, pensando que el calor no las encenderá.",
+            "en": "Dejar cajas de cartón y hojas apiladas junto a un calefactor, pensando que el calor no las encenderá."
+          },
+          "next_node": "node_04",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. El papel y el cartón son combustibles; cerca de una fuente de calor pueden encenderse y ayudar a que el fuego se extienda.",
+              "en": "Correcto. El papel y el cartón son combustibles; cerca de una fuente de calor pueden encenderse y ayudar a que el fuego se extienda."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_03_b",
+          "text": {
+            "es": "Apilar láminas metálicas junto al calefactor, suponiendo que el metal no transmitirá el calor a los objetos cercanos.",
+            "en": "Apilar láminas metálicas junto al calefactor, suponiendo que el metal no transmitirá el calor a los objetos cercanos."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: dejar cajas de cartón y hojas apiladas junto a un calefactor, donde podrían encenderse y extender el fuego.",
+              "en": "La respuesta más segura es: dejar cajas de cartón y hojas apiladas junto a un calefactor, donde podrían encenderse y extender el fuego."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_03_c",
+          "text": {
+            "es": "Guardar pinturas y aerosoles cerrados en el armario destinado a esos productos, lejos de fuentes de calor.",
+            "en": "Guardar pinturas y aerosoles cerrados en el armario destinado a esos productos, lejos de fuentes de calor."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Acumular papel, cartón y otros materiales combustibles cerca de fuentes de calor.",
+              "en": "La respuesta más segura es: Acumular papel, cartón y otros materiales combustibles cerca de fuentes de calor."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_03_d",
+          "text": {
+            "es": "Mantener cables y regletas despejados y desconectar los equipos eléctricos que no se utilizan.",
+            "en": "Mantener cables y regletas despejados y desconectar los equipos eléctricos que no se utilizan."
+          },
+          "next_node": "node_04",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Acumular papel, cartón y otros materiales combustibles cerca de fuentes de calor.",
+              "en": "La respuesta más segura es: Acumular papel, cartón y otros materiales combustibles cerca de fuentes de calor."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_04",
+      "narrative": {
+        "es": "¿Qué debe hacer un estudiante cuando observa que una cortina comienza a incendiarse?",
+        "en": "¿Qué debe hacer un estudiante cuando observa que una cortina comienza a incendiarse?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "fue_04_a",
+          "text": {
+            "es": "Intentar retirar la cortina para evitar que alcance el techo.",
+            "en": "Intentar retirar la cortina para evitar que alcance el techo."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Alertar inmediatamente, activar la alarma y evacuar según las indicaciones.",
+              "en": "La respuesta más segura es: Alertar inmediatamente, activar la alarma y evacuar según las indicaciones."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_04_b",
+          "text": {
+            "es": "Arrojarle cualquier líquido disponible.",
+            "en": "Arrojarle cualquier líquido disponible."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Alertar inmediatamente, activar la alarma y evacuar según las indicaciones.",
+              "en": "La respuesta más segura es: Alertar inmediatamente, activar la alarma y evacuar según las indicaciones."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_04_c",
+          "text": {
+            "es": "Alertar inmediatamente, activar la alarma y evacuar según las indicaciones.",
+            "en": "Alertar inmediatamente, activar la alarma y evacuar según las indicaciones."
+          },
+          "next_node": "node_05",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Alertar inmediatamente, activar la alarma y evacuar según las indicaciones.",
+              "en": "Correcto. Alertar inmediatamente, activar la alarma y evacuar según las indicaciones."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_04_d",
+          "text": {
+            "es": "Esperar para comprobar si las llamas se extienden.",
+            "en": "Esperar para comprobar si las llamas se extienden."
+          },
+          "next_node": "node_05",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Alertar inmediatamente, activar la alarma y evacuar según las indicaciones.",
+              "en": "La respuesta más segura es: Alertar inmediatamente, activar la alarma y evacuar según las indicaciones."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_05",
+      "narrative": {
+        "es": "¿Cuál es el principal objetivo de una ruta de evacuación en caso de incendio?",
+        "en": "¿Cuál es el principal objetivo de una ruta de evacuación en caso de incendio?"
+      },
+      "time_limit_seconds": 30,
+      "default_option_index": 0,
+      "options": [
+        {
+          "id": "fue_05_a",
+          "text": {
+            "es": "Permitir que los estudiantes abandonen el edificio utilizando el recorrido más corto, independientemente de las condiciones.",
+            "en": "Permitir que los estudiantes abandonen el edificio utilizando el recorrido más corto, independientemente de las condiciones."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Facilitar una salida organizada hacia una zona segura evitando las áreas afectadas.",
+              "en": "La respuesta más segura es: Facilitar una salida organizada hacia una zona segura evitando las áreas afectadas."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_05_b",
+          "text": {
+            "es": "Facilitar una salida organizada hacia una zona segura evitando las áreas afectadas.",
+            "en": "Facilitar una salida organizada hacia una zona segura evitando las áreas afectadas."
+          },
+          "next_node": "node_end",
+          "score_change": 10,
+          "feedback": {
+            "text": {
+              "es": "Correcto. Facilitar una salida organizada hacia una zona segura evitando las áreas afectadas.",
+              "en": "Correcto. Facilitar una salida organizada hacia una zona segura evitando las áreas afectadas."
+            },
+            "is_correct": true,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_05_c",
+          "text": {
+            "es": "Conducir a los estudiantes hacia el lugar donde se encuentran los extintores.",
+            "en": "Conducir a los estudiantes hacia el lugar donde se encuentran los extintores."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Facilitar una salida organizada hacia una zona segura evitando las áreas afectadas.",
+              "en": "La respuesta más segura es: Facilitar una salida organizada hacia una zona segura evitando las áreas afectadas."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        },
+        {
+          "id": "fue_05_d",
+          "text": {
+            "es": "Mantener a todos los estudiantes reunidos dentro del edificio.",
+            "en": "Mantener a todos los estudiantes reunidos dentro del edificio."
+          },
+          "next_node": "node_end",
+          "score_change": 0,
+          "feedback": {
+            "text": {
+              "es": "La respuesta más segura es: Facilitar una salida organizada hacia una zona segura evitando las áreas afectadas.",
+              "en": "La respuesta más segura es: Facilitar una salida organizada hacia una zona segura evitando las áreas afectadas."
+            },
+            "is_correct": false,
+            "protocol_source": "USFA / Ready.gov / FEMA"
+          }
+        }
+      ]
+    },
+    {
+      "id": "node_end",
+      "narrative": {
+        "es": "Terminaste las cinco preguntas. Revisa el resultado y los comentarios de cada decisión.",
+        "en": "You completed all five questions. Review the score and feedback for each decision."
+      },
+      "is_end": true,
+      "end_type": "success",
+      "feedback": {
+        "text": {
+          "es": "Para aprobar este nivel necesitas al menos cuatro respuestas correctas de cinco.",
+          "en": "You need at least four correct answers out of five to pass this level."
+        },
+        "is_correct": true,
+        "protocol_source": "Progresión educativa"
+      }
+    }
+  ]
+}
