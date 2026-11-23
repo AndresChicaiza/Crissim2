@@ -23,4 +23,7 @@ interface UserRepository {
 
     /** Código del perfil local del dispositivo, o null si no hay (para precargar el acceso). */
     suspend fun getLocalProfileCode(): String?
+
+    /** Obtener usuario por ID. */
+    suspend fun getUserById(userId: Long): UserProfile?
 }

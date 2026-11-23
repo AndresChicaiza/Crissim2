@@ -52,6 +52,9 @@ class UserRepositoryImpl(
     override suspend fun getLocalProfileCode(): String? =
         userDao.getActiveUser()?.institutionalCode
 
+    override suspend fun getUserById(userId: Long): UserProfile? =
+        userDao.getUserById(userId)?.toDomain()
+
     override suspend fun registerLocal(
         name: String,
         institutionalCode: String,

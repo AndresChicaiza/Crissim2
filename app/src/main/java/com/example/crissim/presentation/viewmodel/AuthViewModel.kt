@@ -27,6 +27,8 @@ sealed interface AuthUiState {
     data object Idle : AuthUiState
     data object Loading : AuthUiState
     data class SignedIn(val warning: String? = null) : AuthUiState
+    /** Registro local exitoso: usuario nuevo, necesita completar perfil. */
+    data class ProfileSetupRequired(val userId: Long, val name: String) : AuthUiState
     data class Message(val text: String) : AuthUiState
     data class Error(val message: String) : AuthUiState
     /** Registro o acceso local que no se completó (campos, credenciales, bloqueo...). */
@@ -40,6 +42,9 @@ class AuthViewModel(
 ) : ViewModel() {
     private val _state = MutableStateFlow<AuthUiState>(AuthUiState.Idle)
     val state: StateFlow<AuthUiState> = _state.asStateFlow()
+
+    // Track if current action is registration (for local flow)
+    private var isRegisteringLocal = false
 
     fun restoreSession() {
         val user = auth.currentUser ?: return
@@ -99,14 +104,17 @@ class AuthViewModel(
 
     /** HU-03: registro local. No usa red. */
     fun registerLocal(name: String, code: String, pin: String, role: UserRole) {
+        isRegisteringLocal = true
         viewModelScope.launch {
             _state.value = AuthUiState.Loading
             handleLocal(users.registerLocal(name, code, pin, role))
+            isRegisteringLocal = false
         }
     }
 
     /** HU-04: acceso local con código y PIN. No usa red. */
     fun loginLocal(code: String, pin: String) {
+        isRegisteringLocal = false
         viewModelScope.launch {
             _state.value = AuthUiState.Loading
             handleLocal(users.loginLocal(code, pin))
@@ -115,7 +123,13 @@ class AuthViewModel(
 
     private fun handleLocal(result: LocalAuthResult) {
         _state.value = when (result) {
-            is LocalAuthResult.Success -> AuthUiState.SignedIn()
+            is LocalAuthResult.Success -> {
+                if (isRegisteringLocal) {
+                    AuthUiState.ProfileSetupRequired(result.user.id, result.user.name)
+                } else {
+                    AuthUiState.SignedIn()
+                }
+            }
             else -> AuthUiState.LocalFailure(result)
         }
     }

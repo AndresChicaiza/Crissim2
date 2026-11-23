@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
+import androidx.core.os.bundleOf
 import com.example.crissim.R
 import com.example.crissim.databinding.FragmentAuthBinding
 import com.example.crissim.domain.model.UserRole
@@ -180,16 +181,29 @@ class AuthFragment : Fragment() {
             is AuthUiState.LocalFailure -> renderLocalFailure(state.result)
             is AuthUiState.SignedIn -> {
                 if (findNavController().currentDestination?.id == R.id.authFragment) {
+                    // Limpiar todo el stack de onboarding/welcome/auth al ir a Home
                     findNavController().navigate(
                         R.id.homeFragment,
                         null,
-                        navOptions { popUpTo(R.id.authFragment) { inclusive = true } }
+                        navOptions {
+                            popUpTo(R.id.onboardingFragment) { inclusive = true }
+                        }
                     )
                 }
                 state.warning?.let { warning ->
                     Snackbar.make(requireActivity().findViewById(android.R.id.content), warning, Snackbar.LENGTH_LONG)
                         .setDuration(9000)
                         .show()
+                }
+            }
+            is AuthUiState.ProfileSetupRequired -> {
+                if (findNavController().currentDestination?.id == R.id.authFragment) {
+                    val bundle = bundleOf("prefillName" to state.name)
+                    findNavController().navigate(
+                        R.id.profileSetupFragment,
+                        bundle,
+                        navOptions { popUpTo(R.id.authFragment) { inclusive = true } }
+                    )
                 }
             }
         }

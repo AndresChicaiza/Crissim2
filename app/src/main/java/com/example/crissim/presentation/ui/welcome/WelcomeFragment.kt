@@ -14,14 +14,14 @@ import androidx.navigation.fragment.findNavController
 import com.example.crissim.CrisisSimApp
 import com.example.crissim.R
 import com.example.crissim.databinding.FragmentWelcomeBinding
+import com.example.crissim.presentation.ui.onboarding.OnboardingFragment
+import com.example.crissim.util.LocaleHelper
 import kotlinx.coroutines.launch
 
 class WelcomeFragment : Fragment() {
 
     private var _binding: FragmentWelcomeBinding? = null
     private val binding get() = _binding!!
-
-    private var selectedLanguage = "ES"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,7 +35,7 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         applyStatusBarInset()
-        checkExistingUser()
+        checkOnboardingAndUser()
         setupLanguageSelection()
         setupButtons()
     }
@@ -53,31 +53,49 @@ class WelcomeFragment : Fragment() {
         }
     }
 
-    private fun checkExistingUser() {
+    private fun checkOnboardingAndUser() {
         viewLifecycleOwner.lifecycleScope.launch {
-            val userRepo = CrisisSimApp.instance.container.userRepository
-            if (userRepo.hasUser()) {
-                findNavController().navigate(R.id.homeFragment)
+            // Primero verificar si ya completó el onboarding
+            OnboardingFragment.navigateIfNeeded(this@WelcomeFragment, R.id.authFragment)
+            
+            // Si ya completó onboarding, verificar si tiene usuario
+            val prefs = requireContext().getSharedPreferences("crisissim_prefs", android.content.Context.MODE_PRIVATE)
+            val onboardingCompleted = prefs.getBoolean("onboarding_completed", false)
+            
+            if (onboardingCompleted) {
+                val userRepo = CrisisSimApp.instance.container.userRepository
+                if (userRepo.hasUser()) {
+                    findNavController().navigate(R.id.homeFragment)
+                }
             }
         }
     }
 
     private fun setupLanguageSelection() {
+        // Cargar idioma guardado
+        val currentLang = LocaleHelper.getLanguage(requireContext())
+        updateLanguageUi(currentLang)
+
         binding.cardLangEs.setOnClickListener {
-            selectedLanguage = "ES"
-            updateLanguageUi()
+            setLanguage("es")
         }
         binding.cardLangEn.setOnClickListener {
-            selectedLanguage = "EN"
-            updateLanguageUi()
+            setLanguage("en")
         }
     }
 
-    private fun updateLanguageUi() {
+    private fun setLanguage(language: String) {
+        LocaleHelper.setLanguage(requireContext(), language)
+        updateLanguageUi(language)
+        // Recrear la activity para aplicar el cambio en toda la UI
+        requireActivity().recreate()
+    }
+
+    private fun updateLanguageUi(language: String) {
         val primaryColor = ContextCompat.getColor(requireContext(), R.color.primary)
         val defaultBorderColor = ContextCompat.getColor(requireContext(), R.color.primary_border)
 
-        if (selectedLanguage == "ES") {
+        if (language == "es") {
             binding.cardLangEs.strokeColor = primaryColor
             binding.cardLangEs.strokeWidth = 4
             binding.ivLangEsCheck.visibility = View.VISIBLE
@@ -96,7 +114,7 @@ class WelcomeFragment : Fragment() {
 
     private fun setupButtons() {
         binding.btnStart.setOnClickListener {
-            findNavController().navigate(R.id.profileSetupFragment)
+            findNavController().navigate(R.id.authFragment)
         }
     }
 }

@@ -10,4 +10,5 @@ interface CertificateRepository {
     suspend fun getUserCertificates(userId: Long): List<Certificate>
     suspend fun getCertificateById(id: Long): Certificate?
     suspend fun verifyCertificate(payload: CertificatePayload): VerificationResult
+    suspend fun updateCertificatePdfPath(certificateId: Long, pdfPath: String)
 }

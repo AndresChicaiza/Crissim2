@@ -11,6 +11,7 @@ import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import com.example.crissim.CrisisSimApp
 import com.example.crissim.R
 import com.example.crissim.databinding.FragmentProfileSetupBinding
@@ -36,6 +37,13 @@ class ProfileSetupFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         applyStatusBarInset()
+        
+        // Leer nombre pre-rellenado desde argumentos de navegación
+        val prefillName = arguments?.getString("prefillName") ?: ""
+        if (prefillName.isNotBlank()) {
+            binding.etName.setText(prefillName)
+        }
+        
         setupRoleSelection()
         setupButtons()
     }
@@ -105,7 +113,14 @@ class ProfileSetupFragment : Fragment() {
             viewLifecycleOwner.lifecycleScope.launch {
                 val userRepo = CrisisSimApp.instance.container.userRepository
                 userRepo.createUser(name = name, role = selectedRole)
-                findNavController().navigate(R.id.homeFragment)
+                // Limpiar todo el stack de onboarding/welcome/auth/profileSetup al ir a Home
+                findNavController().navigate(
+                    R.id.homeFragment,
+                    null,
+                    navOptions {
+                        popUpTo(R.id.onboardingFragment) { inclusive = true }
+                    }
+                )
             }
         }
     }

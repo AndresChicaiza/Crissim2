@@ -1,5 +1,7 @@
 package com.example.crissim.presentation.viewmodel
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -95,7 +97,14 @@ class ScenarioViewModel(
     private val saveAttemptResult = SaveAttemptResultUseCase(progressRepository)
 
     private val engine = ScenarioEngine()
-    private val timer = DecisionTimer(viewModelScope)
+    // SharedPreferences para accesibilidad
+    private val accessibilityPrefs: SharedPreferences =
+        CrisisSimApp.instance.getSharedPreferences("accessibility_prefs", Context.MODE_PRIVATE)
+
+    private val timer = DecisionTimer(
+        scope = viewModelScope,
+        context = CrisisSimApp.instance
+    )
 
     private val _state = MutableStateFlow<ScenarioUiState>(ScenarioUiState.Loading)
     val state: StateFlow<ScenarioUiState> = _state.asStateFlow()
@@ -123,6 +132,15 @@ class ScenarioViewModel(
         if (_state.value !is ScenarioUiState.Question) return
         timer.stop()
         val result = engine.selectOption(optionId) ?: return
+        
+        if (result.feedback?.isCorrect == true) {
+            // Sonido de respuesta correcta
+            timer.playCorrectSound()
+        } else {
+            // Vibrar si la respuesta es incorrecta
+            timer.vibrateWrong()
+        }
+        
         showAnswer(result)
     }
 
@@ -160,6 +178,13 @@ class ScenarioViewModel(
     private fun startTimerForCurrentNode() {
         if (!isScenarioScreenActive || _state.value !is ScenarioUiState.Question) return
         val limit = engine.state.currentNode?.timeLimitSeconds?.takeIf { it > 0 } ?: return
+        
+        // Actualizar configuración de accesibilidad antes de iniciar
+        timer.updateAccessibilitySettings(
+            accessibilityPrefs.getBoolean("sound_enabled", true),
+            accessibilityPrefs.getBoolean("vibration_enabled", true)
+        )
+        
         timer.start(limit) { onTimeout() }
     }
 

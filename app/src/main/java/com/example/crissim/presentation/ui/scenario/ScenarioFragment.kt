@@ -146,6 +146,28 @@ class ScenarioFragment : Fragment() {
     private fun updateTimer(seconds: Int) {
         binding.tvTimerSeconds.text = seconds.toString()
         binding.progressTimer.setProgressCompat(seconds, true)
+        
+        // Cambiar color del temporizador según el tiempo restante
+        when {
+            seconds <= 5 -> {
+                // Rojo urgente
+                binding.tvTimerSeconds.setTextColor(Color.parseColor("#C5221F"))
+                binding.progressTimer.setIndicatorColor(Color.parseColor("#C5221F"))
+                binding.progressTimer.setTrackColor(Color.parseColor("#FFCDD2"))
+            }
+            seconds <= 10 -> {
+                // Naranja advertencia
+                binding.tvTimerSeconds.setTextColor(Color.parseColor("#FF9800"))
+                binding.progressTimer.setIndicatorColor(Color.parseColor("#FF9800"))
+                binding.progressTimer.setTrackColor(Color.parseColor("#FFE0B2"))
+            }
+            else -> {
+                // Verde normal
+                binding.tvTimerSeconds.setTextColor(Color.parseColor("#185293"))
+                binding.progressTimer.setIndicatorColor(Color.parseColor("#185293"))
+                binding.progressTimer.setTrackColor(Color.parseColor("#C2D8ED"))
+            }
+        }
     }
 
     private fun renderQuestion(node: NodeUi) {

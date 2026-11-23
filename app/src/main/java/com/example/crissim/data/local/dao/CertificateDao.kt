@@ -26,4 +26,7 @@ interface CertificateDao {
 
     @Query("SELECT * FROM certificates WHERE userId = :userId AND level = :level AND scenarioId = :scenarioId LIMIT 1")
     suspend fun getCertificate(userId: Long, level: String, scenarioId: String): CertificateEntity?
+
+    @Query("UPDATE certificates SET pdfPath = :pdfPath WHERE id = :certificateId")
+    suspend fun updateCertificatePdfPath(certificateId: Long, pdfPath: String)
 }

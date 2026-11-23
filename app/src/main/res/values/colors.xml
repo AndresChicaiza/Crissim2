@@ -6,6 +6,7 @@
     <color name="primary_container">#EBF3FA</color>
     <color name="on_primary_container">#185293</color>
     <color name="primary_border">#C2D8ED</color>
+    <color name="primary_10">#1852931A</color> <!-- 10% opacity -->
 
     <!-- Backgrounds -->
     <color name="background_light">#F7F9FC</color>

@@ -3,6 +3,8 @@
 
     <!-- Internet permite autenticación y sincronización; Room conserva el modo local sin conexión. -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Vibración para alertas de temporizador (accesibilidad) -->
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:name=".CrisisSimApp"

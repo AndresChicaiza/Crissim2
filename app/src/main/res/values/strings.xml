@@ -203,6 +203,7 @@
     <string name="settings_contrast_title">Alto contraste</string>
     <string name="settings_contrast_desc">Vista estándar activa</string>
     <string name="settings_font_size_title">Tamaño de texto</string>
+    <string name="settings_font_size_desc">Aumenta el tamaño de la fuente</string>
     <string name="settings_font_normal">Normal</string>
     <string name="settings_font_large">Grande</string>
     <string name="settings_privacy_title">Privacidad y datos locales</string>
@@ -324,4 +325,33 @@
     <string name="cert_doc_number">Certificado N.º %1$s</string>
     <string name="cert_doc_qr_caption">Código QR de verificación</string>
     <string name="cert_doc_signed">CrisisSim · Firmado digitalmente (ECDSA)</string>
+
+    <!-- Onboarding (HU-01) -->
+    <string name="onboarding_image_desc">Logo International Language Center</string>
+    <string name="onboarding_skip">Omitir</string>
+    <string name="onboarding_next">Continuar</string>
+    <string name="onboarding_finish">Comenzar</string>
+    <string name="settings_view_onboarding">Ver introducción</string>
+
+    <string name="onboarding_page1_title">Bienvenido a CrisisSim</string>
+    <string name="onboarding_page1_description">La calma también se entrena. CrisisSim te enseña a protegerte ante sismos e incendios mediante simulaciones interactivas. Practica decisiones bajo presión controlada y aprende de cada error.</string>
+
+    <string name="onboarding_page2_title">Aprende según tu rol</string>
+    <string name="onboarding_page2_description">Elige tu rol: Estudiante, Docente, Personal administrativo o Brigadista. Cada rol tiene escenarios y protocolos adaptados a sus responsabilidades en la institución.</string>
+
+    <string name="onboarding_page3_title">100% offline, siempre disponible</string>
+    <string name="onboarding_page3_description">No necesitas internet ni cuenta. Todo el contenido, tu progreso y tus certificados se guardan en este dispositivo. Funciona incluso sin conexión y tras apagar el teléfono.</string>
+
+    <string name="onboarding_page4_title">Certificados digitales verificables</string>
+    <string name="onboarding_page4_description">Al superar cada nivel obtienes un certificado en PDF con código QR firmado digitalmente. Compártelo y verifica su autenticidad en cualquier momento.</string>
+
+    <!-- Certificados (fragment_certificates.xml) -->
+    <string name="certificates_title">Certificados</string>
+    <string name="certificates_subtitle">Aquí aparecen los certificados que ganas al superar cada nivel.</string>
+
+    <!-- Mapa / Plano de evacuación (fragment_map.xml) -->
+    <string name="map_title">Plano de evacuación</string>
+    <string name="map_subtitle">Consulta tu ruta segura y el punto de encuentro según tu ubicación.</string>
+    <string name="map_select_room">Tu aula o ubicación</string>
+    <string name="map_btn_meeting_point">Calcular ruta al punto de encuentro</string>
 </resources>

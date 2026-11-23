@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.crissim.CrisisSimApp
+import com.example.crissim.data.repository.CertificateRepository
 import com.example.crissim.data.repository.ProgressRepository
 import com.example.crissim.data.repository.ScenarioRepository
 import com.example.crissim.data.repository.UserRepository
@@ -16,6 +17,7 @@ import com.example.crissim.domain.usecase.CheckLevelUnlockedUseCase
 import com.example.crissim.domain.usecase.GetAllProgressUseCase
 import com.example.crissim.domain.usecase.GetAttemptHistoryUseCase
 import com.example.crissim.domain.usecase.GetScenariosUseCase
+import com.example.crissim.domain.usecase.GenerateCertificatesForCompletedLevelsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -59,14 +61,18 @@ sealed interface LevelsUiState {
  */
 class LevelsViewModel(
     private val userRepository: UserRepository,
-    progressRepository: ProgressRepository,
-    scenarioRepository: ScenarioRepository
+    private val progressRepository: ProgressRepository,
+    private val scenarioRepository: ScenarioRepository,
+    private val certificateRepository: CertificateRepository
 ) : ViewModel() {
 
     private val getScenarios = GetScenariosUseCase(scenarioRepository)
     private val getAllProgress = GetAllProgressUseCase(progressRepository)
     private val checkLevelUnlocked = CheckLevelUnlockedUseCase(progressRepository)
     private val getAttemptHistory = GetAttemptHistoryUseCase(progressRepository)
+    private val generateCertificates = GenerateCertificatesForCompletedLevelsUseCase(
+        certificateRepository, progressRepository, scenarioRepository, userRepository
+    )
 
     private val _state = MutableStateFlow<LevelsUiState>(LevelsUiState.Loading)
     val state: StateFlow<LevelsUiState> = _state.asStateFlow()
@@ -87,6 +93,9 @@ class LevelsViewModel(
 
         val scenarios = withContext(Dispatchers.IO) { getScenarios.execute() }
         val progressByLevel = getAllProgress.execute(user.id).associateBy { it.level }
+
+        // Generar certificados para niveles completados que no tengan certificado
+        generateCertificates.execute(user.id)
 
         val sections = Level.entries.map { level ->
             LevelSectionUi(
@@ -127,7 +136,8 @@ class LevelsViewModel(
                 LevelsViewModel(
                     container.userRepository,
                     container.progressRepository,
-                    container.scenarioRepository
+                    container.scenarioRepository,
+                    container.certificateRepository
                 )
             }
         }

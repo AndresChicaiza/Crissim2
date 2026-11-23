@@ -83,6 +83,10 @@ class CertificateRepositoryImpl(
         }
     }
 
+    override suspend fun updateCertificatePdfPath(certificateId: Long, pdfPath: String) {
+        certificateDao.updateCertificatePdfPath(certificateId, pdfPath)
+    }
+
     // ─── Criptografía ECDSA (Android Keystore) ───
 
     private fun loadOrCreateKeyPair(): KeyPair {

@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrisisSim</string>
+    <string name="app_subtitle">International Language Center · Yumbo</string>
+    <string name="nav_home">Home</string>
+    <string name="welcome_header_title">Welcome</string>
+    <string name="history_coming_soon">Your scenario history will appear here.</string>
+    <string name="nav_scenarios">Scenarios</string>
+    <string name="nav_history">History</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Header -->
+    <string name="badge_offline">Offline training</string>
+
+    <!-- Screen 01: Welcome & Language -->
+    <string name="welcome_title">Calm is also trained.</string>
+    <string name="welcome_subtitle">Practice how to protect yourself during earthquakes and fires. Decide, learn, and try again.</string>
+    <string name="welcome_lang_label">Choose your language / Elige tu idioma</string>
+    <string name="welcome_lang_es">ES · Español</string>
+    <string name="welcome_lang_en">EN · English</string>
+    <string name="welcome_lang_hint">You can change it in Settings. Content shown in English.</string>
+    <string name="welcome_start">Get Started</string>
+    <string name="welcome_disclaimer">Educational simulation. Does not replace brigade instructions or ILC protocols.</string>
+
+    <!-- Screen 02: Local Registration -->
+    <string name="profile_header_title">Your Profile</string>
+    <string name="profile_title">Learn from your role.</string>
+    <string name="profile_subtitle">No email, no password, no connection needed.</string>
+    <string name="profile_name_label">Full name</string>
+    <string name="profile_name_hint">Valentina Rojas</string>
+    <string name="profile_name_caption">This is how you will appear on your practice certificate.</string>
+    <string name="profile_role_label">Select your role</string>
+    <string name="profile_role_student">Student</string>
+    <string name="profile_role_teacher">Teacher</string>
+    <string name="profile_role_administrative">Administrative</string>
+    <string name="profile_role_brigadist">Brigadist</string>
+    <string name="profile_info_title">Your information stays here</string>
+    <string name="profile_info_desc">Data and history saved on this device. You can delete them in Settings.</string>
+    <string name="profile_create_button">Create Profile</string>
+
+    <!-- Screen 03: Dashboard -->
+    <string name="dashboard_greeting">Hello, %1$s.</string>
+    <string name="dashboard_subtitle">One safe decision at a time. Your progress is saved offline.</string>
+    <string name="meeting_point_button">Meeting Point</string>
+    <string name="meeting_point_caption">Quick guidance · Not an emergency call.</string>
+    <string name="featured_badge">SIS-01 · Available</string>
+    <string name="featured_title">During the earthquake</string>
+    <string name="featured_meta">Basic · 5 decisions · 2 min</string>
+    <string name="featured_sub">Ready to start or resume.</string>
+    <string name="featured_button">Continue SIS-01</string>
+    <string name="path_title">Your learning path</string>
+    <string name="level_basic">Basic</string>
+    <string name="level_basic_status">In progress · %1$d/%2$d achievements</string>
+    <string name="level_intermediate">Intermediate</string>
+    <string name="level_intermediate_status">Locked · %1$d/%2$d</string>
+    <string name="level_advanced">Advanced</string>
+    <string name="level_advanced_status">Locked · %1$d/%2$d</string>
+    <string name="action_view_scenarios">View 8 scenarios</string>
+    <string name="action_evacuation_map">Evacuation map</string>
+    <string name="dashboard_footer_note">Preview of SIS-01 attempt. Previous practices do not record achievements yet.</string>
+
+    <!-- Screen 04: Scenario Catalog -->
+    <string name="catalog_header_title">Scenarios</string>
+    <string name="catalog_title">Train your decisions</string>
+    <string name="catalog_subtitle">8 offline simulations. Start with Basic; advance by competencies.</string>
+    <string name="section_earthquake">Earthquakes · %1$d scenarios</string>
+    <string name="section_fire">Fires · %1$d scenarios</string>
+    <string name="scenario_status_available">Available</string>
+    <string name="scenario_status_locked">Locked</string>
+    <string name="scenario_estimated_time">%1$d min estimated</string>
+
+    <!-- Screen 05: Scenario Context -->
+    <string name="context_educational_sim">Educational simulation</string>
+    <string name="context_objective_title">Your objective</string>
+    <string name="context_obj1_title">1. Protect yourself during movement</string>
+    <string name="context_obj1_desc">Move away from windows and protect head and neck.</string>
+    <string name="context_obj2_title">2. Evacuate when it ends</string>
+    <string name="context_obj2_desc">Follow instructions, signage, and the safe route to the meeting point.</string>
+    <string name="context_config_title">5 decisions - 10–15 s per decision</string>
+    <string name="context_config_desc">Sound and vibration alert you of time. Configure them in Settings. If you make a mistake, you will learn to correct it.</string>
+    <string name="context_start_button">Start</string>
+    <string name="context_disclaimer">Educational example. Validate content and routes with ILC protocol.</string>
+
+    <!-- Screen 07/08: Consequences (Correct / Incorrect) -->
+    <string name="action_correct">Correct action</string>
+    <string name="action_incorrect">Incorrect action</string>
+    <string name="verdict_correct_title">You protect yourself from impact.</string>
+    <string name="verdict_correct_desc">The sturdy table offers protection and moving away from windows reduces exposure to glass.</string>
+    <string name="verdict_correct_next">Next step: maintain protection until movement stops.</string>
+    <string name="verdict_timer_paused">Decision time paused during explanation.</string>
+    <string name="verdict_incorrect_title">Running increases risk.</string>
+    <string name="verdict_incorrect_choice">You chose B: run to the stairs.</string>
+    <string name="verdict_incorrect_desc">During movement you can lose balance, fall, or be exposed to falling objects.</string>
+    <string name="verdict_incorrect_learn">You can still learn to protect yourself.</string>
+    <string name="verdict_correct_action">Correct action</string>
+    <string name="verdict_error_logged">The decision is recorded in the attempt, even offline.</string>
+
+    <!-- Screen 09: Error Recovery -->
+    <string name="recovery_header_title">Correct and learn</string>
+    <string name="recovery_header_subtitle">SIS-01 · After choosing the stairs</string>
+    <string name="recovery_badge">Guided recovery</string>
+    <string name="recovery_title">Stop. First, protect yourself.</string>
+    <string name="recovery_subtitle">Do not continue to the stairs while shaking. This is the action you can correct.</string>
+    <string name="recovery_step1_title">1. Find nearby protection</string>
+    <string name="recovery_step1_desc">Position yourself under or next to a sturdy table, away from windows and objects that may fall.</string>
+    <string name="recovery_step2_title">2. Protect head and neck</string>
+    <string name="recovery_step2_desc">Drop, cover, and hold protection while movement continues.</string>
+    <string name="recovery_step3_title">3. Wait before evacuating</string>
+    <string name="recovery_step3_desc">When it ends, follow instructions and signage. Do not run or use elevators.</string>
+    <string name="recovery_info_title">Retrying is part of learning</string>
+    <string name="recovery_info_desc">Return to the decision. The error remains visible for reflection at the end.</string>
+    <string name="recovery_retry_button">Retry</string>
+    <string name="recovery_footer">General educational guide · Validate with ILC protocol.</string>
+
+    <!-- Screen 12: Meeting Point / Orientation -->
+    <string name="meeting_point_title">Meeting Point</string>
+    <string name="meeting_point_sub">Orientation · Not an emergency call</string>
+    <string name="meeting_point_badge">Quick guidance · Outside training</string>
+    <string name="meeting_point_main_instruction">Go to the point marked P.</string>
+    <string name="meeting_point_disclaimer_box_title">Location to be confirmed with ILC</string>
+    <string name="meeting_point_disclaimer_box_desc">P is an educational reference, not an approved real location.</string>
+    <string name="meeting_point_instruction_1_title">1. Follow signage and brigadists</string>
+    <string name="meeting_point_instruction_1_desc">Use the indicated route when safe to evacuate. Walk, don\'t run.</string>
+    <string name="meeting_point_instruction_2_title">2. Remain at the meeting point</string>
+    <string name="meeting_point_instruction_2_desc">Do not return to the building until authorized.</string>
+    <string name="meeting_point_return_button">Return to home</string>
+    <string name="meeting_point_footer">This access provides guidance. It does not make calls or activate emergency services.</string>
+
+    <!-- Screen 13: Results -->
+    <string name="result_header_title">Your result</string>
+    <string name="result_header_subtitle">SIS-01 · During the earthquake</string>
+    <string name="result_header_subtitle_format">%1$s · %2$s</string>
+    <string name="result_badge">Basic · Simulation completed</string>
+    <string name="result_main_title">You learned to protect yourself.</string>
+    <string name="result_pass_badge">Level passed</string>
+    <string name="result_fail_badge">Level not passed</string>
+    <string name="result_pass_title">Level passed!</string>
+    <string name="result_fail_title">You did not pass this level</string>
+    <string name="result_score_meta">Score: %1$d/%2$d · %3$d%%</string>
+    <string name="result_score_meta_not_saved">Score: %1$d/%2$d · %3$d%% · Not saved</string>
+    <string name="result_time_format">%1$02d:%2$02d</string>
+    <string name="result_attempt_summary">Attempt summary</string>
+    <string name="result_correct_answers">Correct: %1$d</string>
+    <string name="result_incorrect_answers">Incorrect: %1$d</string>
+    <string name="result_failed_card_title">You can try again</string>
+    <string name="result_failed_card_desc">You needed at least %1$d correct out of %2$d; you got %3$d.</string>
+    <string name="result_retry_button_format">Retry %1$s</string>
+    <string name="result_stat_time">Time</string>
+    <string name="result_stat_error">Error</string>
+    <string name="result_stat_accuracy">Accuracy</string>
+    <string name="result_correct_count">%1$d/%2$d correct decisions</string>
+    <string name="result_evidence_title">Competency evidence</string>
+    <string name="result_evidence_1">Protection: identified a safe zone and protected head and neck.</string>
+    <string name="result_evidence_2">Evacuation: waited for movement to end and chose route A.</string>
+    <string name="result_improvement_title">An improvement opportunity</string>
+    <string name="result_improvement_desc">You chose to run to stairs during movement. Completed recovery; error remains in result.</string>
+    <string name="result_reflect_button">Reflect</string>
+    <string name="result_retry_button">Retry SIS-01</string>
+    <string name="result_dashboard_button">Back to main menu</string>
+    <string name="scenario_timeout_choice">Time ran out; recorded: %1$s</string>
+    <string name="history_title">Attempt History</string>
+    <string name="history_subtitle">Your passed and failed tests, saved on this device.</string>
+    <string name="history_loading">Loading attempts…</string>
+    <string name="history_no_user">Create or select a profile to view history.</string>
+    <string name="history_empty">No tests recorded yet. After finishing a scenario, it will appear here.</string>
+    <string name="history_attempt_count">%1$d saved attempts</string>
+    <string name="history_passed">%1$s · Passed</string>
+    <string name="history_failed">%1$s · Failed</string>
+    <string name="history_attempt_summary">%1$s · Correct %2$d/%3$d · Incorrect %4$d · Score %5$d%%</string>
+    <string name="history_decision_number">Question %1$d</string>
+    <string name="history_your_answer">Your answer: %1$s</string>
+    <string name="history_answer_correct">Correct answer</string>
+    <string name="history_answer_incorrect">Incorrect answer</string>
+    <string name="history_recommended_answer">Expected answer: %1$s</string>
+    <string name="history_timeout">Time ran out; automatic option recorded.</string>
+    <string name="result_footer">Result of this scenario, not all eight. Does not equal professional certification.</string>
+
+    <!-- Screen 14: Final Reflection -->
+    <string name="reflection_header_title">What you take away</string>
+    <string name="reflection_header_subtitle">SIS-01 · Reflection saved locally</string>
+    <string name="reflection_badge">Pause to learn</string>
+    <string name="reflection_title">What would you do differently?</string>
+    <string name="reflection_subtitle">Think about the error and how you would act more safely next time.</string>
+    <string name="reflection_input_label">My response</string>
+    <string name="reflection_input_hint">Write your reflection here...</string>
+    <string name="reflection_default_text">I wouldn\'t run to the stairs while it shakes. First I would protect myself under the table and wait for instructions to evacuate.</string>
+    <string name="reflection_saved_status">✓ Response saved on this device</string>
+    <string name="reflection_learnings_title">My learnings</string>
+    <string name="reflection_learning_1">Protect head and neck.</string>
+    <string name="reflection_learning_2">Move away from windows.</string>
+    <string name="reflection_learning_3">Wait before evacuating.</string>
+    <string name="reflection_learning_4">Follow the route and brigadists.</string>
+    <string name="reflection_continue_button">Continue to certificate</string>
+    <string name="reflection_footer">The certificate records your participation and achievement in this educational simulation.</string>
+
+    <!-- Screen 17: Settings -->
+    <string name="settings_header_title">Settings</string>
+    <string name="settings_title">At your pace, at your reach.</string>
+    <string name="settings_accessibility_title">Signals and accessibility</string>
+    <string name="settings_sound_title">Sound</string>
+    <string name="settings_sound_desc">Timer alerts</string>
+    <string name="settings_vibration_title">Vibration</string>
+    <string name="settings_vibration_desc">Tactile decision alerts</string>
+    <string name="settings_contrast_title">High contrast</string>
+    <string name="settings_contrast_desc">Standard view active</string>
+    <string name="settings_font_size_title">Text size</string>
+    <string name="settings_font_size_desc">Increase font size</string>
+    <string name="settings_font_normal">Normal</string>
+    <string name="settings_font_large">Large</string>
+    <string name="settings_privacy_title">Privacy and local data</string>
+    <string name="settings_privacy_desc">Profile and progress are saved locally and, when you sign in with internet, they sync with your account. Signing out preserves data on this device.</string>
+    <string name="settings_clear_data">Clear device data</string>
+    <string name="settings_note">Example visual states. These controls do not change settings in this mockup.</string>
+
+    <!-- Old / Compatibility -->
+    <string name="home_name_error">Enter your name to continue</string>
+    <string name="levels_empty">Coming soon: no scenarios in this level yet.</string>
+    <string name="levels_locked_hint">Pass the previous level to unlock this scenario.</string>
+    <string name="level_status_available">Available</string>
+    <string name="level_status_locked">Locked</string>
+    <string name="level_status_passed">Passed</string>
+    <string name="level_status_failed">Failed</string>
+    <string name="scenario_type_fire">Fire</string>
+    <string name="scenario_type_earthquake">Earthquake</string>
+    <string name="scenario_meta">Pass with %1$d %% · Max score %2$d · Allowed attempts %3$d</string>
+    <string name="scenario_result_none">No attempts yet</string>
+    <string name="scenario_result_progress">Best score: %1$d of %2$d · Attempts used: %3$d</string>
+    <string name="scenario_result_passed">Passed · best score: %1$d of %2$d · Attempts used: %3$d</string>
+    <string name="scenario_screen_label">Scenario</string>
+    <string name="scenario_exit">Exit</string>
+    <string name="scenario_exit_title">Exit scenario?</string>
+    <string name="scenario_exit_message">You will lose progress on this attempt.</string>
+    <string name="scenario_exit_confirm">Exit</string>
+    <string name="scenario_exit_cancel">Continue</string>
+    <string name="scenario_error_no_user">First enter your name in Home.</string>
+    <string name="scenario_error_not_found">Scenario not found.</string>
+    <string name="scenario_back_levels">Back to Levels</string>
+    <string name="scenario_step">Decision %1$d</string>
+    <string name="scenario_timer">Time remaining: %1$d s</string>
+    <string name="scenario_verdict_correct">Correct decision</string>
+    <string name="scenario_verdict_incorrect">Incorrect decision</string>
+    <string name="scenario_verdict_neutral">Decision recorded</string>
+    <string name="scenario_verdict_timeout">Time is up: default option applied</string>
+    <string name="scenario_source">Source: %1$s</string>
+    <string name="scenario_score_change">Score for this decision: %1$s</string>
+    <string name="scenario_continue">Continue</string>
+    <string name="scenario_see_result">See result</string>
+    <string name="scenario_result_title_passed">Scenario passed!</string>
+    <string name="scenario_result_title_failed">Score not reached yet</string>
+    <string name="scenario_result_score">%1$d of %2$d points (%3$d %%)</string>
+    <string name="scenario_result_required">Need %1$d %% to pass</string>
+    <string name="scenario_result_end">End: %1$s</string>
+    <string name="scenario_end_success">successful evacuation</string>
+    <string name="scenario_end_partial">got out but with errors</string>
+    <string name="scenario_end_failure">severe consequences</string>
+    <string name="scenario_result_stats">Decisions: %1$d · Timeouts: %2$d · Duration: %3$d s · Attempts used: %4$d</string>
+    <string name="scenario_result_not_saved">Could not save this result on device.</string>
+    <string name="scenario_retry">Try again</string>
+    <string name="auth_title_login">Sign in</string>
+    <string name="auth_title_register">Create your student account</string>
+    <string name="auth_subtitle">Access from another device and keep your progress.</string>
+    <string name="auth_name_label">Name</string>
+    <string name="auth_email_label">Email</string>
+    <string name="auth_password_label">Password</string>
+    <string name="auth_name_hint">Your name</string>
+    <string name="auth_email_hint">student@email.com</string>
+    <string name="auth_password_hint">Minimum 6 characters</string>
+    <string name="auth_login_button">Sign in</string>
+    <string name="auth_register_button">Create account</string>
+    <string name="auth_switch_register">Don\'t have an account? Register</string>
+    <string name="auth_switch_login">Already have an account? Sign in</string>
+    <string name="auth_forgot_password">Forgot password</string>
+    <string name="auth_continue_offline">Continue without account on this device</string>
+    <string name="auth_offline_note">Without account, progress only available on this device.</string>
+    <string name="auth_reset_sent">We sent you a link to reset your password.</string>
+    <string name="settings_sign_out">Sign out</string>
+    <string name="settings_sign_out_note">Your local data is preserved on this device.</string>
+    <!-- Hybrid access: local (no internet) and account (with internet) -->
+    <string name="auth_mode_local">With code</string>
+    <string name="auth_mode_account">With account</string>
+    <string name="auth_local_title_login">Sign in with your code</string>
+    <string name="auth_local_title_register">Create your profile</string>
+    <string name="auth_local_subtitle">Works offline. Your progress is saved on this device.</string>
+    <string name="auth_code_label">Institutional code</string>
+    <string name="auth_code_hint">E.g. ILC-2026</string>
+    <string name="auth_pin_label">PIN (4 to 6 digits)</string>
+    <string name="auth_role_label">Role</string>
+    <string name="auth_local_login_button">Sign in</string>
+    <string name="auth_local_register_button">Create profile</string>
+    <string name="auth_local_switch_register">First time? Create your profile</string>
+    <string name="auth_local_switch_login">Already have a profile? Sign in</string>
+    <string name="auth_err_name_required">Enter your full name.</string>
+    <string name="auth_err_code_required">Enter your institutional code.</string>
+    <string name="auth_err_code_too_short">Code must be at least 4 characters.</string>
+    <string name="auth_err_code_invalid">Use only letters, numbers, and hyphen (max 20).</string>
+    <string name="auth_err_pin_invalid">PIN must be 4 to 6 digits.</string>
+    <string name="auth_err_invalid_credentials">Incorrect code or PIN.</string>
+    <string name="auth_err_attempts_left">Incorrect code or PIN. You have %1$d attempts left.</string>
+    <string name="auth_err_code_exists">That code already has a profile on this device. Sign in with your PIN.</string>
+    <string name="auth_err_device_profile">This device already has a registered profile. Sign in with its code.</string>
+    <string name="auth_locked_countdown">Too many attempts. Try again in %1$d s.</string>
+    <!-- Certificates (RF-07): tab, screen, and PDF document -->
+    <string name="levels_go_home">Go to Home</string>
+    <string name="nav_certificates">Certificates</string>
+    <string name="level_basic_desc">School evacuation and fires</string>
+    <string name="level_intermediate_desc">Earthquakes</string>
+    <string name="level_advanced_desc">First aid and leadership</string>
+    <string name="certs_title">Certificates</string>
+    <string name="certs_subtitle">Certificates you earn by passing each level appear here.</string>
+    <string name="certs_no_user">First enter your name in Home to see your certificates.</string>
+    <string name="certs_empty">No certificates yet. Pass a level to get the first one.</string>
+    <string name="certs_issue_error">Could not generate one of your certificates. Open this tab again to retry.</string>
+    <string name="certs_card_meta">%1$d of %2$d points · Issued on %3$s</string>
+    <string name="certs_preview">Preview</string>
+    <string name="certs_share">Share PDF</string>
+    <string name="certs_preview_title">Certificate</string>
+    <string name="certs_close">Close</string>
+    <string name="certs_share_chooser">Share certificate</string>
+    <string name="certs_pdf_error">Could not generate certificate PDF.</string>
+    <string name="cert_doc_title">Competency Certificate</string>
+    <string name="cert_doc_institution">International Language Center</string>
+    <string name="cert_doc_certifies">Certifies that</string>
+    <string name="cert_doc_passed">has satisfactorily passed the</string>
+    <string name="cert_doc_score">with a score of %1$d of %2$d points (%3$d %%)</string>
+    <string name="cert_doc_issued">Issued on %1$s</string>
+    <string name="cert_doc_number">Certificate No. %1$s</string>
+    <string name="cert_doc_qr_caption">Verification QR code</string>
+    <string name="cert_doc_signed">CrisisSim · Digitally signed (ECDSA)</string>
+
+    <!-- Onboarding (HU-01) -->
+    <string name="onboarding_image_desc">International Language Center Logo</string>
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_next">Continue</string>
+    <string name="onboarding_finish">Get Started</string>
+
+    <string name="onboarding_page1_title">Welcome to CrisisSim</string>
+    <string name="onboarding_page1_description">Calm is also trained. CrisisSim teaches you to protect yourself during earthquakes and fires through interactive simulations. Practice decisions under controlled pressure and learn from every mistake.</string>
+
+    <string name="onboarding_page2_title">Learn by your role</string>
+    <string name="onboarding_page2_description">Choose your role: Student, Teacher, Administrative staff, or Brigadist. Each role has scenarios and protocols adapted to their responsibilities in the institution.</string>
+
+    <string name="onboarding_page3_title">100% offline, always available</string>
+    <string name="onboarding_page3_description">No internet or account needed. All content, your progress, and certificates are saved on this device. Works even without connection and after turning off the phone.</string>
+
+    <string name="onboarding_page4_title">Verifiable digital certificates</string>
+    <string name="onboarding_page4_description">When you pass each level you get a PDF certificate with a digitally signed QR code. Share it and verify its authenticity anytime.</string>
+
+    <!-- Map / Evacuation Map (fragment_map.xml) -->
+    <string name="map_title">Evacuation Map</string>
+    <string name="map_subtitle">Check your safe route and meeting point based on your location.</string>
+    <string name="map_select_room">Your classroom or location</string>
+    <string name="map_btn_meeting_point">Calculate route to meeting point</string>
+
+    <!-- Settings additional -->
+    <string name="settings_view_onboarding">View introduction</string>
+
+    <!-- Certificates (fragment_certificates.xml) -->
+    <string name="certificates_title">Certificates</string>
+    <string name="certificates_subtitle">Certificates you earn by passing each level appear here.</string>
+</resources>

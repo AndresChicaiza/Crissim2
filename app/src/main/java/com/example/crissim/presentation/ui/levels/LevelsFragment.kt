@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
@@ -48,6 +49,17 @@ class LevelsFragment : Fragment() {
         applyStatusBarInset()
         setupMeetingPoint()
         observeState()
+        setupBackNavigation()
+    }
+
+    private fun setupBackNavigation() {
+        // Al presionar "atrás" en la pantalla de escenarios, ir al Home en lugar de volver al login/registro
+        val backCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.homeFragment)
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backCallback)
     }
 
     override fun onStart() {
