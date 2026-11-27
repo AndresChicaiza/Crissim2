@@ -64,10 +64,21 @@ class OnboardingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         applyStatusBarInset()
         
-        // Si ya completó el onboarding, navegar directamente al siguiente destino
+        // Si ya completó el onboarding, navegar según si ya existe un usuario registrado o no
         val prefs = requireContext().getSharedPreferences("crisissim_prefs", Context.MODE_PRIVATE)
         if (prefs.getBoolean("onboarding_completed", false)) {
-            findNavController().navigate(R.id.welcomeFragment)
+            viewLifecycleOwner.lifecycleScope.launch {
+                val userRepo = com.example.crissim.CrisisSimApp.instance.container.userRepository
+                if (userRepo.hasUser()) {
+                    if (findNavController().currentDestination?.id == R.id.onboardingFragment) {
+                        findNavController().navigate(R.id.homeFragment)
+                    }
+                } else {
+                    if (findNavController().currentDestination?.id == R.id.onboardingFragment) {
+                        findNavController().navigate(R.id.welcomeFragment)
+                    }
+                }
+            }
             return
         }
         
@@ -130,10 +141,15 @@ class OnboardingFragment : Fragment() {
             val prefs = fragment.requireContext().getSharedPreferences("crisissim_prefs", Context.MODE_PRIVATE)
             val completed = prefs.getBoolean("onboarding_completed", false)
 
+            val navController = fragment.findNavController()
             if (!completed) {
-                fragment.findNavController().navigate(R.id.onboardingFragment)
+                if (navController.currentDestination?.id != R.id.onboardingFragment) {
+                    navController.navigate(R.id.onboardingFragment)
+                }
             } else {
-                fragment.findNavController().navigate(nextDestination)
+                if (navController.currentDestination?.id != nextDestination) {
+                    navController.navigate(nextDestination)
+                }
             }
         }
 

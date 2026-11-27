@@ -190,4 +190,114 @@ object CrisisSimMigrations {
         db.execSQL("CREATE INDEX index_sync_outbox_userId_status_createdAt ON sync_outbox(userId, status, createdAt)")
         db.execSQL("CREATE INDEX index_sync_outbox_aggregateId ON sync_outbox(aggregateId)")
     }
+
+    /** v4 -> v5: Micro-training, Badges, Streaks, UserMicroTraining (HU-24) */
+    val MIGRATION_4_5 = object : Migration(4, 5) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            db.execSQL("DROP TABLE IF EXISTS user_badge")
+            db.execSQL("DROP TABLE IF EXISTS user_micro_training")
+            db.execSQL("DROP TABLE IF EXISTS streak")
+            db.execSQL("DROP TABLE IF EXISTS badge")
+            db.execSQL("DROP TABLE IF EXISTS micro_training")
+
+            // MicroTraining table
+            db.execSQL(
+                """CREATE TABLE IF NOT EXISTS micro_training (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                    protocolId TEXT NOT NULL,
+                    title TEXT NOT NULL,
+                    question TEXT NOT NULL,
+                    options TEXT NOT NULL,
+                    correctOptionIndex INTEGER NOT NULL,
+                    explanation TEXT NOT NULL,
+                    protocolSource TEXT NOT NULL,
+                    difficulty TEXT NOT NULL,
+                    tags TEXT NOT NULL,
+                    "order" INTEGER NOT NULL,
+                    isActive INTEGER NOT NULL,
+                    createdAt INTEGER NOT NULL,
+                    updatedAt INTEGER NOT NULL
+                )""".trimIndent()
+            )
+
+            // Badge table
+            db.execSQL(
+                """CREATE TABLE IF NOT EXISTS badge (
+                    id TEXT NOT NULL,
+                    name TEXT NOT NULL,
+                    description TEXT NOT NULL,
+                    iconRes TEXT NOT NULL,
+                    category TEXT NOT NULL,
+                    requirement TEXT NOT NULL,
+                    iconResId INTEGER NOT NULL,
+                    earnedAt INTEGER NOT NULL,
+                    isSecret INTEGER NOT NULL,
+                    "order" INTEGER NOT NULL,
+                    PRIMARY KEY(id)
+                )""".trimIndent()
+            )
+
+            // Streak table
+            db.execSQL(
+                """CREATE TABLE IF NOT EXISTS streak (
+                    userId INTEGER NOT NULL,
+                    currentStreak INTEGER NOT NULL,
+                    longestStreak INTEGER NOT NULL,
+                    lastPracticeDate INTEGER NOT NULL,
+                    totalPracticeDays INTEGER NOT NULL,
+                    lastMicroTrainingId INTEGER NOT NULL,
+                    updatedAt INTEGER NOT NULL,
+                    PRIMARY KEY(userId)
+                )""".trimIndent()
+            )
+
+            // UserMicroTraining table
+            db.execSQL(
+                """CREATE TABLE IF NOT EXISTS user_micro_training (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                    userId INTEGER NOT NULL,
+                    microTrainingId INTEGER NOT NULL,
+                    status TEXT NOT NULL,
+                    attempts INTEGER NOT NULL,
+                    bestScore INTEGER NOT NULL,
+                    lastAttemptAt INTEGER NOT NULL,
+                    completedAt INTEGER NOT NULL,
+                    masteredAt INTEGER NOT NULL,
+                    sm2DataJson TEXT NOT NULL
+                )""".trimIndent()
+            )
+
+            // UserBadge table
+            db.execSQL(
+                """CREATE TABLE IF NOT EXISTS user_badge (
+                    userId INTEGER NOT NULL,
+                    badgeId TEXT NOT NULL,
+                    earnedAt INTEGER NOT NULL,
+                    PRIMARY KEY(userId, badgeId),
+                    FOREIGN KEY(userId) REFERENCES streak(userId) ON UPDATE NO ACTION ON DELETE CASCADE,
+                    FOREIGN KEY(badgeId) REFERENCES badge(id) ON UPDATE NO ACTION ON DELETE CASCADE
+                )""".trimIndent()
+            )
+        }
+    }
+
+    /** v5 -> v6: Modo Simulacro en Vivo (HU-25) */
+    val MIGRATION_5_6 = object : Migration(5, 6) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            db.execSQL(
+                """CREATE TABLE IF NOT EXISTS live_drill (
+                    id TEXT PRIMARY KEY NOT NULL,
+                    userId INTEGER NOT NULL,
+                    userName TEXT NOT NULL,
+                    role TEXT NOT NULL,
+                    startedAt INTEGER NOT NULL,
+                    completedAt INTEGER NOT NULL,
+                    totalDurationSeconds INTEGER NOT NULL,
+                    targetTimeSeconds INTEGER NOT NULL,
+                    incidentsJson TEXT NOT NULL,
+                    isCompleted INTEGER NOT NULL
+                )""".trimIndent()
+            )
+        }
+    }
 }

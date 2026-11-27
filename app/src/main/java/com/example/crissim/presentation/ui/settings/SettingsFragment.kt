@@ -121,12 +121,14 @@ class SettingsFragment : Fragment() {
         val vibrationEnabled = accessibilityPrefs.getBoolean("vibration_enabled", true)
         val highContrastEnabled = accessibilityPrefs.getBoolean("high_contrast_enabled", false)
         val largeFontEnabled = accessibilityPrefs.getBoolean("large_font_enabled", false)
+        val dailyReminderEnabled = accessibilityPrefs.getBoolean("daily_reminder_enabled", true)
 
         // Configurar switches
         binding.switchSound.isChecked = soundEnabled
         binding.switchVibration.isChecked = vibrationEnabled
         binding.switchHighContrast.isChecked = highContrastEnabled
         binding.switchLargeFont.isChecked = largeFontEnabled
+        binding.switchDailyReminder.isChecked = dailyReminderEnabled
 
         // Aplicar alto contraste al inicio si estaba activado
         if (highContrastEnabled) {
@@ -150,6 +152,10 @@ class SettingsFragment : Fragment() {
         binding.switchLargeFont.setOnCheckedChangeListener { _, isChecked ->
             accessibilityPrefs.edit().putBoolean("large_font_enabled", isChecked).apply()
             applyLargeFont(isChecked)
+        }
+
+        binding.switchDailyReminder.setOnCheckedChangeListener { _, isChecked ->
+            accessibilityPrefs.edit().putBoolean("daily_reminder_enabled", isChecked).apply()
         }
     }
 

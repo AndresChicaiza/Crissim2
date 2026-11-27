@@ -4,8 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.example.crissim.data.local.converters.Converters
 import com.example.crissim.data.local.dao.*
 import com.example.crissim.data.local.entity.*
+import com.example.crissim.domain.model.Badge
+import com.example.crissim.domain.model.MicroTraining
+import com.example.crissim.domain.model.Streak
+import com.example.crissim.domain.model.UserBadge
+import com.example.crissim.domain.model.UserMicroTraining
 
 /**
  * Room persistence for local profiles, scenario progress, attempt history, certificates and sync preparation.
@@ -20,11 +27,18 @@ import com.example.crissim.data.local.entity.*
         ScenarioProgressEntity::class,
         ScenarioProgressBackfillEntity::class,
         CertificateFileEntity::class,
-        SyncOutboxEntity::class
+        SyncOutboxEntity::class,
+        MicroTraining::class,
+        Badge::class,
+        Streak::class,
+        UserMicroTraining::class,
+        UserBadge::class,
+        LiveDrillEntity::class
     ],
-    version = 4,
+    version = 6,
     exportSchema = true
 )
+@TypeConverters(Converters::class)
 abstract class CrisisSimDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
@@ -36,6 +50,8 @@ abstract class CrisisSimDatabase : RoomDatabase() {
     abstract fun scenarioProgressBackfillDao(): ScenarioProgressBackfillDao
     abstract fun certificateFileDao(): CertificateFileDao
     abstract fun syncOutboxDao(): SyncOutboxDao
+    abstract fun microTrainingDao(): MicroTrainingDao
+    abstract fun liveDrillDao(): LiveDrillDao
 
     companion object {
         private const val DATABASE_NAME = "crisissim.db"
@@ -58,7 +74,9 @@ abstract class CrisisSimDatabase : RoomDatabase() {
                 .addMigrations(
                     CrisisSimMigrations.MIGRATION_1_3,
                     CrisisSimMigrations.MIGRATION_2_3,
-                    CrisisSimMigrations.MIGRATION_3_4
+                    CrisisSimMigrations.MIGRATION_3_4,
+                    CrisisSimMigrations.MIGRATION_4_5,
+                    CrisisSimMigrations.MIGRATION_5_6
                 )
                 .build()
         }

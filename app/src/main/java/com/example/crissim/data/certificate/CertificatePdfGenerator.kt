@@ -75,7 +75,20 @@ object CertificatePdfGenerator {
 
             // Retornar Uri content:// via FileProvider (compatible con Android 7+)
             val authority = "${context.packageName}.fileprovider"
-            FileProvider.getUriForFile(context, authority, file)
+            val fileUri = FileProvider.getUriForFile(context, authority, file)
+
+            // Registrar huella SHA-256 en la base de datos para verificación de integridad (CA-4)
+            val sha256 = com.example.crissim.domain.usecase.VerifyPdfFileUseCase.computeSha256(file.inputStream())
+            val fileEntity = com.example.crissim.data.local.entity.CertificateFileEntity(
+                certificateUuid = certificate.certificateUuid,
+                localUri = fileUri.toString(),
+                sha256 = sha256
+            )
+            kotlinx.coroutines.runBlocking {
+                com.example.crissim.CrisisSimApp.instance.database.certificateFileDao().upsert(fileEntity)
+            }
+
+            fileUri
         } catch (e: Exception) {
             Log.e(TAG, "Error generando PDF", e)
             null

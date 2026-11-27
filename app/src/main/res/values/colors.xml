@@ -27,4 +27,8 @@
     <color name="sismos_badge_bg">#EBF3FA</color>
     <color name="incendios_badge_bg">#FFF4E5</color>
     <color name="incendios_badge_text">#9C5200</color>
+
+    <!-- Feedback Colors -->
+    <color name="color_correct">#2E7D32</color>
+    <color name="color_error">#D32F2F</color>
 </resources>

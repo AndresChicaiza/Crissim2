@@ -3,7 +3,11 @@ package com.example.crissim
 import android.app.Application
 import android.content.Context
 import com.example.crissim.data.local.CrisisSimDatabase
+import com.example.crissim.domain.usecase.SeedMicroTrainingsUseCase
 import com.example.crissim.util.LocaleHelper
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 /**
  * Clase Application de CrisisSim.
@@ -31,6 +35,15 @@ class CrisisSimApp : Application() {
         instance = this
         // Aplicar locale guardado al inicio
         LocaleHelper.updateLocale(this, LocaleHelper.getLanguage(this))
+
+        // Sembrar micro-entrenamientos e insignias iniciales offline
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                SeedMicroTrainingsUseCase(container.microTrainingRepository).execute()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
     }
 
     companion object {

@@ -7,24 +7,31 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.crissim.CrisisSimApp
+import com.example.crissim.data.repository.MicroTrainingRepository
 import com.example.crissim.data.repository.ProgressRepository
 import com.example.crissim.data.repository.ScenarioRepository
 import com.example.crissim.data.repository.UserRepository
 import com.example.crissim.data.repository.impl.StudentCloudSync
+import com.example.crissim.domain.model.Badge
 import com.example.crissim.domain.model.Level
+import com.example.crissim.domain.model.MicroTrainingWithProgress
 import com.example.crissim.domain.model.UserRole
 import com.example.crissim.domain.usecase.CheckLevelUnlockedUseCase
 import com.example.crissim.domain.usecase.GetAllProgressUseCase
+import com.example.crissim.domain.usecase.GetNextMicroTrainingUseCase
 import com.example.crissim.domain.usecase.GetScenariosUseCase
-import kotlinx.coroutines.Dispatchers
+import com.example.crissim.domain.usecase.MicroTrainingAnswerResult
+import com.example.crissim.domain.usecase.SubmitMicroAnswerUseCase
+import com.google.firebase.auth.FirebaseAuth
+import java.util.Calendar
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import com.google.firebase.auth.FirebaseAuth
 
 /** Datos de un nivel listos para mostrar en pantalla. */
 data class LevelUi(
@@ -39,6 +46,15 @@ data class LevelUi(
         get() = if (maxScore > 0) (bestScore * 100 / maxScore).coerceIn(0, 100) else 0
 }
 
+/** Estado de la UI para micro-entrenamientos y rachas (HU-24). */
+data class MicroTrainingUiState(
+    val currentStreak: Int = 0,
+    val nextMicroTraining: MicroTrainingWithProgress? = null,
+    val earnedBadges: List<Badge> = emptyList(),
+    val lastResult: MicroTrainingAnswerResult? = null,
+    val isPracticedToday: Boolean = false
+)
+
 /** Estados posibles de la pantalla Inicio. */
 sealed interface HomeUiState {
     data object Loading : HomeUiState
@@ -47,24 +63,28 @@ sealed interface HomeUiState {
         val userName: String,
         val userRole: UserRole,
         val levels: List<LevelUi>,
-        val scenarioCount: Int
+        val scenarioCount: Int,
+        val microTrainingUi: MicroTrainingUiState = MicroTrainingUiState()
     ) : HomeUiState
 }
 
 /**
  * ViewModel de la pantalla Inicio.
- * Decide qué mostrar: pedir el nombre (primera vez) o el progreso por niveles.
+ * Gestiona el progreso de niveles y los micro-entrenamientos diarios (HU-24).
  */
 class HomeViewModel(
     private val userRepository: UserRepository,
     progressRepository: ProgressRepository,
     scenarioRepository: ScenarioRepository,
+    private val microTrainingRepository: MicroTrainingRepository,
     private val cloudSync: StudentCloudSync
 ) : ViewModel() {
 
     private val getAllProgress = GetAllProgressUseCase(progressRepository)
     private val checkLevelUnlocked = CheckLevelUnlockedUseCase(progressRepository)
     private val getScenarios = GetScenariosUseCase(scenarioRepository)
+    private val getNextMicroTraining = GetNextMicroTrainingUseCase(microTrainingRepository)
+    private val submitMicroAnswer = SubmitMicroAnswerUseCase(microTrainingRepository)
 
     private val _state = MutableStateFlow<HomeUiState>(HomeUiState.Loading)
     val state: StateFlow<HomeUiState> = _state.asStateFlow()
@@ -97,6 +117,36 @@ class HomeViewModel(
         }
     }
 
+    /** Envía la respuesta del usuario a la tarjeta de micro-entrenamiento diario. */
+    fun submitMicroTrainingAnswer(selectedOptionIndex: Int) {
+        val currentState = _state.value as? HomeUiState.Ready ?: return
+        val currentMicro = currentState.microTrainingUi.nextMicroTraining ?: return
+
+        viewModelScope.launch {
+            val user = userRepository.getActiveUser() ?: return@launch
+            val result = submitMicroAnswer.execute(
+                userId = user.id,
+                microTrainingId = currentMicro.microTraining.id,
+                selectedOptionIndex = selectedOptionIndex
+            ) ?: return@launch
+
+            val updatedStreak = microTrainingRepository.getStreak(user.id)?.currentStreak ?: result.streak.currentStreak
+            val updatedBadges = microTrainingRepository.getUserEarnedBadges(user.id)
+            val updatedNextMicro = getNextMicroTraining.execute(user.id)
+            val isPracticedToday = isToday(result.streak.lastPracticeDate) && result.isCorrect
+
+            _state.value = currentState.copy(
+                microTrainingUi = currentState.microTrainingUi.copy(
+                    currentStreak = updatedStreak,
+                    earnedBadges = updatedBadges,
+                    nextMicroTraining = updatedNextMicro,
+                    lastResult = result,
+                    isPracticedToday = isPracticedToday
+                )
+            )
+        }
+    }
+
     /** Guarda el nombre del usuario (primera vez) y muestra el progreso. */
     fun saveName(name: String) {
         val cleanName = name.trim()
@@ -122,7 +172,27 @@ class HomeViewModel(
         }
         val scenarioCount = withContext(Dispatchers.IO) { getScenarios.execute().size }
 
-        return HomeUiState.Ready(user.name, user.role, levels, scenarioCount)
+        val nextMicro = getNextMicroTraining.execute(user.id)
+        val streak = microTrainingRepository.getStreak(user.id)
+        val earnedBadges = microTrainingRepository.getUserEarnedBadges(user.id)
+        val isPracticedToday = isToday(streak?.lastPracticeDate ?: 0L)
+
+        val microUi = MicroTrainingUiState(
+            currentStreak = streak?.currentStreak ?: 0,
+            nextMicroTraining = nextMicro,
+            earnedBadges = earnedBadges,
+            isPracticedToday = isPracticedToday
+        )
+
+        return HomeUiState.Ready(user.name, user.role, levels, scenarioCount, microUi)
+    }
+
+    private fun isToday(timestamp: Long): Boolean {
+        if (timestamp <= 0) return false
+        val cal1 = Calendar.getInstance().apply { timeInMillis = timestamp }
+        val cal2 = Calendar.getInstance()
+        return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+               cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR)
     }
 
     companion object {
@@ -135,6 +205,7 @@ class HomeViewModel(
                     container.userRepository,
                     container.progressRepository,
                     container.scenarioRepository,
+                    container.microTrainingRepository,
                     container.studentCloudSync
                 )
             }

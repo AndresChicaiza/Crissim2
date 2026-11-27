@@ -14,7 +14,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.crissim.CrisisSimApp
 import com.example.crissim.R
 import com.example.crissim.databinding.FragmentWelcomeBinding
-import com.example.crissim.presentation.ui.onboarding.OnboardingFragment
 import com.example.crissim.util.LocaleHelper
 import kotlinx.coroutines.launch
 
@@ -55,16 +54,9 @@ class WelcomeFragment : Fragment() {
 
     private fun checkOnboardingAndUser() {
         viewLifecycleOwner.lifecycleScope.launch {
-            // Primero verificar si ya completó el onboarding
-            OnboardingFragment.navigateIfNeeded(this@WelcomeFragment, R.id.authFragment)
-            
-            // Si ya completó onboarding, verificar si tiene usuario
-            val prefs = requireContext().getSharedPreferences("crisissim_prefs", android.content.Context.MODE_PRIVATE)
-            val onboardingCompleted = prefs.getBoolean("onboarding_completed", false)
-            
-            if (onboardingCompleted) {
-                val userRepo = CrisisSimApp.instance.container.userRepository
-                if (userRepo.hasUser()) {
+            val userRepo = CrisisSimApp.instance.container.userRepository
+            if (userRepo.hasUser()) {
+                if (findNavController().currentDestination?.id == R.id.welcomeFragment) {
                     findNavController().navigate(R.id.homeFragment)
                 }
             }

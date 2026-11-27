@@ -21,6 +21,20 @@
         android:textAppearance="?attr/textAppearanceBodyMedium"
         android:textColor="?android:attr/textColorSecondary" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_verify_certificate"
+        style="?attr/materialButtonOutlinedStyle"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:text="🔍 Verificar Certificado (Firma QR / PDF)"
+        android:textAppearance="?attr/textAppearanceTitleSmall"
+        android:textColor="@color/primary"
+        app:cornerRadius="10dp"
+        app:strokeColor="@color/primary"
+        app:strokeWidth="1.5dp" />
+
     <TextView
         android:id="@+id/tvEmpty"
         android:layout_width="match_parent"

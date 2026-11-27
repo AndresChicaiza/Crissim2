@@ -1,10 +1,14 @@
 package com.example.crissim
 
 import com.example.crissim.data.repository.CertificateRepository
+import com.example.crissim.data.repository.LiveDrillRepository
+import com.example.crissim.data.repository.MicroTrainingRepository
 import com.example.crissim.data.repository.ProgressRepository
 import com.example.crissim.data.repository.ScenarioRepository
 import com.example.crissim.data.repository.UserRepository
 import com.example.crissim.data.repository.impl.CertificateRepositoryImpl
+import com.example.crissim.data.repository.impl.LiveDrillRepositoryImpl
+import com.example.crissim.data.repository.impl.MicroTrainingRepositoryImpl
 import com.example.crissim.data.repository.impl.ProgressRepositoryImpl
 import com.example.crissim.data.repository.impl.ScenarioRepositoryImpl
 import com.example.crissim.data.repository.impl.UserRepositoryImpl
@@ -31,4 +35,12 @@ class AppContainer(app: CrisisSimApp) {
 
     val certificateRepository: CertificateRepository =
         CertificateRepositoryImpl(db.certificateDao())
+
+    val microTrainingRepository: MicroTrainingRepository = MicroTrainingRepositoryImpl(
+        db, db.microTrainingDao()
+    )
+
+    val liveDrillRepository: LiveDrillRepository = LiveDrillRepositoryImpl(
+        db.liveDrillDao()
+    )
 }

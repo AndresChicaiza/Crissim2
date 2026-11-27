@@ -9,6 +9,20 @@
     <string name="nav_history">History</string>
     <string name="nav_settings">Settings</string>
 
+    <!-- Micro-trainings and Streaks (HU-24) -->
+    <string name="micro_training_title">Daily Micro-Training</string>
+    <string name="micro_training_subtitle">Offline spaced repetition · SM-2 algorithm</string>
+    <string name="micro_streak_format">🔥 Streak: %1$d days</string>
+    <string name="micro_badges_format">🏆 Badges (%1$d): %2$s</string>
+    <string name="micro_badges_empty">🏆 Badges: Practice to earn your first badge!</string>
+    <string name="micro_btn_submit">Answer and log practice</string>
+    <string name="micro_btn_completed">Today\'s practice completed ✓</string>
+    <string name="micro_completed_hint">Great job! You logged today\'s practice. Come back tomorrow to keep your streak 🔥.</string>
+    <string name="micro_badge_earned">New badge unlocked! %1$s</string>
+    <string name="settings_reminder_title">Local Daily Reminder</string>
+    <string name="settings_reminder_desc">Configurable offline local notification to keep your streak</string>
+    <string name="certs_verify_restricted">Verification is restricted to Teachers, Brigadists, and Administrative roles.</string>
+
     <!-- Header -->
     <string name="badge_offline">Offline training</string>
 

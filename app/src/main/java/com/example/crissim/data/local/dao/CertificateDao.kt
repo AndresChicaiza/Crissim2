@@ -21,6 +21,9 @@ interface CertificateDao {
     @Query("SELECT * FROM certificates WHERE id = :certificateId")
     suspend fun getCertificateById(certificateId: Long): CertificateEntity?
 
+    @Query("SELECT * FROM certificates")
+    suspend fun getAllCertificates(): List<CertificateEntity>
+
     @Query("SELECT * FROM certificates WHERE certificateUuid = :certificateUuid LIMIT 1")
     suspend fun getCertificateByUuid(certificateUuid: String): CertificateEntity?
 

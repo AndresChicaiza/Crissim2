@@ -8,6 +8,20 @@
     <string name="nav_history">Historial</string>
     <string name="nav_settings">Ajustes</string>
 
+    <!-- Micro-entrenamientos y Rachas (HU-24) -->
+    <string name="micro_training_title">Micro-entrenamiento Diario</string>
+    <string name="micro_training_subtitle">Refuerzo espaciado offline · Repetición SM-2</string>
+    <string name="micro_streak_format">🔥 Racha: %1$d días</string>
+    <string name="micro_badges_format">🏆 Insignias (%1$d): %2$s</string>
+    <string name="micro_badges_empty">🏆 Insignias: ¡Practica para ganar tu primera insignia!</string>
+    <string name="micro_btn_submit">Responder y registrar práctica</string>
+    <string name="micro_btn_completed">Práctica de hoy completada ✓</string>
+    <string name="micro_completed_hint">¡Excelente! Has registrado tu práctica diaria. Vuelve mañana para mantener tu racha 🔥.</string>
+    <string name="micro_badge_earned">¡Nueva insignia desbloqueada! %1$s</string>
+    <string name="settings_reminder_title">Recordatorio Diario Local</string>
+    <string name="settings_reminder_desc">Notificación local configurable sin internet para mantener tu racha</string>
+    <string name="certs_verify_restricted">La verificación es exclusiva para Docentes, Brigadistas y Administrativos.</string>
+
     <!-- Header -->
     <string name="badge_offline">Entrenamiento sin internet</string>
 
